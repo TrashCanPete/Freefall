@@ -34,10 +34,13 @@ public class WingsuitController : MonoBehaviour
     // 1 means maxAngle
     public float percentage;
 
-    //Rotations
+    //Rotation Speeds
     public float xRotation;
     public float yRotation;
     public float zRotation;
+
+    //Camera follow distance
+    public float camFollowDist;
 
     // Audio mixer, to control the sound FX pitch
     public AudioMixer am;
@@ -63,6 +66,10 @@ public class WingsuitController : MonoBehaviour
         rot.z = -zRotation * Input.GetAxis("Horizontal");
         rot.z = Mathf.Clamp(rot.z, -zRotation, zRotation);
         transform.rotation = Quaternion.Euler(rot);
+
+        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * 2.0f;
+        Camera.main.transform.position = moveCamTo;
+        Camera.main.transform.LookAt(transform.position);
 
         // Speed and drag based on angle
         // Get the percentage (minAngle = 0, maxAngle = 1)
