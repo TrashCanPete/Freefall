@@ -39,6 +39,8 @@ public class WingsuitController : MonoBehaviour
     public float yVelocity;
     public float force;
 
+    public Transform playerPosition;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -92,13 +94,13 @@ public class WingsuitController : MonoBehaviour
         //Determining how much resistence to add depending of the angle(percentage)
         force = Mathf.Lerp(maxForce, minForce, angle);
 
-        Debug.DrawLine(transform.position, transform.forward, Color.red);
+        Debug.DrawLine(playerPosition.transform.position, transform.forward, Color.red);
 
         rb.AddForce(transform.up * force*-yVelocity);
-        Debug.DrawLine(transform.position, transform.up, Color.green);
+        Debug.DrawLine(playerPosition.transform.position, transform.up, Color.green);
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-        Debug.DrawLine(transform.position, rb.velocity, Color.blue);
+        Debug.DrawLine(playerPosition.transform.position, rb.velocity, Color.blue);
         //transform.up ios the direction the force is being added
         //force is the amount of resistence added to the wingsuit
         //horizontal = more resistence

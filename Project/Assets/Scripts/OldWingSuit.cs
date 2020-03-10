@@ -8,7 +8,26 @@ public class OldWingSuit : MonoBehaviour
     // Get the player Rigidbody component
     public Rigidbody rb;
     // Rotation
-    public Vector3 rot;
+    private Vector3 rot;
+
+    public float MaxLowSpeed = 12.5f;
+
+    public float lowSpeed;
+
+    public float midSpeed;
+
+    public float highSpeed;
+
+    public float maxHighSpeed = 13.8f;
+
+    // Max drag, if the player is on 0 deg or minAngle
+    public float maxDrag = 6;
+    // Min drag
+    public float minDrag = 2;
+
+    // Here we will store the modified force and drag
+    private float mod_force;
+    private float mod_drag;
 
     // Min angle for the player to rotate on the x-axis
     public float minAngle = 0;
@@ -18,7 +37,7 @@ public class OldWingSuit : MonoBehaviour
     // Converting the x rotation from min angle to max, into a 0-1 format.
     // 0 means minAngle
     // 1 means maxAngle
-    public float angle;
+    public float percentage;
 
     //Rotation Speeds
     public float xRotation;
@@ -31,13 +50,12 @@ public class OldWingSuit : MonoBehaviour
     // Audio mixer, to control the sound FX pitch
     public AudioMixer am;
 
+    //Decrease Valuse
+    public float decreaseNumber;
 
     //gliders velocity value
-    public float displayVelocity;
-    public float displayAngle;
-
-    public float yVelocity;
-    public float force;
+    public float Velocity;
+    public float Force;
 
     private void Start()
     {
@@ -49,66 +67,99 @@ public class OldWingSuit : MonoBehaviour
     private void Update()
     {
 
-        CamFollow();
-    }
-    private void FixedUpdate()
-    {
-        displayVelocity = rb.velocity.magnitude;
-        displayAngle = angle;
-
-
+        Velocity = rb.velocity.magnitude;
+        Force = mod_force;
 
         //rotate the player
-
         //X axis
         rot.x += xRotation * Input.GetAxis("Vertical") * Time.deltaTime;
         rot.x = Mathf.Clamp(rot.x, minAngle, maxAngle);
 
+        //Gradual decreasing in angle on the X axis
+        rot.x -= +decreaseNumber * Time.deltaTime;
         //Y axis
         rot.y += yRotation * Input.GetAxis("Horizontal") * Time.deltaTime;
-
         //Clamped Z Axis rotation
         rot.z = -zRotation * Input.GetAxis("Horizontal");
         rot.z = Mathf.Clamp(rot.z, -zRotation, zRotation);
         transform.rotation = Quaternion.Euler(rot);
 
-
-
-        // Get the angle
-        angle = rot.x / maxAngle;
-
-        //making sure the percentage (the angle the wingsuit is facing) will always be positive
-
-        //(faceing down = 1 facing straigh on = 0 facing up = 1)
-        angle = Mathf.Abs(angle);
-
-        float minForce = 0;
-        float maxForce = 10;
-        float maxSpeed = 100; //m/s
-
-        //the the local velocity of the glider on the y axis 
-        yVelocity = transform.InverseTransformDirection(rb.velocity).y;
-
-        //Determining how much resistence to add depending of the angle(percentage)
-        force = Mathf.Lerp(maxForce, minForce, angle);
-
-        Debug.DrawLine(transform.position, transform.forward, Color.red);
-
-        rb.AddForce(transform.up * force * -yVelocity);
-        Debug.DrawLine(transform.position, transform.up, Color.green);
-
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-        Debug.DrawLine(transform.position, rb.velocity, Color.blue);
-        //transform.up ios the direction the force is being added
-        //force is the amount of resistence added to the wingsuit
-        //horizontal = more resistence
-        //high angle, facing up or down = less resistence
-        //yVelocity is the amount of forcing being added
-    }
-    public void CamFollow()
-    {
         Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * 2.0f;
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(transform.position);
+
+        // Speed and drag based on angle
+        // Get the percentage (minAngle = 0, maxAngle = 1)
+        percentage = rot.x / maxAngle;
+        // Update parameters
+        // If 0, we'll have maxDrag and lowSpeed
+        // If 1, we'll get minDrag and highSpeed
+        mod_drag = (percentage * (minDrag - maxDrag)) + maxDrag;
+
+        mod_force = (percentage * (highSpeed - lowSpeed)) + lowSpeed;
+
+        SpeedChanges();
+        // Getting the local space of the velocity
+        Vector3 localV = transform.InverseTransformDirection(rb.velocity);
+
+        // Change z velocity to mod_force
+        localV.z = mod_force;
+
+        // Convert the local velocity back to world space and set it to the Rigidbody's velocity
+        rb.velocity = transform.TransformDirection(localV);
+
+        // Update drag to the modified one
+        rb.drag = mod_drag;
+
+        // Change pitch value based on the player's angle and percentage
+        am.SetFloat("Pitch", 1 + percentage);
+
+
+
+    }
+    public void SpeedChanges()
+    {
+
+        //Percentage Values
+        //-0.99 = straight up
+        //-0.5  = 45 degrees up
+        //0.0 = straight ahead
+        //0.5 = 45 degrees down
+        //0.9 = straight down
+
+        if (Input.GetButton("Vertical"))
+        {
+            decreaseNumber = 0;
+        }
+        else
+        {
+            if (percentage >= 0.75f && percentage <= 1)
+            {
+                Debug.Log("Freefalling");
+                decreaseNumber = 0;
+            }
+            else if (percentage >= 0.1f && percentage <= 0.90f)
+            {
+                Debug.Log("Diving");
+                decreaseNumber = -5f;
+            }
+            else if (percentage <= 0.1 && percentage >= -0.1)
+            {
+                Debug.Log("Mid");
+                decreaseNumber = -1;
+            }
+            else if (percentage <= -0.1 && percentage >= -0.5f)
+            {
+                Debug.Log("Climbing");
+                decreaseNumber = Mathf.Lerp(rot.x, -1, -10f);
+            }
+            else if (percentage <= -0.5f && percentage >= -1)
+            {
+                Debug.Log("Stalling");
+                decreaseNumber = Mathf.Lerp(rot.x, -1, -10f);
+            }
+        }
+
+        //mod_force = (percentage * (highSpeed - lowSpeed)) + lowSpeed;
     }
 }
