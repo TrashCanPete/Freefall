@@ -178,7 +178,7 @@ public class OldWingSuit : MonoBehaviour
         {
 
             Debug.Log("In the updraft");
-            transform.position += Vector3.up;
+            transform.position += Vector3.up *100;
         }
     }
 }
