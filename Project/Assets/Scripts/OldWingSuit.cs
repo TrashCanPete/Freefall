@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class WingsuitController : MonoBehaviour
+public class OldWingSuit : MonoBehaviour
 {
     // Get the player Rigidbody component
     public Rigidbody rb;
@@ -94,7 +94,7 @@ public class WingsuitController : MonoBehaviour
 
         Debug.DrawLine(transform.position, transform.forward, Color.red);
 
-        rb.AddForce(transform.up * force*-yVelocity);
+        rb.AddForce(transform.up * force * -yVelocity);
         Debug.DrawLine(transform.position, transform.up, Color.green);
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
