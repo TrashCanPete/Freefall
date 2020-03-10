@@ -86,7 +86,7 @@ public class OldWingSuit : MonoBehaviour
         rot.z = Mathf.Clamp(rot.z, -zRotation, zRotation);
         transform.rotation = Quaternion.Euler(rot);
 
-        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * 2.0f;
+        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * 0.50f;
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(transform.position);
 
