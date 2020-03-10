@@ -353,18 +353,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb206699844a0944854443d8feccda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  lowSpeed: 40
-  highSpeed: 50
-  maxDrag: 6
-  minDrag: 2
-  minAngle: -45
-  maxAngle: 45
-  percentage: 0
-  xRotation: 40
+  rb: {fileID: 446695708}
+  rot: {x: 0, y: 0, z: 0}
+  minAngle: -85
+  maxAngle: 85
+  angle: 0
+  xRotation: 80
   yRotation: 20
-  zRotation: 20
+  zRotation: 45
+  camFollowDist: 5
   am: {fileID: 24100000, guid: 38a90ec56100aa6458a53a7165eed0b6, type: 2}
+  displayVelocity: 0
+  displayAngle: 0
+  yVelocity: 0
+  force: 0
 --- !u!65 &446695710
 BoxCollider:
   m_ObjectHideFlags: 0

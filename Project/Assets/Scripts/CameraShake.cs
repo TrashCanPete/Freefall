@@ -9,7 +9,7 @@ public class CameraShake : MonoBehaviour
 
     private void LateUpdate()
     {
-        float mod_shaking = shaking * wc.percentage;
+        float mod_shaking = shaking * wc.angle;
         transform.localPosition = new Vector3(Random.Range(-mod_shaking, mod_shaking), Random.Range(-mod_shaking, mod_shaking), 0);
     }
 }
