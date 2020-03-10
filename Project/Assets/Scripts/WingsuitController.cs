@@ -97,18 +97,17 @@ public class WingsuitController : MonoBehaviour
 
 
         rb.AddForce(transform.up * force*-yVelocity);
-
+        
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
 
 
 
 
-        Debug.DrawLine(playerPosition.transform.position, rb.velocity, Color.blue);
-        Debug.DrawLine(playerPosition.transform.position, transform.forward, Color.red);
-        Debug.DrawLine(playerPosition.transform.position, transform.up, Color.green);
-        Debug.DrawLine(rb.velocity, playerPosition.transform.position, Color.cyan);
-        //transform.up ios the direction the force is being added
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + rb.velocity, Color.blue);
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + transform.forward * 10, Color.red);
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + transform.up * 5, Color.green);
+        //transform.up is the direction the force is being added
         //force is the amount of resistence added to the wingsuit
         //horizontal = more resistence
         //high angle, facing up or down = less resistence
@@ -126,7 +125,7 @@ public class WingsuitController : MonoBehaviour
         {
 
             Debug.Log("In the updraft");
-            transform.position += Vector3.up;
+            transform.position += Vector3.up * 2;
         }
     }
 
