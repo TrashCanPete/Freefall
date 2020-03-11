@@ -48,9 +48,14 @@ public class WingsuitController : MonoBehaviour
     public Transform rotator;
 
     public Vector3 inputValues;
+
+
+    public float rotationSpeedXMin;
+    public float rotationSpeedXMax;
     public float rotationSpeedX;
     public float rotationSpeedY;
 
+    public float rotationSpeedZ;
 
 
     public float horizontalInput;
@@ -58,11 +63,25 @@ public class WingsuitController : MonoBehaviour
 
     public float smoothX;
     public float smoothY;
+    public float smoothRotateDelayZ;
 
     public float rotateDelay;
 
     public float rotateXSmoothing;
     public float rotateYSmoothing;
+
+    public float maxRotateX;
+    public float minRotateX;
+
+    public float rotateSpeedDelayX;
+    public float rotateSpeedDelayY;
+
+    public float rotateDelayZ;
+    public float minRotateDelayZ;
+    public float MaxRotateDelayZ;
+
+
+    public float maxDelayTimeX;
 
     private void Start()
     {
@@ -80,31 +99,71 @@ public class WingsuitController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        horizontalInput = Input.GetAxis("Horizontal") * rotateYSmoothing;
-        verticalInput = Input.GetAxis("Vertical") * rotateXSmoothing ;
 
+        //Inputs
+        horizontalInput = Input.GetAxis("Horizontal") * rotateYSmoothing;
+        verticalInput = Input.GetAxis("Vertical") * rotateXSmoothing;
+
+        //Rotation UP and DOWN Data
+        //Glider rotation on the X axis and speeding up after a certian moment
+
+        // after the vertical input has reached 1 or above
         if (verticalInput >= 1 || verticalInput <= -1)
         {
-            
+            //start rotation the glider on the x axis
             inputValues.x += rotationSpeedX * verticalInput * Time.deltaTime;
+            inputValues.x = Mathf.Clamp(inputValues.x, maxRotateX, minRotateX);
+
+
+            //delay to then rotate faster on the x axis
+            //add 1 to the delay counter and clamping it to a certain value
+            rotateSpeedDelayX += 1;
+            rotateSpeedDelayX = Mathf.Clamp(rotateSpeedDelayX, 0, maxDelayTimeX);
+
+            //once this value has reached the max value change the rotation speed to go faster
+            if (rotateSpeedDelayX == maxDelayTimeX)
+            {
+                rotationSpeedX = Mathf.Lerp( rotationSpeedX, rotationSpeedXMax, smoothX);
+            }
+            else 
+            {
+                //Set the rotation speed back to the slower speed
+                rotationSpeedX = rotationSpeedXMin;
+            }
+
+        }
+        else 
+        { 
+            //reset the counter
+            rotateSpeedDelayX = 0; 
         }
 
+        // after the horizontal input has reached 1 or above
         if (horizontalInput >= 1 || horizontalInput <= -1)
         {
             inputValues.y += rotationSpeedY * horizontalInput * Time.deltaTime;
+
+
+            //Z Tilt
+            inputValues.z = -zRotation * Input.GetAxis("Horizontal") * rotationSpeedZ;
+            inputValues.z = Mathf.Clamp(inputValues.z, -zRotation, zRotation);
+        }
+        else 
+        {
+            inputValues.z = Mathf.Clamp(inputValues.z, 0, rotationSpeedZ );
         }
 
-
-
-
-        //OldCode();
-        //inputValues.x += rotationSpeedX * Input.GetAxis("Vertical") * Time.deltaTime;
-
+        //Rotating LEFT and RIGHT Data
+        //glider rotating on the y Axis
         inputValues.y += rotationSpeedY * Input.GetAxis("Horizontal") * Time.deltaTime;
 
+
+        //function that actually performs the rotating
         transform.rotation = Quaternion.Euler(inputValues);
 
 
+
+        //DEBUG DRAW LINES
 
         Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + rb.velocity, Color.cyan);
 
@@ -116,11 +175,7 @@ public class WingsuitController : MonoBehaviour
         Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + Vector3.forward * 15, Color.blue);
         Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + Vector3.right * 15, Color.red);
 
-        //transform.up is the direction the force is being added
-        //force is the amount of resistence added to the wingsuit
-        //horizontal = more resistence
-        //high angle, facing up or down = less resistence
-        //yVelocity is the amount of forcing being added
+        //OldCode();
     }
     public void CamFollow()
     {
@@ -184,5 +239,11 @@ public class WingsuitController : MonoBehaviour
 
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+
+        //transform.up is the direction the force is being added
+        //force is the amount of resistence added to the wingsuit
+        //horizontal = more resistence
+        //high angle, facing up or down = less resistence
+        //yVelocity is the amount of forcing being added
     }
 }

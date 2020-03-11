@@ -7742,8 +7742,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.231151, y: 0.2132194, z: 1.4851503}
-  m_Center: {x: 0.015842438, y: -0.003611803, z: 0.0019755363}
+  m_Size: {x: 2.19983, y: 0.2132194, z: 1.1178634}
+  m_Center: {x: 0.00018191338, y: -0.003611803, z: -0.92230403}
 --- !u!33 &1807529156
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7819,15 +7819,27 @@ MonoBehaviour:
   playerPosition: {fileID: 1807529153}
   rotator: {fileID: 0}
   inputValues: {x: 0, y: 0, z: 0}
+  rotationSpeedXMin: 10
+  rotationSpeedXMax: 20
   rotationSpeedX: 10
   rotationSpeedY: 10
+  rotationSpeedZ: 1.2
   horizontalInput: 0
   verticalInput: 0
-  smoothX: 0
+  smoothX: 0.05
   smoothY: 0
+  smoothRotateDelayZ: 1
   rotateDelay: 0.5
   rotateXSmoothing: 5
-  rotateYSmoothing: 0
+  rotateYSmoothing: 5
+  maxRotateX: -85
+  minRotateX: 85
+  rotateSpeedDelayX: 0
+  rotateSpeedDelayY: 0
+  rotateDelayZ: 0
+  minRotateDelayZ: 0
+  MaxRotateDelayZ: 30
+  maxDelayTimeX: 30
 --- !u!1 &1855695974
 GameObject:
   m_ObjectHideFlags: 0
@@ -7854,8 +7866,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1855695974}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.925}
-  m_LocalScale: {x: 2.2131, y: 0.20441, z: 2.0977883}
+  m_LocalPosition: {x: -0.0114, y: 0.0004, z: -0.4707}
+  m_LocalScale: {x: 0.96410435, y: 0.2036128, z: 0.9843294}
   m_Children: []
   m_Father: {fileID: 1807529153}
   m_RootOrder: 2
