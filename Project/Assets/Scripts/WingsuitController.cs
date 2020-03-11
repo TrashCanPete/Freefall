@@ -183,7 +183,7 @@ public class WingsuitController : MonoBehaviour
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(transform.position);
     }
-    private void OnTriggerStay(Collider other)
+   /* private void OnTriggerStay(Collider other)
     {
         if (other.tag == "UpDraft")
         {
@@ -192,6 +192,7 @@ public class WingsuitController : MonoBehaviour
             transform.position += Vector3.up * 2;
         }
     }
+    */
     public void OldCode()
     {
         displayVelocity = rb.velocity.magnitude;

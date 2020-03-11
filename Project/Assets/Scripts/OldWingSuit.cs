@@ -143,27 +143,22 @@ public class OldWingSuit : MonoBehaviour
             {
                 if (percentage >= 0.75f && percentage <= 1)
                 {
-                    Debug.Log("Freefalling");
                     decreaseNumber = 0;
                 }
                 else if (percentage >= 0.1f && percentage <= 0.90f)
                 {
-                    Debug.Log("Diving");
                     decreaseNumber = -5f;
                 }
                 else if (percentage <= 0.1 && percentage >= -0.1)
                 {
-                    Debug.Log("Mid");
                     decreaseNumber = -1;
                 }
                 else if (percentage <= -0.1 && percentage >= -0.5f)
                 {
-                    Debug.Log("Climbing");
                     decreaseNumber = Mathf.Lerp(rot.x, -1, -10f);
                 }
                 else if (percentage <= -0.5f && percentage >= -1)
                 {
-                    Debug.Log("Stalling");
                     decreaseNumber = Mathf.Lerp(rot.x, -1, -10f);
                 }
             }
@@ -172,13 +167,13 @@ public class OldWingSuit : MonoBehaviour
 
         //mod_force = (percentage * (highSpeed - lowSpeed)) + lowSpeed;
     }
-    private void OnTriggerStay(Collider other)
+   
+    /*private void OnTriggerStay(Collider other)
     {
         if (other.tag == "UpDraft")
         {
-
-            Debug.Log("In the updraft");
             transform.position += Vector3.up *100;
         }
     }
+    */
 }
