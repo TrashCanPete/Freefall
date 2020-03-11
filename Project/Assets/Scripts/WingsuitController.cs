@@ -41,10 +41,35 @@ public class WingsuitController : MonoBehaviour
 
     public Transform playerPosition;
 
+
+
+    //New Code Varibles
+
+    public Transform rotator;
+
+    public Vector3 inputValues;
+    public float rotationSpeedX;
+    public float rotationSpeedY;
+
+
+
+    public float horizontalInput;
+    public float verticalInput;
+
+    public float smoothX;
+    public float smoothY;
+
+    public float rotateDelay;
+
+    public float rotateXSmoothing;
+    public float rotateYSmoothing;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rot = transform.eulerAngles;
+        rb.useGravity = false;
+        rb.isKinematic = true;
 
     }
 
@@ -54,6 +79,65 @@ public class WingsuitController : MonoBehaviour
         CamFollow();
     }
     private void FixedUpdate()
+    {
+        horizontalInput = Input.GetAxis("Horizontal") * rotateYSmoothing;
+        verticalInput = Input.GetAxis("Vertical") * rotateXSmoothing ;
+
+        if (verticalInput >= 1 || verticalInput <= -1)
+        {
+            
+            inputValues.x += rotationSpeedX * verticalInput * Time.deltaTime;
+        }
+
+        if (horizontalInput >= 1 || horizontalInput <= -1)
+        {
+            inputValues.y += rotationSpeedY * horizontalInput * Time.deltaTime;
+        }
+
+
+
+
+        //OldCode();
+        //inputValues.x += rotationSpeedX * Input.GetAxis("Vertical") * Time.deltaTime;
+
+        inputValues.y += rotationSpeedY * Input.GetAxis("Horizontal") * Time.deltaTime;
+
+        transform.rotation = Quaternion.Euler(inputValues);
+
+
+
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + rb.velocity, Color.cyan);
+
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + transform.forward * 10, Color.blue);
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + transform.up * 5, Color.green);
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + transform.right * 5, Color.red);
+
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + Vector3.up * 15, Color.green);
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + Vector3.forward * 15, Color.blue);
+        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + Vector3.right * 15, Color.red);
+
+        //transform.up is the direction the force is being added
+        //force is the amount of resistence added to the wingsuit
+        //horizontal = more resistence
+        //high angle, facing up or down = less resistence
+        //yVelocity is the amount of forcing being added
+    }
+    public void CamFollow()
+    {
+        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * 0.5f;
+        Camera.main.transform.position = moveCamTo;
+        Camera.main.transform.LookAt(transform.position);
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "UpDraft")
+        {
+
+            Debug.Log("In the updraft");
+            transform.position += Vector3.up * 2;
+        }
+    }
+    public void OldCode()
     {
         displayVelocity = rb.velocity.magnitude;
         displayAngle = angle;
@@ -96,37 +180,9 @@ public class WingsuitController : MonoBehaviour
 
 
 
-        rb.AddForce(transform.up * force*-yVelocity);
-        
+        rb.AddForce(transform.up * force * -yVelocity);
+
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-
-
-
-
-        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + rb.velocity, Color.blue);
-        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + transform.forward * 10, Color.red);
-        Debug.DrawLine(playerPosition.transform.position, playerPosition.transform.position + transform.up * 5, Color.green);
-        //transform.up is the direction the force is being added
-        //force is the amount of resistence added to the wingsuit
-        //horizontal = more resistence
-        //high angle, facing up or down = less resistence
-        //yVelocity is the amount of forcing being added
     }
-    public void CamFollow()
-    {
-        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * 2.0f;
-        Camera.main.transform.position = moveCamTo;
-        Camera.main.transform.LookAt(transform.position);
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "UpDraft")
-        {
-
-            Debug.Log("In the updraft");
-            transform.position += Vector3.up * 2;
-        }
-    }
-
 }
