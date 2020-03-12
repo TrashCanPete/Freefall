@@ -6341,7 +6341,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 99999
   field of view: 60
   orthographic: 0
@@ -7706,7 +7706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807529152}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.369, z: -1.2}
+  m_LocalPosition: {x: 0, y: 484, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 45235398}
@@ -7799,47 +7799,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1807529152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffb206699844a0944854443d8feccda1, type: 3}
+  m_Script: {fileID: 11500000, guid: 136fa4ccd2ccb2842af5c1147e3f8fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1807529154}
-  rot: {x: 0, y: 0, z: 0}
-  minAngle: -85
-  maxAngle: 85
-  angle: 0
-  xRotation: 80
-  yRotation: 20
-  zRotation: 45
-  camFollowDist: 6
-  am: {fileID: 24100000, guid: 38a90ec56100aa6458a53a7165eed0b6, type: 2}
-  displayVelocity: 0
-  displayAngle: 0
-  yVelocity: 0
-  force: 0
-  playerPosition: {fileID: 1807529153}
-  rotator: {fileID: 0}
-  inputValues: {x: 0, y: 0, z: 0}
-  rotationSpeedXMin: 10
-  rotationSpeedXMax: 20
-  rotationSpeedX: 10
-  rotationSpeedY: 10
-  rotationSpeedZ: 1.2
-  horizontalInput: 0
-  verticalInput: 0
-  smoothX: 0.05
-  smoothY: 0
-  smoothRotateDelayZ: 1
-  rotateDelay: 0.5
-  rotateXSmoothing: 5
-  rotateYSmoothing: 5
-  maxRotateX: -85
-  minRotateX: 85
-  rotateSpeedDelayX: 0
-  rotateSpeedDelayY: 0
-  rotateDelayZ: 0
-  minRotateDelayZ: 0
-  MaxRotateDelayZ: 30
-  maxDelayTimeX: 30
 --- !u!1 &1855695974
 GameObject:
   m_ObjectHideFlags: 0

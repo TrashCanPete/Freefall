@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class OldWingSuit : MonoBehaviour
+public class GliderController : MonoBehaviour
 {
     // Get the player Rigidbody component
-    public Rigidbody rb;
+    private Rigidbody rb;
     // Rotation
     private Vector3 rot;
 
@@ -79,8 +79,12 @@ public class OldWingSuit : MonoBehaviour
 
         //Gradual decreasing in angle on the X axis
         rot.x -= +decreaseNumber * Time.deltaTime;
+
+
         //Y axis
         rot.y += yRotation * Input.GetAxis("Horizontal") * Time.deltaTime;
+
+
         //Clamped Z Axis rotation
         rot.z = -zRotation * Input.GetAxis("Horizontal");
         rot.z = Mathf.Clamp(rot.z, -zRotation, zRotation);
@@ -90,19 +94,11 @@ public class OldWingSuit : MonoBehaviour
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(transform.position);
 
-        // Speed and drag based on angle
-        // Get the percentage (minAngle = 0, maxAngle = 1)
+
         percentage = rot.x / maxAngle;
         // Update parameters
-        // If 0, we'll have maxDrag and lowSpeed
-        // If 1, we'll get minDrag and highSpeed
-        mod_drag = (percentage * (minDrag - maxDrag)) + maxDrag;
+        
 
-        mod_force = (percentage * (highSpeed - lowSpeed)) + lowSpeed;
-
-
-
-        SpeedChanges();
         // Getting the local space of the velocity
         Vector3 localV = transform.InverseTransformDirection(rb.velocity);
 
@@ -121,55 +117,12 @@ public class OldWingSuit : MonoBehaviour
 
 
     }
-    public void SpeedChanges()
-    {
-
-        //Percentage Values
-        //-0.99 = straight up
-        //-0.5  = 45 degrees up
-        //0.0 = straight ahead
-        //0.5 = 45 degrees down
-        //0.9 = straight down
-
-        if (!decreaseToggle)
-        {
-            return;
-        }
-        else 
-        {
-            if (Input.GetButton("Vertical"))
-            {
-                decreaseNumber = 0;
-            }
-            else
-            {
-                if (percentage >= 0.75f && percentage <= 1)
-                {
-                    decreaseNumber = 0;
-                }
-                else if (percentage >= 0.1f && percentage <= 0.90f)
-                {
-                    decreaseNumber = -5f;
-                }
-                else if (percentage <= 0.1 && percentage >= -0.1)
-                {
-                    decreaseNumber = -1;
-                }
-                else if (percentage <= -0.1 && percentage >= -0.5f)
-                {
-                    decreaseNumber = Mathf.Lerp(rot.x, -1, -10f);
-                }
-                else if (percentage <= -0.5f && percentage >= -1)
-                {
-                    decreaseNumber = Mathf.Lerp(rot.x, -1, -10f);
-                }
-            }
-        }
+ 
 
 
         //mod_force = (percentage * (highSpeed - lowSpeed)) + lowSpeed;
     }
-   
+
     /*private void OnTriggerStay(Collider other)
     {
         if (other.tag == "UpDraft")
