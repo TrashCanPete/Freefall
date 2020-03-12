@@ -45,14 +45,15 @@ public class WingsuitController : MonoBehaviour
 
     //New Code Varibles
 
-    public Transform rotator;
-
     public Vector3 inputValues;
 
 
     public float rotationSpeedXMin;
     public float rotationSpeedXMax;
     public float rotationSpeedX;
+
+    public float rotationSpeedYMin;
+    public float rotationSpeedYMax;
     public float rotationSpeedY;
 
     public float rotationSpeedZ;
@@ -80,15 +81,21 @@ public class WingsuitController : MonoBehaviour
     public float minRotateDelayZ;
     public float MaxRotateDelayZ;
 
+    public float angleGliderFacing;
 
     public float maxDelayTimeX;
+    public float maxDelayTimeY;
+
+    public float clampingForce;
+
+    public Vector3 localVelocity;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rot = transform.eulerAngles;
-        rb.useGravity = false;
-        rb.isKinematic = true;
+        //rb.useGravity = false;
+        //rb.isKinematic = true;
 
     }
 
@@ -99,6 +106,9 @@ public class WingsuitController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        angleGliderFacing = inputValues.x;
+        angleGliderFacing = Mathf.Abs(angleGliderFacing);
+
 
         //Inputs
         horizontalInput = Input.GetAxis("Horizontal") * rotateYSmoothing;
@@ -138,6 +148,27 @@ public class WingsuitController : MonoBehaviour
             rotateSpeedDelayX = 0; 
         }
 
+        if (horizontalInput >= 1 || horizontalInput <= -1)
+        {
+            inputValues.y += rotationSpeedY * horizontalInput * Time.deltaTime;
+
+            rotateSpeedDelayY += 1;
+            rotateSpeedDelayY = Mathf.Clamp(rotateSpeedDelayY, 0, maxDelayTimeY);
+            if (rotateSpeedDelayY == maxDelayTimeY)
+            {
+                rotationSpeedY = Mathf.Lerp(rotationSpeedY, rotationSpeedYMax, smoothY);
+            }
+            else
+            {
+                rotationSpeedY = rotationSpeedYMin;
+            }
+        }
+        else 
+        {
+            rotateSpeedDelayY = 0;
+        }
+
+        /*
         // after the horizontal input has reached 1 or above
         if (horizontalInput >= 1 || horizontalInput <= -1)
         {
@@ -152,14 +183,29 @@ public class WingsuitController : MonoBehaviour
         {
             inputValues.z = Mathf.Clamp(inputValues.z, 0, rotationSpeedZ );
         }
+        */
+
 
         //Rotating LEFT and RIGHT Data
         //glider rotating on the y Axis
+
         inputValues.y += rotationSpeedY * Input.GetAxis("Horizontal") * Time.deltaTime;
 
 
         //function that actually performs the rotating
         transform.rotation = Quaternion.Euler(inputValues);
+
+
+
+        localVelocity.x = transform.InverseTransformDirection(rb.velocity).y;
+        localVelocity.z = transform.InverseTransformDirection(rb.velocity).y;
+        localVelocity.y = -transform.InverseTransformDirection(rb.velocity).y;
+
+
+
+        rb.AddForce(transform.up * angleGliderFacing * (localVelocity.x * localVelocity.z * localVelocity.y));
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 50);
+
 
 
 
