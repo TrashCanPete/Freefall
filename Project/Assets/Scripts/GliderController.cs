@@ -12,23 +12,24 @@ public class GliderController : MonoBehaviour
     private Vector3 rot;
 
     //Camera follow distance
-    public float camFollowDist;
+    [Space(10)]
+    [SerializeField]
+    private float camFollowDist;
 
-
-
-
+    //basic variable trackers
+    [Header("Basic Variables")]
     [SerializeField]
     private float yAngle;
+    public float Velocity;
+    [SerializeField]
+    private float currentTargetVelocity;
+    [SerializeField]
+    public float currentTargetForce;
 
     //gliders velocity variables
-    public float Velocity;
-    public float Force;
+    [Header("Velocity Variables")]
 
-    [SerializeField]
-    private float currentMaxVelocity;
 
-    [SerializeField]
-    private float minVelocity;
     [SerializeField]
     private float standardMaxVelocity;
     [SerializeField]
@@ -36,17 +37,23 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     private float risingMaxVelocity;
 
+    //glider force variables
+    [Header("Force Variables")]
+
+
     [SerializeField]
-    private float velocityBlendSpeed;
+    private float standardForce;
+    [SerializeField]
+    private float divingForce;
+    [SerializeField]
+    private float risingForce;  
 
     //input variables
-    public float pitch;
-    public float yaw;
-
-    [SerializeField]
-    private Vector3 addVelocity;
+    private float pitch;
+    private float yaw;
 
     //rotation variables
+    [Header("Rotation Variables")]
     [SerializeField]
     private float xRotationSpeed;
     [SerializeField]
@@ -55,6 +62,12 @@ public class GliderController : MonoBehaviour
     private float minXAngle;
     [SerializeField]
     private float maxXAngle;
+
+    [Header("Angle Variables")]
+    [SerializeField]
+    private float diveThreshold;
+    [SerializeField]
+    private float riseThreshold;
 
     private void Start()
     {
@@ -72,45 +85,36 @@ public class GliderController : MonoBehaviour
         yaw = yRotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
         pitch = xRotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
 
-
-
         PlayerRotation();
-
-
-
 
     }
 
     private void FixedUpdate()
     {
+        if (yAngle <= diveThreshold && yAngle >= riseThreshold)
+        {
+            Debug.Log("Standard");
+            currentTargetVelocity = standardMaxVelocity;
+            currentTargetForce = standardForce;
+        }
+        //Diving
+        else if (yAngle >= diveThreshold)
+        {
+            Debug.Log("Diving");
+            currentTargetVelocity = divingMaxVelocity;
+            currentTargetForce = divingForce;
+
+        }
+        //Risinig
+        else if (yAngle <= riseThreshold)
+        {
+            Debug.Log("Rising");
+            currentTargetVelocity = risingMaxVelocity;
+            currentTargetForce = risingForce;
+        }
+
         Velocity = rb.velocity.magnitude;
-        Velocity = Mathf.Clamp(Velocity, minVelocity, currentMaxVelocity);
-        if (yAngle <= 30 && yAngle >= -10)
-        {
-            currentMaxVelocity = Mathf.Lerp(currentMaxVelocity, standardMaxVelocity, velocityBlendSpeed);
-            if (Velocity >= standardMaxVelocity)
-            {
-                //Velocity -= Force * Time.deltaTime;
-            }
-            else if (Velocity < standardMaxVelocity)
-            {
-                //Velocity += Force * Time.deltaTime;
-            }
-        }
-        else if (yAngle >= 30)
-        {
-            currentMaxVelocity = Mathf.Lerp(currentMaxVelocity, divingMaxVelocity, velocityBlendSpeed);
-
-            //Velocity += Force * Time.deltaTime;
-        }
-        else if (yAngle <= -10)
-        {
-            currentMaxVelocity = Mathf.Lerp(currentMaxVelocity, risingMaxVelocity, velocityBlendSpeed);
-
-            //Velocity -= Force * Time.deltaTime;
-        }
-
-        Velocity += Force * Time.deltaTime;
+        Velocity = Mathf.Lerp(Velocity, currentTargetVelocity, currentTargetForce * Time.deltaTime);
         rb.velocity = (transform.forward * Velocity);
     }
 
