@@ -8,56 +8,53 @@ public class GliderController : MonoBehaviour
     // Get the player Rigidbody component
     private Rigidbody rb;
     // Rotation
+    [SerializeField]
     private Vector3 rot;
-
-    public float MaxLowSpeed = 12.5f;
-
-    public float lowSpeed;
-
-    public float midSpeed;
-
-    public float highSpeed;
-
-    public float maxHighSpeed = 13.8f;
-
-    // Max drag, if the player is on 0 deg or minAngle
-    public float maxDrag = 6;
-    // Min drag
-    public float minDrag = 2;
-
-    // Here we will store the modified force and drag
-    private float mod_force;
-    private float mod_drag;
-
-    // Min angle for the player to rotate on the x-axis
-    public float minAngle = 0;
-    // Max angle
-    public float maxAngle = 45;
-
-    // Converting the x rotation from min angle to max, into a 0-1 format.
-    // 0 means minAngle
-    // 1 means maxAngle
-    public float percentage;
-
-    //Rotation Speeds
-    public float xRotation;
-    public float yRotation;
-    public float zRotation;
 
     //Camera follow distance
     public float camFollowDist;
 
-    // Audio mixer, to control the sound FX pitch
-    public AudioMixer am;
 
-    //Decrease Valuse
-    public float decreaseNumber;
 
-    //gliders velocity value
+
+    [SerializeField]
+    private float yAngle;
+
+    //gliders velocity variables
     public float Velocity;
     public float Force;
 
-    public bool decreaseToggle = true;
+    [SerializeField]
+    private float currentMaxVelocity;
+
+    [SerializeField]
+    private float minVelocity;
+    [SerializeField]
+    private float standardMaxVelocity;
+    [SerializeField]
+    private float divingMaxVelocity;
+    [SerializeField]
+    private float risingMaxVelocity;
+
+    [SerializeField]
+    private float velocityBlendSpeed;
+
+    //input variables
+    public float pitch;
+    public float yaw;
+
+    [SerializeField]
+    private Vector3 addVelocity;
+
+    //rotation variables
+    [SerializeField]
+    private float xRotationSpeed;
+    [SerializeField]
+    private float yRotationSpeed;
+    [SerializeField]
+    private float minXAngle;
+    [SerializeField]
+    private float maxXAngle;
 
     private void Start()
     {
@@ -68,60 +65,79 @@ public class GliderController : MonoBehaviour
 
     private void Update()
     {
+        DebugLines();
+        CamFollow();
 
+        //Getting the input data for rotatiing
+        yaw = yRotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
+        pitch = xRotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
+
+
+
+        PlayerRotation();
+
+
+
+
+    }
+
+    private void FixedUpdate()
+    {
         Velocity = rb.velocity.magnitude;
-        Force = mod_force;
+        Velocity = Mathf.Clamp(Velocity, minVelocity, currentMaxVelocity);
+        if (yAngle <= 30 && yAngle >= -10)
+        {
+            currentMaxVelocity = Mathf.Lerp(currentMaxVelocity, standardMaxVelocity, velocityBlendSpeed);
+            if (Velocity >= standardMaxVelocity)
+            {
+                //Velocity -= Force * Time.deltaTime;
+            }
+            else if (Velocity < standardMaxVelocity)
+            {
+                //Velocity += Force * Time.deltaTime;
+            }
+        }
+        else if (yAngle >= 30)
+        {
+            currentMaxVelocity = Mathf.Lerp(currentMaxVelocity, divingMaxVelocity, velocityBlendSpeed);
 
-        //rotate the player
-        //X axis
-        rot.x += xRotation * Input.GetAxis("Vertical") * Time.deltaTime;
-        rot.x = Mathf.Clamp(rot.x, minAngle, maxAngle);
+            //Velocity += Force * Time.deltaTime;
+        }
+        else if (yAngle <= -10)
+        {
+            currentMaxVelocity = Mathf.Lerp(currentMaxVelocity, risingMaxVelocity, velocityBlendSpeed);
 
-        //Gradual decreasing in angle on the X axis
-        rot.x -= +decreaseNumber * Time.deltaTime;
+            //Velocity -= Force * Time.deltaTime;
+        }
 
+        Velocity += Force * Time.deltaTime;
+        rb.velocity = (transform.forward * Velocity);
+    }
 
-        //Y axis
-        rot.y += yRotation * Input.GetAxis("Horizontal") * Time.deltaTime;
-
-
-        //Clamped Z Axis rotation
-        rot.z = -zRotation * Input.GetAxis("Horizontal");
-        rot.z = Mathf.Clamp(rot.z, -zRotation, zRotation);
-        transform.rotation = Quaternion.Euler(rot);
-
+    public void CamFollow()
+    {
         Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * 0.50f;
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(transform.position);
-
-
-        percentage = rot.x / maxAngle;
-        // Update parameters
-        
-
-        // Getting the local space of the velocity
-        Vector3 localV = transform.InverseTransformDirection(rb.velocity);
-
-        // Change z velocity to mod_force
-        localV.z = mod_force;
-
-        // Convert the local velocity back to world space and set it to the Rigidbody's velocity
-        rb.velocity = transform.TransformDirection(localV);
-
-        // Update drag to the modified one
-        rb.drag = mod_drag;
-
-        // Change pitch value based on the player's angle and percentage
-        am.SetFloat("Pitch", 1 + percentage);
-
-
-
     }
- 
+
+    public void PlayerRotation()
+    {
+        //Getting the angle that the glider is facing
+        yAngle = rot.x;
+
+        //adding the pitch inputs/data into the rot.x plus clamping the values
+        rot.x += pitch;
+        //max being the being first as when looking up the rotation is at its lowest, vise versa
+        rot.x = Mathf.Clamp(rot.x, maxXAngle, minXAngle);
 
 
-        //mod_force = (percentage * (highSpeed - lowSpeed)) + lowSpeed;
+        rot.y += yaw;
+
+        //rotating the glider by the rigidbody via the rot values
+        rb.transform.rotation = Quaternion.Euler(rot);
     }
+
 
     /*private void OnTriggerStay(Collider other)
     {
@@ -131,4 +147,16 @@ public class GliderController : MonoBehaviour
         }
     }
     */
+    private void DebugLines()
+    {
+        Debug.DrawLine(transform.position, transform.position + rb.velocity, Color.cyan);
+
+        Debug.DrawLine(transform.position, transform.position + transform.forward * 10, Color.blue);
+        Debug.DrawLine(transform.position, transform.position + transform.up * 5, Color.green);
+        Debug.DrawLine(transform.position, transform.position + transform.right * 5, Color.red);
+
+        Debug.DrawLine(transform.position, transform.position + Vector3.up * 15, Color.green);
+        Debug.DrawLine(transform.position, transform.position + Vector3.forward * 15, Color.blue);
+        Debug.DrawLine(transform.position, transform.position + Vector3.right * 15, Color.red);
+    }
 }
