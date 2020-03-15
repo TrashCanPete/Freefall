@@ -73,7 +73,6 @@ public class GliderController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rot = transform.eulerAngles;
-
     }
 
     private void Update()
