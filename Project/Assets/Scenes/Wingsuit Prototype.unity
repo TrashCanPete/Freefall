@@ -7807,6 +7807,12 @@ MonoBehaviour:
   yAngle: 0
   Velocity: 0
   Force: 25
+  currentMaxVelocity: 0
+  minVelocity: 0
+  standardMaxVelocity: 100
+  divingMaxVelocity: 200
+  risingMaxVelocity: 50
+  velocityBlendSpeed: 5
   pitch: 0
   yaw: 0
   addVelocity: {x: 0, y: 0, z: 0}
