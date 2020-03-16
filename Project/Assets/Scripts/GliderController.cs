@@ -6,10 +6,12 @@ using UnityEngine.Audio;
 public class GliderController : MonoBehaviour
 {
     // Get the player Rigidbody component
-    private Rigidbody rb;
+    public Rigidbody rb;
     // Rotation
     [SerializeField]
     private Vector3 rot;
+    public bool enteredUpDraft;
+    public GliderController _gliderController;
 
     //Camera follow distance
     [Space(10)]
@@ -20,15 +22,16 @@ public class GliderController : MonoBehaviour
     [Header("Basic Variables")]
     [SerializeField]
     private float yAngle;
-    public float Velocity;
+    public float Speed;
     [SerializeField]
-    private float currentTargetVelocity;
+    private float currentTargetSpeed;
     [SerializeField]
     public float currentTargetForce;
 
     //gliders velocity variables
     [Header("Velocity Variables")]
-
+    private Vector3 baseVelocity;
+    private Vector3 addedVelocity;
 
     [SerializeField]
     private float standardMaxVelocity;
@@ -36,6 +39,9 @@ public class GliderController : MonoBehaviour
     private float divingMaxVelocity;
     [SerializeField]
     private float risingMaxVelocity;
+
+
+
 
     //glider force variables
     [Header("Force Variables")]
@@ -46,7 +52,9 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     private float divingForce;
     [SerializeField]
-    private float risingForce;  
+    private float risingForce;
+    [SerializeField]
+    private float addedForceReduction;
 
     //input variables
     private float pitch;
@@ -69,8 +77,16 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     private float riseThreshold;
 
+    [Header("Up Draft Variables")]
+
+    [SerializeField]
+    private float upDraftForwardVelocity;
+    [SerializeField]
+    private float maxCurrentSpeedInUpDraft;
+
     private void Start()
     {
+        _gliderController = this;
         rb = GetComponent<Rigidbody>();
         rot = transform.eulerAngles;
     }
@@ -85,7 +101,6 @@ public class GliderController : MonoBehaviour
         pitch = xRotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
 
         PlayerRotation();
-
     }
 
     private void FixedUpdate()
@@ -93,14 +108,14 @@ public class GliderController : MonoBehaviour
         if (yAngle <= diveThreshold && yAngle >= riseThreshold)
         {
             Debug.Log("Standard");
-            currentTargetVelocity = standardMaxVelocity;
+            currentTargetSpeed = standardMaxVelocity;
             currentTargetForce = standardForce;
         }
         //Diving
         else if (yAngle >= diveThreshold)
         {
             Debug.Log("Diving");
-            currentTargetVelocity = divingMaxVelocity;
+            currentTargetSpeed = divingMaxVelocity;
             currentTargetForce = divingForce;
 
         }
@@ -108,13 +123,30 @@ public class GliderController : MonoBehaviour
         else if (yAngle <= riseThreshold)
         {
             Debug.Log("Rising");
-            currentTargetVelocity = risingMaxVelocity;
+            currentTargetSpeed = risingMaxVelocity;
             currentTargetForce = risingForce;
         }
 
-        Velocity = rb.velocity.magnitude;
-        Velocity = Mathf.Lerp(Velocity, currentTargetVelocity, currentTargetForce * Time.deltaTime);
-        rb.velocity = (transform.forward * Velocity);
+
+        Speed = baseVelocity.magnitude;
+        Speed = Mathf.Lerp(Speed, currentTargetSpeed, currentTargetForce * Time.deltaTime);
+        baseVelocity = (rb.transform.forward * Speed);
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            WindMovePlayer(100);
+        }
+        
+        //Reduce the added velocity to 0 over time
+        addedVelocity = Vector3.Lerp(addedVelocity, Vector3.zero, addedForceReduction * Time.deltaTime);
+        var addedSpeed = addedVelocity.magnitude;
+
+        if (addedSpeed > maxCurrentSpeedInUpDraft)
+        {
+            baseVelocity *= upDraftForwardVelocity;
+        }
+
+        rb.velocity = baseVelocity + addedVelocity;
     }
 
     public void CamFollow()
@@ -142,14 +174,11 @@ public class GliderController : MonoBehaviour
     }
 
 
-    /*private void OnTriggerStay(Collider other)
+    public void WindMovePlayer(float _windStrength)
     {
-        if (other.tag == "UpDraft")
-        {
-            transform.position += Vector3.up *100;
-        }
+        Debug.Log("Pushed by wind");
+        addedVelocity = Vector3.up * _windStrength;
     }
-    */
     private void DebugLines()
     {
         Debug.DrawLine(transform.position, transform.position + rb.velocity, Color.cyan);
