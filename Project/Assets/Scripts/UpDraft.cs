@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class UpDraft : MonoBehaviour
 {
-    public float WindStrength;
     public GliderController _gliderController;
+
+    public Vector3 facingDirection;
+
+    private void Start()
+    {
+        facingDirection = transform.up;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == ("Player"))
         {
-            _gliderController.WindMovePlayer(100);
+            other.GetComponent<GliderController>().WindMovePlayer(facingDirection * 100);
+            Debug.Log("Wind Pushing");
         }
     }
 
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == ("Player"))
-        {
-            
-        }
-    }
 }
 
