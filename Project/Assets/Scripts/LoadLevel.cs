@@ -7,6 +7,6 @@ public class LoadLevel : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("PrototypeWingSuit");
+        SceneManager.LoadScene("LevelBlockout");
     }
 }
