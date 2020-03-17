@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class GliderController : MonoBehaviour
 {
+    public GameObject gliderIn;
+    public GameObject gliderOut;
     // Get the player Rigidbody component
     public Rigidbody rb;
     // Rotation
@@ -15,8 +17,13 @@ public class GliderController : MonoBehaviour
     [Space(10)]
     [SerializeField]
     private float camFollowDist;
+    [SerializeField]
+    private float CamHeightDist;
 
-    //basic variable trackers
+    [SerializeField]
+    private bool isInTerminalVelocity;
+
+    //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
     [Header("Basic Variables")]
     [SerializeField]
     private float yAngle;
@@ -26,7 +33,8 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     public float currentTargetForce;
 
-    //gliders velocity variables
+
+    //gliders velocity variables----------------------------gliders velocity variables----------------------------gliders velocity variables----------------------------
     [Header("Velocity Variables")]
     private Vector3 baseVelocity;
     private Vector3 addedVelocity;
@@ -43,10 +51,7 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     private float maxRisingVelocity;
 
-
-
-
-    //glider force variables
+    //glider force variables---------------------------------glider force variables---------------------------------glider force variables---------------------------------
     [Header("Force Variables")]
 
 
@@ -68,7 +73,7 @@ public class GliderController : MonoBehaviour
     private float pitch;
     private float yaw;
 
-    //rotation variables
+    //rotation variables--------------------------------------rotation variables--------------------------------------rotation variables--------------------------------------
     [Header("Rotation Variables")]
     [SerializeField]
     private float xRotationSpeed;
@@ -95,22 +100,35 @@ public class GliderController : MonoBehaviour
     private float diveThreshold;
     [SerializeField]
     private float riseThreshold;
-
+    //Counters----------------------------------------------//Counters----------------------------------------------//Counters----------------------------------------------
     [Header("Counters")]
     [SerializeField]
     private float maxDivingCounter;
     [SerializeField]
-    private float divingCounter;
+    private float divingCounterRate;
     [SerializeField]
     private float divingCounterStep;
 
     [SerializeField]
     private float maxRisingCounter;
     [SerializeField]
-    private float risingCounter;
+    private float risingCounterRate;
     [SerializeField]
     private float risingCounterStep;
 
+
+    [SerializeField]
+    private float currentBoostCounter;
+    [SerializeField]
+    private float maxBoostCounter;
+    [SerializeField]
+    private float boostCounterRate;
+    [SerializeField]
+    private float boostForce;
+    [SerializeField]
+    private float boostSpeed;
+
+    //UpDraft Variables------------------------------------UpDraft Variables------------------------------------UpDraft Variables------------------------------------
     [Header("Up Draft Variables")]
 
     [SerializeField]
@@ -143,9 +161,25 @@ public class GliderController : MonoBehaviour
         {
             Debug.Log("Standard");
             ResetSpeedAndForceValues();
-            divingCounter = 0;
-            risingCounter = 0;
-            if (divingCounter == 0)
+
+            risingCounterRate = 0;
+            if (!isInTerminalVelocity)
+            {
+                return;
+            }
+            else if(isInTerminalVelocity == true)
+            {
+                currentTargetForce = boostForce;
+                currentTargetSpeed = boostSpeed;
+                currentBoostCounter += boostCounterRate;
+                if (currentBoostCounter >= maxBoostCounter)
+                {
+                    currentBoostCounter = 0;
+                    divingCounterRate = 0;
+                    isInTerminalVelocity = false;
+                }
+            }
+            if (divingCounterRate == 0)
             {
                 ResetSpeedAndForceValues();
             }
@@ -156,12 +190,13 @@ public class GliderController : MonoBehaviour
             Debug.Log("Diving");
             currentTargetSpeed = divingMaxVelocity;
             currentTargetForce = divingForce;
-            divingCounter += divingCounterStep;
-            if (divingCounter >= maxDivingCounter)
+            divingCounterRate += divingCounterStep;
+            if (divingCounterRate >= maxDivingCounter)
             {
                 Debug.Log("Terminal Velocity!!!!!!");
                 currentTargetSpeed = terminalVelocity;
                 currentTargetForce = terminalForce;
+                isInTerminalVelocity = true;
             }
         }
         //Risinig
@@ -170,13 +205,14 @@ public class GliderController : MonoBehaviour
             Debug.Log("Rising");
             currentTargetSpeed = risingMaxVelocity;
             currentTargetForce = risingForce;
-            risingCounter += risingCounterStep;
-            if (risingCounter >= maxRisingCounter)
+            risingCounterRate += risingCounterStep;
+            if (risingCounterRate >= maxRisingCounter)
             {
                 Debug.Log("Max Climb");
                 currentTargetSpeed = maxRisingVelocity;
                 currentTargetForce = maxRisingForce;
             }
+
         }
 
 
@@ -227,7 +263,7 @@ public class GliderController : MonoBehaviour
     //Camera Functions-------------------------------------Camera Functions-------------------------------------Camera Functions-------------------------------------
     public void CamFollow()
     {
-        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * 0.50f;
+        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * CamHeightDist;
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(transform.position);
     }
