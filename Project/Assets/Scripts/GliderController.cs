@@ -21,7 +21,15 @@ public class GliderController : MonoBehaviour
     private float CamHeightDist;
 
     [SerializeField]
+    private bool High;
+    [SerializeField]
+    private bool Mid;
+    [SerializeField]
+    private bool Low;
+    [SerializeField]
     private bool isInTerminalVelocity;
+    [SerializeField]
+    private bool canBoost;
 
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
     [Header("Basic Variables")]
@@ -84,15 +92,27 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     private float maxXAngle;
 
+    [Header("Yaw Speeds")]
+    //Yaw-------------------------
     [SerializeField]
-    private float maxSpeedRotation;
+    private float currentYawRotationSpeed;
     [SerializeField]
-    private float minSpeedRotation;
+    private float maxYawSpeedRotation;
+    [SerializeField]
+    private float minYawSpeedRotation;
+    [SerializeField]
+    private float YawrotationChangeRate;
 
+    [Header("Pitch Speeds")]
+    //Pitch--------------------
     [SerializeField]
-    private float terminalRotation;
+    private float currentPitchRotationSpeed;
     [SerializeField]
-    private float maxRisingRotation;
+    private float maxPitchSpeedRotation;
+    [SerializeField]
+    private float minPitchSpeedRotation;
+    [SerializeField]
+    private float PitchrotationChangeRate;
 
 
     [Header("Angle Variables")]
@@ -116,7 +136,7 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     private float risingCounterStep;
 
-
+    //Boost-------------------------------------------------//Boost-------------------------------------------------//Boost-------------------------------------------------
     [SerializeField]
     private float currentBoostCounter;
     [SerializeField]
@@ -127,6 +147,10 @@ public class GliderController : MonoBehaviour
     private float boostForce;
     [SerializeField]
     private float boostSpeed;
+
+
+
+
 
     //UpDraft Variables------------------------------------UpDraft Variables------------------------------------UpDraft Variables------------------------------------
     [Header("Up Draft Variables")]
@@ -148,45 +172,57 @@ public class GliderController : MonoBehaviour
         CamFollow();
 
         //Getting the input data for rotatiing
-        yaw = yRotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
-        pitch = xRotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
-
+        yaw = yRotationSpeed * Input.GetAxis("Horizontal") * currentYawRotationSpeed * Time.deltaTime;
+        pitch = xRotationSpeed * Input.GetAxis("Vertical") * currentPitchRotationSpeed * Time.deltaTime;
+        
+        PlayerRotationSpeeds();
         PlayerRotation();
     }
 
     private void FixedUpdate()
     {
+        Speed = baseVelocity.magnitude + addedVelocity.magnitude;
+        Speed = Mathf.Lerp(Speed, currentTargetSpeed, currentTargetForce * Time.deltaTime);
+        baseVelocity = (rb.transform.forward * Speed);
 
+        FlyingStates();
+        //TerminalBoost();
+        ReduceAddSpeed();
+        UpDraftEvent();
+
+
+        rb.velocity = baseVelocity + addedVelocity;
+    }
+
+
+    public void FlyingStates()
+    {
+        //Standard------------------------
         if (yAngle <= diveThreshold && yAngle >= riseThreshold)
         {
+            High = false;
+            Mid = true;
+            Low = false;
+
             Debug.Log("Standard");
             ResetSpeedAndForceValues();
 
             risingCounterRate = 0;
-            if (!isInTerminalVelocity)
-            {
-                return;
-            }
-            else if(isInTerminalVelocity == true)
-            {
-                currentTargetForce = boostForce;
-                currentTargetSpeed = boostSpeed;
-                currentBoostCounter += boostCounterRate;
-                if (currentBoostCounter >= maxBoostCounter)
-                {
-                    currentBoostCounter = 0;
-                    divingCounterRate = 0;
-                    isInTerminalVelocity = false;
-                }
-            }
+            divingCounterRate = 0;
+
+
             if (divingCounterRate == 0)
             {
                 ResetSpeedAndForceValues();
             }
         }
-        //Diving
+        //Diving------------------------------------------
         else if (yAngle >= diveThreshold)
         {
+            High = false;
+            Mid = false;
+            Low = true;
+
             Debug.Log("Diving");
             currentTargetSpeed = divingMaxVelocity;
             currentTargetForce = divingForce;
@@ -197,40 +233,50 @@ public class GliderController : MonoBehaviour
                 currentTargetSpeed = terminalVelocity;
                 currentTargetForce = terminalForce;
                 isInTerminalVelocity = true;
+                canBoost = true;
             }
         }
-        //Risinig
+        //Risinig-----------------------------------
         else if (yAngle <= riseThreshold)
         {
+            High = true;
+            Mid = false;
+            Low = false;
+
             Debug.Log("Rising");
             currentTargetSpeed = risingMaxVelocity;
             currentTargetForce = risingForce;
             risingCounterRate += risingCounterStep;
+
             if (risingCounterRate >= maxRisingCounter)
             {
                 Debug.Log("Max Climb");
                 currentTargetSpeed = maxRisingVelocity;
                 currentTargetForce = maxRisingForce;
             }
+        }
+    }
+    public void TerminalBoost()
+    {
+
+        if (!canBoost)
+        {
+            Debug.Log("canBoost is false");
+        }
+        else if (canBoost == true)
+        {
+            if (yAngle <= riseThreshold || yAngle <= diveThreshold && yAngle >= riseThreshold)
+            {
+                addedVelocity += transform.forward * boostSpeed;
+                Debug.Log("Boost!");
+                //addedVelocity = Vector3.Lerp(addedVelocity, (transform.forward * boostSpeed), boostForce);
+                isInTerminalVelocity = false;
+                canBoost = false;
+                ReduceAddSpeed();
+            }
 
         }
-
-
-        Speed = baseVelocity.magnitude;
-        Speed = Mathf.Lerp(Speed, currentTargetSpeed, currentTargetForce * Time.deltaTime);
-        baseVelocity = (rb.transform.forward * Speed);
-
-
-
-
-
-        ReduceAddSpeed();
-        UpDraftEvent();
-
-
-        rb.velocity = baseVelocity + addedVelocity;
     }
-
     public void ResetSpeedAndForceValues()
     {
         currentTargetSpeed = standardMaxVelocity;
@@ -242,7 +288,20 @@ public class GliderController : MonoBehaviour
         addedVelocity = Vector3.Lerp(addedVelocity, Vector3.zero, addedForceReduction * Time.deltaTime);
     }
 
-
+    //Player Rotation------------------------------------Player Rotation------------------------------------Player Rotation------------------------------------
+    public void PlayerRotationSpeeds()
+    {
+        if (Speed <= 100)
+        {
+            currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, maxPitchSpeedRotation, PitchrotationChangeRate);
+            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, maxYawSpeedRotation, YawrotationChangeRate);
+        }
+        else if (Speed >= 100)
+        {
+            currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, minPitchSpeedRotation, PitchrotationChangeRate);
+            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, minYawSpeedRotation, YawrotationChangeRate);
+        }
+    }
     public void PlayerRotation()
     {
         //Getting the angle that the glider is facing
@@ -250,13 +309,15 @@ public class GliderController : MonoBehaviour
 
         //adding the pitch inputs/data into the rot.x plus clamping the values
         rot.x += pitch;
+
         //max being the being first as when looking up the rotation is at its lowest, vise versa
         rot.x = Mathf.Clamp(rot.x, maxXAngle, minXAngle);
 
 
         rot.y += yaw;
-
         //rotating the glider by the rigidbody via the rot values
+
+
         rb.transform.rotation = Quaternion.Euler(rot);
     }
 
@@ -281,7 +342,6 @@ public class GliderController : MonoBehaviour
     {
         Debug.Log("Pushed by wind");
         addedVelocity += _windStrength;
-        Debug.Log(addedVelocity);
     }
 
 

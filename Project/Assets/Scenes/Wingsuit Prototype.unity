@@ -3726,6 +3726,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2102254509313447435, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: maxDivingCounter
@@ -3779,12 +3784,12 @@ PrefabInstance:
     - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: boostSpeed
-      value: 450
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: boostForce
-      value: 1.8
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
@@ -3795,11 +3800,6 @@ PrefabInstance:
         type: 3}
       propertyPath: boostCounterRate
       value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447435, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
