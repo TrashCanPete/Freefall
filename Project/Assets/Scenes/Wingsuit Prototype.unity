@@ -3509,7 +3509,7 @@ PrefabInstance:
     - target: {fileID: 4461581030133692259, guid: 2ce852a0d6182314d90c90a0db90353c,
         type: 3}
       propertyPath: WindStrength
-      value: 1.5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ce852a0d6182314d90c90a0db90353c, type: 3}
@@ -6831,7 +6831,7 @@ PrefabInstance:
     - target: {fileID: 4461581030133692259, guid: 2ce852a0d6182314d90c90a0db90353c,
         type: 3}
       propertyPath: WindStrength
-      value: 1.5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ce852a0d6182314d90c90a0db90353c, type: 3}
@@ -6943,7 +6943,7 @@ PrefabInstance:
     - target: {fileID: 4461581030133692259, guid: 2ce852a0d6182314d90c90a0db90353c,
         type: 3}
       propertyPath: WindStrength
-      value: 1.5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ce852a0d6182314d90c90a0db90353c, type: 3}
@@ -15832,7 +15832,7 @@ PrefabInstance:
     - target: {fileID: 4461581030133692259, guid: 2ce852a0d6182314d90c90a0db90353c,
         type: 3}
       propertyPath: WindStrength
-      value: 1.5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ce852a0d6182314d90c90a0db90353c, type: 3}
@@ -28453,108 +28453,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: maxDivingCounter
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: divingCounterStep
-      value: 0.0175
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: terminalVelocity
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: terminalForce
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxRisingForce
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxRisingCounter
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: risingCounterStep
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxRisingVelocity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: risingForce
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: CamHeightDist
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: boostSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: boostForce
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxBoostCounter
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: boostCounterRate
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: boostPower
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxPitchSpeedRotation
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: minPitchSpeedRotation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: PitchrotationChangeRate
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxYawSpeedRotation
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: minYawSpeedRotation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: YawrotationChangeRate
-      value: 0.25
+      propertyPath: diveThreshold
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
@@ -28610,51 +28510,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447432, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172611044174442992, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172611044174442992, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172611044174442992, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5130070194246730723, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_TagString
-      value: UpDraft
-      objectReference: {fileID: 0}
-    - target: {fileID: 5130070194246730723, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_Name
-      value: Player Flying
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}

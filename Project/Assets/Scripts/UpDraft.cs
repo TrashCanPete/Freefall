@@ -14,6 +14,10 @@ public class UpDraft : MonoBehaviour
         facingDirection = transform.up;
     }
 
+    private void Update()
+    {
+        DebugLinesUpDraft();
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -24,6 +28,12 @@ public class UpDraft : MonoBehaviour
         }
     }
 
+    public void DebugLinesUpDraft()
+    {
+        Debug.DrawLine(transform.position, transform.position + transform.forward * 30, Color.blue);
+        Debug.DrawLine(transform.position, transform.position + transform.up * 30, Color.green);
+        Debug.DrawLine(transform.position, transform.position + transform.right * 30, Color.red);
+    }
 
 }
 

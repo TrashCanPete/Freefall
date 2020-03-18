@@ -45,6 +45,7 @@ public class GliderController : MonoBehaviour
     //gliders velocity variables----------------------------gliders velocity variables----------------------------gliders velocity variables----------------------------
     [Header("Velocity Variables")]
     private Vector3 baseVelocity;
+    [SerializeField]
     private Vector3 addedVelocity;
 
     [SerializeField]
@@ -181,14 +182,22 @@ public class GliderController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Speed = baseVelocity.magnitude + addedVelocity.magnitude;
+
+        FlyingStates();
+        ReduceAddVelocity();
+        UpDraftEvent();
+
+        Speed = baseVelocity.magnitude;
         Speed = Mathf.Lerp(Speed, currentTargetSpeed, currentTargetForce * Time.deltaTime);
         baseVelocity = (rb.transform.forward * Speed);
 
-        FlyingStates();
+        //Currently Broken
         //TerminalBoost();
-        ReduceAddSpeed();
-        UpDraftEvent();
+
+        if (yAngle <= diveThreshold)
+        {
+            
+        }
 
 
         rb.velocity = baseVelocity + addedVelocity;
@@ -236,7 +245,7 @@ public class GliderController : MonoBehaviour
                 canBoost = true;
             }
         }
-        //Risinig-----------------------------------
+        //Rising-----------------------------------
         else if (yAngle <= riseThreshold)
         {
             High = true;
@@ -269,10 +278,8 @@ public class GliderController : MonoBehaviour
             {
                 addedVelocity += transform.forward * boostSpeed;
                 Debug.Log("Boost!");
-                //addedVelocity = Vector3.Lerp(addedVelocity, (transform.forward * boostSpeed), boostForce);
                 isInTerminalVelocity = false;
                 canBoost = false;
-                ReduceAddSpeed();
             }
 
         }
@@ -282,7 +289,7 @@ public class GliderController : MonoBehaviour
         currentTargetSpeed = standardMaxVelocity;
         currentTargetForce = standardForce;
     }
-    public void ReduceAddSpeed()
+    public void ReduceAddVelocity()
     {
         //Reduce the added velocity to 0 over time
         addedVelocity = Vector3.Lerp(addedVelocity, Vector3.zero, addedForceReduction * Time.deltaTime);
@@ -321,13 +328,7 @@ public class GliderController : MonoBehaviour
         rb.transform.rotation = Quaternion.Euler(rot);
     }
 
-    //Camera Functions-------------------------------------Camera Functions-------------------------------------Camera Functions-------------------------------------
-    public void CamFollow()
-    {
-        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * CamHeightDist;
-        Camera.main.transform.position = moveCamTo;
-        Camera.main.transform.LookAt(transform.position);
-    }
+
 
     //Interaction-------------------------------------------Interaction-------------------------------------------Interaction-------------------------------------------
     public void UpDraftEvent()
@@ -338,12 +339,21 @@ public class GliderController : MonoBehaviour
             baseVelocity *= upDraftForwardVelocity;
         }
     }
+
     public void WindMovePlayer(Vector3 _windStrength)
     {
         Debug.Log("Pushed by wind");
         addedVelocity += _windStrength;
     }
 
+
+    //Camera Functions-------------------------------------Camera Functions-------------------------------------Camera Functions-------------------------------------
+    public void CamFollow()
+    {
+        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * CamHeightDist;
+        Camera.main.transform.position = moveCamTo;
+        Camera.main.transform.LookAt(transform.position);
+    }
 
     //Debugging----------------------------------------------Debugging----------------------------------------------Debugging----------------------------------------------
     private void DebugLines()
