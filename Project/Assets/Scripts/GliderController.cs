@@ -20,18 +20,19 @@ public class GliderController : MonoBehaviour
     private float camFollowDist;
     [SerializeField]
     private float camHeightDist;
-    [SerializeField]
-    private float CamBlendTime;
+
 
     [SerializeField]
-    private float camCloseFollow;
-    [SerializeField]
-    private float camFarFollow;
-    [SerializeField]
-    private float camCloseHeight;
-    [SerializeField]
-    private float camFarHeight;
+    private float offSet;
 
+    [SerializeField]
+    public float maxFOV;
+    [SerializeField]
+    public float minFOV;
+    [SerializeField]
+    private float boostFOV;
+    [SerializeField]
+    private float standardMaxFOV;
 
     [SerializeField]
     private bool High;
@@ -225,11 +226,16 @@ public class GliderController : MonoBehaviour
         
         PlayerRotationSpeeds();
         PlayerRotation();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void FixedUpdate()
     {
-
+        rot.x += 0.05f;
         FlyingStates();
         ReduceAddVelocity();
         UpDraftCounter();
@@ -391,27 +397,16 @@ public class GliderController : MonoBehaviour
         Debug.Log("Pushed by wind");
         addedVelocity += _windStrength;
     }
-    //3.5 0.75 close 7 2 far
+
 
     //Camera Functions-------------------------------------Camera Functions-------------------------------------Camera Functions-------------------------------------
     public void CamFollow()
     {
-        CamBlendTime = 5 ;
+        //3.5 0.75 close 7 2 far
 
-        if (Speed <= 100)
-        {
-            camHeightDist = Mathf.Lerp(camHeightDist, camCloseHeight, CamBlendTime * Time.deltaTime);
-            camFollowDist = Mathf.Lerp(camFollowDist, camCloseFollow, CamBlendTime * Time.deltaTime);
-
-        }
-        else if (Speed >= 100)
-        {
-            camHeightDist = Mathf.Lerp(camHeightDist, camFarHeight, CamBlendTime * Time.deltaTime);
-            camFollowDist = Mathf.Lerp(camFollowDist, camFarFollow, CamBlendTime * Time.deltaTime);
-        }
-
-
-        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * camHeightDist;
+        Camera.main.fieldOfView = Mathf.Abs(Speed / offSet);
+        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFOV, maxFOV);
+        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * (camHeightDist);
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(transform.position);
     }
