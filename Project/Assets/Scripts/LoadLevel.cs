@@ -4,9 +4,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadLevel : MonoBehaviour
+   
 {
+    public GameObject endScreenUI;
+
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("LevelBlockout");
+        if (other.tag == ("Player"))
+        {
+            Invoke("LoadScene", 2);
+            endScreenUI.SetActive(true);
+        }
+    }  
+
+    void LoadScene()
+    {
+        SceneManager.LoadScene("LevelBlockout_2");
+        endScreenUI.SetActive(false);
     }
 }
+
