@@ -25,7 +25,6 @@ public class UpDraft : MonoBehaviour
         {
             other.GetComponent<GliderController>().WindMovePlayer(facingDirection * WindStrength);
             Debug.Log("Wind Pushing");
-            //other.GetComponent<GliderController>().minFOV = 70;
         }
     }
 
@@ -33,7 +32,6 @@ public class UpDraft : MonoBehaviour
     {
         if (other.tag == ("Player"))
         {
-            //other.GetComponent<GliderController>().minFOV = 50;
         }
     }
 

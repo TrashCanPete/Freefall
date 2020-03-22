@@ -613,12 +613,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136fa4ccd2ccb2842af5c1147e3f8fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gliderIn: {fileID: 0}
-  gliderOut: {fileID: 0}
+  gliderIn: {fileID: 1177322254779947122}
+  gliderOut: {fileID: 5130070194246730723}
   rb: {fileID: 0}
   rot: {x: 0, y: 0, z: 0}
   camFollowDist: 6
-  CamHeightDist: 1.5
+  camHeightDist: 0
+  offSet: 1
+  maxFOV: 70
+  minFOV: 50
+  boostFOV: 0
+  standardMaxFOV: 0
   High: 0
   Mid: 0
   Low: 0
@@ -650,10 +655,10 @@ MonoBehaviour:
   minYawSpeedRotation: 1
   YawrotationChangeRate: 0.25
   currentPitchRotationSpeed: 0
-  maxPitchSpeedRotation: 1.5
-  minPitchSpeedRotation: 1
+  maxPitchSpeedRotation: 1.85
+  minPitchSpeedRotation: 1.35
   PitchrotationChangeRate: 0.25
-  diveThreshold: 30
+  diveThreshold: 45
   riseThreshold: -10
   maxDivingCounter: 1
   divingCounterRate: 0
@@ -661,11 +666,13 @@ MonoBehaviour:
   maxRisingCounter: 2
   risingCounterRate: 0
   risingCounterStep: 0.01
+  cameraSpeed: 0
+  cameraSpeedOffset: 10
   currentBoostCounter: 0
   maxBoostCounter: 1
   boostCounterRate: 0.005
   boostForce: 0.8
-  boostSpeed: 1
+  boostSpeed: 40
   upDraftForwardVelocity: 0.5
   maxCurrentSpeedInUpDraft: 50
 --- !u!1 &2102254510633308090
@@ -6629,11 +6636,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: UpDraft
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 87e601ab8d88393418d0543cd9ac6d38,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 87e601ab8d88393418d0543cd9ac6d38,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6739,6 +6741,12 @@ PrefabInstance:
 --- !u!4 &8172611044174442992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 87e601ab8d88393418d0543cd9ac6d38,
+    type: 3}
+  m_PrefabInstance: {fileID: 3751576276807850730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5130070194246730723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 87e601ab8d88393418d0543cd9ac6d38,
     type: 3}
   m_PrefabInstance: {fileID: 3751576276807850730}
   m_PrefabAsset: {fileID: 0}
