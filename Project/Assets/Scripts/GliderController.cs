@@ -10,8 +10,34 @@ public class GliderController : MonoBehaviour
     // Get the player Rigidbody component
     public Rigidbody rb;
     // Rotation
-    [SerializeField]
     private Vector3 rot;
+
+
+
+    //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
+    [Header("Basic Variables")]
+    [SerializeField]
+    private float yAngle;
+    public float Speed;
+    [SerializeField]
+    private float currentTargetSpeed;
+    [SerializeField]
+    public float currentTargetForce;
+
+    private bool High;
+    private bool Mid;
+    private bool Low;
+    [SerializeField]
+    private bool isInTerminalVelocity;
+    [SerializeField]
+    private bool canTerminalBoost;
+
+    [SerializeField]
+    private bool Wingsin;
+
+
+    [SerializeField]
+    private float drop;
 
     //Camera follow distance
     [Header("Cam Variables")]
@@ -29,40 +55,10 @@ public class GliderController : MonoBehaviour
     public float maxFOV;
     [SerializeField]
     public float minFOV;
-    [SerializeField]
-    private float boostFOV;
-    [SerializeField]
-    private float standardMaxFOV;
-
-    [SerializeField]
-    private bool High;
-    [SerializeField]
-    private bool Mid;
-    [SerializeField]
-    private bool Low;
-    [SerializeField]
-    private bool isInTerminalVelocity;
-    [SerializeField]
-    private bool canBoost;
-
-    [SerializeField]
-    private bool Wingsin;
-
-    //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
-    [Header("Basic Variables")]
-    [SerializeField]
-    private float yAngle;
-    public float Speed;
-    [SerializeField]
-    private float currentTargetSpeed;
-    [SerializeField]
-    public float currentTargetForce;
-
 
     //gliders velocity variables----------------------------gliders velocity variables----------------------------gliders velocity variables----------------------------
-    [Header("Velocity Variables")]
+    [Header("Velocity")]
     private Vector3 baseVelocity;
-    [SerializeField]
     private Vector3 addedVelocity;
 
     [SerializeField]
@@ -112,7 +108,6 @@ public class GliderController : MonoBehaviour
 
     [Header("Yaw Speeds - Up and Down")]
     //Yaw-------------------------
-    [SerializeField]
     private float currentYawRotationSpeed;
     [SerializeField]
     private float maxYawSpeedRotation;
@@ -123,7 +118,6 @@ public class GliderController : MonoBehaviour
 
     [Header("Pitch Speeds - Left and Right")]
     //Pitch--------------------
-    [SerializeField]
     private float currentPitchRotationSpeed;
     [SerializeField]
     private float maxPitchSpeedRotation;
@@ -208,7 +202,7 @@ public class GliderController : MonoBehaviour
         yaw = yRotationSpeed * Input.GetAxis("Horizontal") * currentYawRotationSpeed * Time.deltaTime;
         pitch = xRotationSpeed * Input.GetAxis("Vertical") * currentPitchRotationSpeed * Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        /*if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Wingsin = true;
             gliderIn.SetActive(true);
@@ -220,7 +214,7 @@ public class GliderController : MonoBehaviour
             gliderIn.SetActive(false);
             gliderOut.SetActive(true);
 
-        }
+        }*/
         
         PlayerRotationSpeeds();
         PlayerRotation();
@@ -234,7 +228,7 @@ public class GliderController : MonoBehaviour
     private void FixedUpdate()
     {
         cameraSpeed = Speed + cameraSpeedOffset;
-        rot.x += 0.05f;
+        rot.x += drop;
         FlyingStates();
         ReduceAddVelocity();
         UpDraftCounter();
@@ -291,10 +285,15 @@ public class GliderController : MonoBehaviour
                 currentTargetSpeed = terminalVelocity;
                 currentTargetForce = terminalForce;
                 isInTerminalVelocity = true;
-                if (Wingsin == true)
+                /*if (Wingsin == true)
                 {
-                    canBoost = true;
+                    canTerminalBoost = true;
+                }*/
+                if (isInTerminalVelocity == true)
+                {
+                    canTerminalBoost = true;
                 }
+
             }
         }
         //Rising-----------------------------------
@@ -323,13 +322,14 @@ public class GliderController : MonoBehaviour
         {
             isInTerminalVelocity = false;
 
-            if (!canBoost)
+            if (!canTerminalBoost)
             {
                 Debug.Log("canBoost is false");
             }
-            else if (canBoost == true && Wingsin == false)
+            else if (canTerminalBoost == true/* && Wingsin == false*/)
             {
-                canBoost = false;      
+                baseVelocity += transform.forward * boostSpeed;
+                canTerminalBoost = false;      
             }
         }
 

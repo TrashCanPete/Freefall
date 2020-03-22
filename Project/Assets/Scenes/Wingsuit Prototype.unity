@@ -23384,12 +23384,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775443588}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1775588060 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5130070194246730723, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-    type: 3}
-  m_PrefabInstance: {fileID: 2102254511017681611}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776486676
 GameObject:
   m_ObjectHideFlags: 0
@@ -25730,12 +25724,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938722305}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1953014704 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1177322254779947122, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-    type: 3}
-  m_PrefabInstance: {fileID: 2102254511017681611}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1957932034
 GameObject:
   m_ObjectHideFlags: 0
@@ -28465,92 +28453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: diveThreshold
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: minYawSpeedRotation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxYawSpeedRotation
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxPitchSpeedRotation
-      value: 1.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: minPitchSpeedRotation
-      value: 1.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: boostSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: gliderOut
-      value: 
-      objectReference: {fileID: 1775588060}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: gliderIn
-      value: 
-      objectReference: {fileID: 1953014704}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: camCloseFollow
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: camFarFollow
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: camCloseHeight
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: camFarHeight
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: CamBlendTime
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: camCounterGoal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: camCounterRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: offSet
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxFOV
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: minFOV
+      propertyPath: maxCurrentSpeedInUpDraft
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
@@ -28607,11 +28510,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254510633308088, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: field of view
-      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}

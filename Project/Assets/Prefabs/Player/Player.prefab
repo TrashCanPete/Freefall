@@ -621,7 +621,7 @@ MonoBehaviour:
   camHeightDist: 0
   offSet: 1
   maxFOV: 70
-  minFOV: 50
+  minFOV: 60
   boostFOV: 0
   standardMaxFOV: 0
   High: 0
@@ -634,9 +634,10 @@ MonoBehaviour:
   Speed: 0
   currentTargetSpeed: 0
   currentTargetForce: 0
+  drop: 0.01
   addedVelocity: {x: 0, y: 0, z: 0}
-  standardMaxVelocity: 100
-  divingMaxVelocity: 150
+  standardMaxVelocity: 50
+  divingMaxVelocity: 100
   risingMaxVelocity: 10
   terminalVelocity: 200
   maxRisingVelocity: 5
@@ -672,9 +673,9 @@ MonoBehaviour:
   maxBoostCounter: 1
   boostCounterRate: 0.005
   boostForce: 0.8
-  boostSpeed: 40
+  boostSpeed: 80
   upDraftForwardVelocity: 0.5
-  maxCurrentSpeedInUpDraft: 50
+  maxCurrentSpeedInUpDraft: 80
 --- !u!1 &2102254510633308090
 GameObject:
   m_ObjectHideFlags: 0
