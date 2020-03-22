@@ -403,7 +403,7 @@ public class GliderController : MonoBehaviour
     {
         //3.5 0.75 close 7 2 far
 
-        Camera.main.fieldOfView = Mathf.Abs((Speed / cameraSpeedOffset) / offSet);
+        Camera.main.fieldOfView = Mathf.Abs(Speed / offSet + cameraSpeedOffset);
         Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFOV, maxFOV);
         Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * (camHeightDist);
         Camera.main.transform.position = moveCamTo;

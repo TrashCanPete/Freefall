@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f459885a20cb44abd146580c6bdf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WindStrength: 5
-  _gliderController: {fileID: 0}
+  facingDirection: {x: 0, y: 0, z: 0}
+  WindStrength: 0
 --- !u!1 &5984880583916549856
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,9 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f459885a20cb44abd146580c6bdf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WindStrength: 100
-  _gliderController: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-    type: 3}
+  facingDirection: {x: 0, y: 0, z: 0}
+  WindStrength: 10
 --- !u!1 &8174984469812590910
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,8 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f459885a20cb44abd146580c6bdf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WindStrength: 5
-  _gliderController: {fileID: 0}
+  facingDirection: {x: 0, y: 0, z: 0}
+  WindStrength: 0
 --- !u!1 &8971417206680377835
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,5 +464,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f459885a20cb44abd146580c6bdf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WindStrength: 5
-  _gliderController: {fileID: 0}
+  facingDirection: {x: 0, y: 0, z: 0}
+  WindStrength: 0
