@@ -164,7 +164,15 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     private float boostForce;
     [SerializeField]
+    private float terminalBoostSpeed;
+
+    [SerializeField]
+    private float maxBoostSpeed;
+    [SerializeField]
     private float boostSpeed;
+    [SerializeField]
+    private bool isBoosting = false;
+
 
 
 
@@ -183,8 +191,20 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     private float maxCurrentSpeedInUpDraft;
 
+    //public scripts
+    public DebugLines debugLines;
+
+
+
+
+    //Start
     private void Start()
     {
+        //Calling Scripts
+        debugLines.GetComponent<DebugLines>();
+
+
+
         playerCollider = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
         rot = transform.eulerAngles;
@@ -193,28 +213,28 @@ public class GliderController : MonoBehaviour
         gliderOut.SetActive(true);
     }
 
+
+
     private void Update()
     {
-        DebugLines();
+        //drawing lines
+        debugLines.DebugDrawLines();
+
         CamFollow();
 
         //Getting the input data for rotatiing
         yaw = yRotationSpeed * Input.GetAxis("Horizontal") * currentYawRotationSpeed * Time.deltaTime;
         pitch = xRotationSpeed * Input.GetAxis("Vertical") * currentPitchRotationSpeed * Time.deltaTime;
 
-        /*if (Input.GetKeyDown(KeyCode.LeftShift))
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Wingsin = true;
-            gliderIn.SetActive(true);
-            gliderOut.SetActive(false);
+            isBoosting = true;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            Wingsin = false;
-            gliderIn.SetActive(false);
-            gliderOut.SetActive(true);
-
-        }*/
+            isBoosting = false;
+        }
         
         PlayerRotationSpeeds();
         PlayerRotation();
@@ -232,6 +252,16 @@ public class GliderController : MonoBehaviour
         FlyingStates();
         ReduceAddVelocity();
         UpDraftCounter();
+
+        if (isBoosting == false)
+        {
+            rb.velocity = baseVelocity + addedVelocity;
+        }
+        else if (isBoosting == true)
+        {
+            boostSpeed = Mathf.Lerp(0, boostSpeed, 1);
+            baseVelocity += transform.forward * boostSpeed;
+        }
 
         Speed = baseVelocity.magnitude;
         Speed = Mathf.Lerp(Speed, currentTargetSpeed, currentTargetForce * Time.deltaTime);
@@ -328,7 +358,7 @@ public class GliderController : MonoBehaviour
             }
             else if (canTerminalBoost == true/* && Wingsin == false*/)
             {
-                baseVelocity += transform.forward * boostSpeed;
+                baseVelocity += transform.forward * terminalBoostSpeed;
                 canTerminalBoost = false;      
             }
         }
@@ -411,18 +441,7 @@ public class GliderController : MonoBehaviour
     }
 
     //Debugging----------------------------------------------Debugging----------------------------------------------Debugging----------------------------------------------
-    private void DebugLines()
-    {
-        Debug.DrawLine(transform.position, transform.position + rb.velocity, Color.cyan);
 
-        Debug.DrawLine(transform.position, transform.position + transform.forward * 10, Color.blue);
-        Debug.DrawLine(transform.position, transform.position + transform.up * 5, Color.green);
-        Debug.DrawLine(transform.position, transform.position + transform.right * 5, Color.red);
-
-        Debug.DrawLine(transform.position, transform.position + Vector3.up * 15, Color.green);
-        Debug.DrawLine(transform.position, transform.position + Vector3.forward * 15, Color.blue);
-        Debug.DrawLine(transform.position, transform.position + Vector3.right * 15, Color.red);
-    }
     public void TestingKeys()
     {
         //Test the vertical Up Draft
