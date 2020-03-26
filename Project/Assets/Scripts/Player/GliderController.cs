@@ -85,10 +85,13 @@ public class GliderController : MonoBehaviour
     public DebugLines debugLines;
     public FlyingStates flyingStates;
 
+    Quaternion originalRotation;
+
 
     //Start
     private void Start()
     {
+        originalRotation = meshGrp.transform.rotation;
         //Calling Scripts
         debugLines = GetComponent<DebugLines>();
         flyingStates = GetComponent<FlyingStates>();
@@ -127,6 +130,7 @@ public class GliderController : MonoBehaviour
         {
             Application.Quit();
         }
+        RotatingMesh();
     }
 
     private void FixedUpdate()
@@ -162,7 +166,7 @@ public class GliderController : MonoBehaviour
 
     public void RotatingMesh()
     {
-        meshGrp.transform.rotation = new Quaternion();
+
     }
     public void ReduceAddVelocity()
     {
