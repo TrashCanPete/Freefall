@@ -5,9 +5,11 @@ using UnityEngine;
 public class DebugLines : MonoBehaviour
 {
     public GliderController gliderController;
+    private FlyingStates flyingStates;
     // Start is called before the first frame update
     void Start()
     {
+        flyingStates = GetComponent<FlyingStates>();
         gliderController.GetComponent<GliderController>();
     }
 
@@ -19,7 +21,7 @@ public class DebugLines : MonoBehaviour
 
     public void DebugDrawLines()
     {
-        Debug.DrawLine(transform.position, transform.position + gliderController.rb.velocity, Color.cyan);
+        Debug.DrawLine(transform.position, transform.position + flyingStates.rb.velocity, Color.cyan);
 
         Debug.DrawLine(transform.position, transform.position + transform.forward * 10, Color.blue);
         Debug.DrawLine(transform.position, transform.position + transform.up * 5, Color.green);

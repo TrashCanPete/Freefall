@@ -9242,7 +9242,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 1.4708e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -28451,21 +28451,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxCurrentSpeedInUpDraft
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: terminalBoostSpeed
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: boostSpeed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28521,20 +28506,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5960046888389464228, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    - target: {fileID: 6835164276093959617, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: backgroundColorHDR.r
-      value: 0.17292629
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5960046888389464228, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    - target: {fileID: 6835164276093959617, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: backgroundColorHDR.g
-      value: 0.27985314
+      propertyPath: m_LocalRotation.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5960046888389464228, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    - target: {fileID: 6835164276093959617, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: backgroundColorHDR.b
-      value: 0.5471698
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835164276093959617, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
