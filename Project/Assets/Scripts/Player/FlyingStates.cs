@@ -13,6 +13,7 @@ public class FlyingStates : MonoBehaviour
 
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
     [Header("Basic Variables")]
+    public float boostFuel;
 
     public float yAngle;
     public float Speed;
@@ -98,17 +99,29 @@ public class FlyingStates : MonoBehaviour
     [SerializeField]
     private float terminalBoostSpeed;
 
-
     public float boostSpeed;
     
     public bool isBoosting = false;
 
+    [SerializeField]
+    private float maxBoostFuel;
+    [SerializeField]
+    private float fuelConsumption;
+
+
+
+
     //Start
     private void Start()
     {
-
+        boostFuel = maxBoostFuel;
         rb = GetComponent<Rigidbody>();
         rot = transform.eulerAngles;
+    }
+
+    private void Update()
+    {
+        boostFuel = Mathf.Clamp(boostFuel, 0, maxBoostFuel);
     }
 
     //Start of Method
@@ -204,5 +217,18 @@ public class FlyingStates : MonoBehaviour
     {
         currentTargetSpeed = standardMaxVelocity;
         currentTargetForce = standardForce;
+    }
+
+
+    public void UseBoosFuel()
+    {
+        if (isBoosting == false)
+        {
+            return;
+        }
+        else if (isBoosting == true)
+        {
+            boostFuel -= fuelConsumption;
+        }
     }
 }

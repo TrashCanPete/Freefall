@@ -87,6 +87,10 @@ public class GliderController : MonoBehaviour
 
     Quaternion originalRotation;
 
+    private float roll;
+    private float fRoll;
+    public Transform lookAtTransform;
+
 
     //Start
     private void Start()
@@ -112,17 +116,28 @@ public class GliderController : MonoBehaviour
         pitch = xRotationSpeed * Input.GetAxis("Vertical") * currentPitchRotationSpeed * Time.deltaTime;
 
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+
+        if (flyingStates.boostFuel == 0)
         {
-            flyingStates.isBoosting = true;
-            boostLight.SetActive(true);
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            flyingStates.isBoosting = false;
+            Debug.Log("Out of fuel");
             boostLight.SetActive(false);
+            flyingStates.isBoosting = false;
+
         }
-        
+        else if (flyingStates.boostFuel > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                flyingStates.isBoosting = true;
+                boostLight.SetActive(true);
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                flyingStates.isBoosting = false;
+                boostLight.SetActive(false);
+            }
+        }
+
         PlayerRotationSpeeds();
         PlayerRotation();
 
@@ -131,6 +146,11 @@ public class GliderController : MonoBehaviour
             Application.Quit();
         }
         RotatingMesh();
+
+
+        var verticalRoll = 10;
+        var horizontalRoll = 10;
+        meshGrp.transform.localRotation = Quaternion.RotateTowards(meshGrp.transform.localRotation, Quaternion.Euler(pitch * verticalRoll, 0, yaw * -horizontalRoll), 50.0f * Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -162,6 +182,7 @@ public class GliderController : MonoBehaviour
 
 
         flyingStates.TerminalBoost();
+        flyingStates.UseBoosFuel();
     }
 
     public void RotatingMesh()
@@ -234,9 +255,9 @@ public class GliderController : MonoBehaviour
 
         Camera.main.fieldOfView = Mathf.Abs(flyingStates.Speed / offSet + cameraSpeedOffset);
         Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFOV, maxFOV);
-        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + Vector3.up * (camHeightDist);
+        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + transform.up * (camHeightDist);
         Camera.main.transform.position = moveCamTo;
-        Camera.main.transform.LookAt(transform.position);
+        Camera.main.transform.LookAt(transform.position, Vector3.up);
     }
 
     //Debugging----------------------------------------------Debugging----------------------------------------------Debugging----------------------------------------------
@@ -247,6 +268,41 @@ public class GliderController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             WindMovePlayer(Vector3.up * 100);
+            WindMovePlayer(Vector3.up * 100);
         }
+    }
+
+    public void Storage()
+    {
+        /*
+        if (yaw == 0 && pitch == 0)
+        {
+            roll = 0;
+            fRoll = 0;
+        }
+
+        if (yaw > 0)
+        {
+            roll = 15;
+        }
+
+        else if (yaw < 0)
+        {
+            roll = -15;
+        }
+
+        if (pitch > 0)
+        {
+            fRoll = 15;
+        }
+
+        if (pitch < 0)
+        {
+            fRoll = -15;
+        }
+        */
+        var fRoll = 10;
+        var roll = 10;
+        meshGrp.transform.localRotation = Quaternion.RotateTowards(meshGrp.transform.localRotation, Quaternion.Euler(yaw * fRoll, 0,pitch * -roll), 100.0f * Time.deltaTime);
     }
 }
