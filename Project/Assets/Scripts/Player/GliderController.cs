@@ -85,17 +85,12 @@ public class GliderController : MonoBehaviour
     public DebugLines debugLines;
     public FlyingStates flyingStates;
 
-    Quaternion originalRotation;
-
-    private float roll;
-    private float fRoll;
     public Transform lookAtTransform;
 
 
     //Start
     private void Start()
     {
-        originalRotation = meshGrp.transform.rotation;
         //Calling Scripts
         debugLines = GetComponent<DebugLines>();
         flyingStates = GetComponent<FlyingStates>();
@@ -148,9 +143,6 @@ public class GliderController : MonoBehaviour
         RotatingMesh();
 
 
-        var verticalRoll = 10;
-        var horizontalRoll = 10;
-        meshGrp.transform.localRotation = Quaternion.RotateTowards(meshGrp.transform.localRotation, Quaternion.Euler(pitch * verticalRoll, 0, yaw * -horizontalRoll), 50.0f * Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -187,7 +179,16 @@ public class GliderController : MonoBehaviour
 
     public void RotatingMesh()
     {
+        var verticalRollValue = 10;
+        var horizontalRollValue = 10;
 
+        var verticalRoll = pitch * verticalRollValue;
+        var horizontalRoll = yaw * -horizontalRollValue;
+
+        verticalRoll = Mathf.Clamp(verticalRoll, -verticalRollValue, verticalRollValue);
+        horizontalRoll = Mathf.Clamp(horizontalRoll, -horizontalRollValue + 1, horizontalRollValue - 1);
+
+        meshGrp.transform.localRotation = Quaternion.RotateTowards(meshGrp.transform.localRotation, Quaternion.Euler(verticalRoll, 0, horizontalRoll), 50.0f * Time.deltaTime);
     }
     public void ReduceAddVelocity()
     {

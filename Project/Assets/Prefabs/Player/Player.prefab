@@ -584,15 +584,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostLight: {fileID: 1372639567725072007}
-  meshGrp: {fileID: 0}
+  meshGrp: {fileID: 6984909891423472651}
   camFollowDist: 6
-  camHeightDist: 0
+  camHeightDist: 1
   offSet: 1
   maxFOV: 70
   minFOV: 60
   xRotationSpeed: 50
   yRotationSpeed: 50
-  minXAngle: 85
+  minXAngle: 80
   maxXAngle: -85
   maxYawSpeedRotation: 1.5
   minYawSpeedRotation: 1
@@ -606,6 +606,7 @@ MonoBehaviour:
   maxCurrentSpeedInUpDraft: 50
   debugLines: {fileID: 7777988757450374396}
   flyingStates: {fileID: 0}
+  lookAtTransform: {fileID: 1698550693818839712}
 --- !u!114 &210694388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,6 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   rot: {x: 0, y: 0, z: 0}
+  boostFuel: 0
   yAngle: 0
   Speed: 0
   currentTargetSpeed: 0
@@ -651,6 +653,8 @@ MonoBehaviour:
   terminalBoostSpeed: 80
   boostSpeed: 2
   isBoosting: 0
+  maxBoostFuel: 10
+  fuelConsumption: 0.1
 --- !u!1 &2102254510633308090
 GameObject:
   m_ObjectHideFlags: 0
@@ -6701,7 +6705,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6984909891423472651}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
