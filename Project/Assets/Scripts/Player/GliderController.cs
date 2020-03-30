@@ -26,6 +26,7 @@ public class GliderController : MonoBehaviour
     public float minFOV;
 
     //input variables
+    [SerializeField]
     private float pitch;
     private float yaw;
 
@@ -108,7 +109,16 @@ public class GliderController : MonoBehaviour
 
         //Getting the input data for rotatiing
         yaw = yRotationSpeed * Input.GetAxis("Horizontal") * currentYawRotationSpeed * Time.deltaTime;
-        pitch = xRotationSpeed * Input.GetAxis("Vertical") * currentPitchRotationSpeed * Time.deltaTime;
+
+        if (flyingStates.canTurnUp == true)
+        {
+            pitch = xRotationSpeed * Input.GetAxis("Vertical") * currentPitchRotationSpeed * Time.deltaTime;
+        }
+        else if (flyingStates.canTurnUp == false)
+        {
+            pitch = Mathf.Clamp(pitch, 0, 1);
+            pitch = xRotationSpeed * Input.GetAxis("Vertical") * currentPitchRotationSpeed * Time.deltaTime;
+        }
 
 
 

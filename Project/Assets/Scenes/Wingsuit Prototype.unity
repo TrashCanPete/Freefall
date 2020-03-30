@@ -28507,12 +28507,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 210694388, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
-      propertyPath: maxDivingCounter
-      value: 10
+      propertyPath: minDrop
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 210694388, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
-      propertyPath: divingCounterStep
-      value: 0.15
+      propertyPath: maxDrop
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 210694388, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
+      propertyPath: maxRisingTwistCounter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 210694388, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
+      propertyPath: risingTwistStep
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 210694388, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
+      propertyPath: dropChange
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}

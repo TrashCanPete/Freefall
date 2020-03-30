@@ -12,6 +12,8 @@ public class FlyingStates : MonoBehaviour
     public GameObject wingsOut;
     public GameObject wingsIn;
 
+    public bool canTurnUp;
+
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
     [Header("Basic Variables")]
     public float boostFuel;
@@ -31,8 +33,13 @@ public class FlyingStates : MonoBehaviour
     [SerializeField]
     private bool canTerminalBoost;
 
-
+    [SerializeField]
+    private float minDrop;
+    [SerializeField]
+    private float maxDrop;
     public float drop;
+    [SerializeField]
+    private float dropChange;
 
 
     //gliders velocity variables----------------------------gliders velocity variables----------------------------gliders velocity variables----------------------------
@@ -95,6 +102,13 @@ public class FlyingStates : MonoBehaviour
     [SerializeField]
     private float risingCounterStep;
 
+    [SerializeField]
+    private float maxRisingTwistCounter;
+    [SerializeField]
+    private float risingTwistRate;
+    [SerializeField]
+    private float risingTwistStep;
+
     //Boost-------------------------------------------------//Boost-------------------------------------------------//Boost-------------------------------------------------
 
     [SerializeField]
@@ -115,6 +129,7 @@ public class FlyingStates : MonoBehaviour
     //Start
     private void Start()
     {
+        canTurnUp = true;
         //wings out
         wingsIn.SetActive(false);
         wingsOut.SetActive(true);
@@ -145,7 +160,8 @@ public class FlyingStates : MonoBehaviour
 
             risingCounterRate = 0;
             divingCounterRate = 0;
-
+            drop = Mathf.Lerp(drop, minDrop, 0.25f);
+            canTurnUp = true;
 
             if (divingCounterRate == 0)
             {
@@ -196,6 +212,25 @@ public class FlyingStates : MonoBehaviour
                 Debug.Log("Max Climb");
                 currentTargetSpeed = maxRisingVelocity;
                 currentTargetForce = maxRisingForce;
+
+                risingTwistRate += risingTwistStep;
+                if (risingTwistRate >= maxRisingTwistCounter)
+                {
+                    if (isBoosting == true)
+                    {
+                        Debug.Log("Let it Rise");
+                    }
+                    else if (isBoosting == false)
+                    {
+                        drop += dropChange;
+                        drop = Mathf.Clamp(drop, minDrop, maxDrop);
+                        if (drop >= 2)
+                        {
+                            canTurnUp = false;
+                        }
+                    }
+
+                }
             }
         }
     }

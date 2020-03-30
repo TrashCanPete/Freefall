@@ -623,6 +623,7 @@ MonoBehaviour:
   rot: {x: 0, y: 0, z: 0}
   wingsOut: {fileID: 5130070194246730723}
   wingsIn: {fileID: 1177322254779947122}
+  canTurnUp: 1
   boostFuel: 0
   yAngle: 0
   Speed: 0
@@ -630,7 +631,10 @@ MonoBehaviour:
   currentTargetForce: 0
   isInTerminalVelocity: 0
   canTerminalBoost: 0
+  minDrop: 0.01
+  maxDrop: 3
   drop: 0.01
+  dropChange: 0.05
   baseVelocity: {x: 0, y: 0, z: 0}
   addedVelocity: {x: 0, y: 0, z: 0}
   standardMaxVelocity: 50
@@ -652,6 +656,9 @@ MonoBehaviour:
   maxRisingCounter: 2
   risingCounterRate: 0
   risingCounterStep: 0.01
+  maxRisingTwistCounter: 1
+  risingTwistRate: 0
+  risingTwistStep: 0.25
   terminalBoostSpeed: 80
   boostSpeed: 2
   isBoosting: 0
