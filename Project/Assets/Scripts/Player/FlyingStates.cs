@@ -9,7 +9,8 @@ public class FlyingStates : MonoBehaviour
     // Rotation
     public Vector3 rot;
 
-
+    public GameObject wingsOut;
+    public GameObject wingsIn;
 
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
     [Header("Basic Variables")]
@@ -114,6 +115,11 @@ public class FlyingStates : MonoBehaviour
     //Start
     private void Start()
     {
+        //wings out
+        wingsIn.SetActive(false);
+        wingsOut.SetActive(true);
+
+
         boostFuel = maxBoostFuel;
         rb = GetComponent<Rigidbody>();
         rot = transform.eulerAngles;
@@ -163,7 +169,9 @@ public class FlyingStates : MonoBehaviour
                 currentTargetSpeed = terminalVelocity;
                 currentTargetForce = terminalForce;
                 isInTerminalVelocity = true;
-
+                //wings in
+                wingsIn.SetActive(true);
+                wingsOut.SetActive(false);
                 if (isInTerminalVelocity == true)
                 {
                     canTerminalBoost = true;
@@ -206,6 +214,9 @@ public class FlyingStates : MonoBehaviour
             }
             else if (canTerminalBoost == true)
             {
+                //wings out
+                wingsIn.SetActive(false);
+                wingsOut.SetActive(true);
                 baseVelocity += transform.forward * terminalBoostSpeed;
                 canTerminalBoost = false;
             }
