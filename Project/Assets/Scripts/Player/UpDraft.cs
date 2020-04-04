@@ -7,7 +7,7 @@ public class UpDraft : MonoBehaviour
     public Vector3 facingDirection;
 
     [SerializeField]
-    private float WindStrength;
+    private float windStrength;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class UpDraft : MonoBehaviour
     {
         if (other.tag == ("Player"))
         {
-            other.GetComponent<GliderController>().WindMovePlayer(facingDirection * WindStrength);
+            other.GetComponent<GliderController>().WindMovePlayer(facingDirection * windStrength);
             Debug.Log("Wind Pushing");
         }
     }

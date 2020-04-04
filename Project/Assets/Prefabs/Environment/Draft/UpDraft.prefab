@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingDirection: {x: 0, y: 0, z: 0}
-  WindStrength: 0
+  windStrength: 0
 --- !u!1 &5984880583916549856
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingDirection: {x: 0, y: 0, z: 0}
-  WindStrength: 10
+  windStrength: 10
 --- !u!1 &8174984469812590910
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingDirection: {x: 0, y: 0, z: 0}
-  WindStrength: 0
+  windStrength: 0
 --- !u!1 &8971417206680377835
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,4 +465,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingDirection: {x: 0, y: 0, z: 0}
-  WindStrength: 0
+  windStrength: 0

@@ -135,7 +135,7 @@ public class FlyingStates : MonoBehaviour
         wingsOut.SetActive(true);
 
 
-        boostFuel = maxBoostFuel;
+        boostFuel = maxBoostFuel / 2;
         rb = GetComponent<Rigidbody>();
         rot = transform.eulerAngles;
     }
@@ -144,7 +144,7 @@ public class FlyingStates : MonoBehaviour
     {
         boostFuel = Mathf.Clamp(boostFuel, 0, maxBoostFuel);
     }
-
+    
     //Start of Method
     public void CheckFlyingStates()
     {

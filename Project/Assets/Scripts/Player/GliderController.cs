@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class GliderController : MonoBehaviour
 {
+    [SerializeField]
+    public enum _collison {UpDraft, Oxygen }
     public GameObject boostLight;
     public GameObject meshGrp;
 
@@ -163,7 +165,6 @@ public class GliderController : MonoBehaviour
 
         flyingStates.CheckFlyingStates();
         ReduceAddVelocity();
-        UpDraftCounter();
 
         if (flyingStates.isBoosting == false)
         {
@@ -185,6 +186,19 @@ public class GliderController : MonoBehaviour
 
         flyingStates.TerminalBoost();
         flyingStates.UseBoosFuel();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == ("UpDraft"))
+        {
+            Debug.Log("Col Trigger UpDraft");
+            UpDraftCounter(_collison.UpDraft);
+        }
+        else if (other.tag == ("Oxygen"))
+        {
+            UpDraftCounter(_collison.Oxygen);
+        }
     }
 
     public void RotatingMesh()
@@ -243,19 +257,41 @@ public class GliderController : MonoBehaviour
 
 
     //Interaction-------------------------------------------Interaction-------------------------------------------Interaction-------------------------------------------
-    public void UpDraftCounter()
+    public void UpDraftCounter(_collison col)
     {
         var addedSpeed = flyingStates.addedVelocity.magnitude;
-        if (addedSpeed > maxCurrentSpeedInUpDraft)
+        /*if (addedSpeed > maxCurrentSpeedInUpDraft)
         {
+            Debug.Log("Col UpDraft Inside");
             flyingStates.baseVelocity *= upDraftForwardVelocity;
+        }*/
+
+       if (col == _collison.UpDraft)
+        {
+            Debug.Log("Col UpDraft");
+            if (addedSpeed > maxCurrentSpeedInUpDraft)
+            {
+                Debug.Log("Col UpDraft Inside");
+                flyingStates.baseVelocity *= upDraftForwardVelocity;
+            }
         }
+        else if (col == _collison.Oxygen)
+        {
+            Debug.Log("Col Oxygen");
+            flyingStates.baseVelocity *= upDraftForwardVelocity * 0.5f;
+        }
+        
     }
 
     public void WindMovePlayer(Vector3 _windStrength)
     {
         Debug.Log("Pushed by wind");
         flyingStates.addedVelocity += _windStrength;
+    }
+    public void OxygenPlantPush( Vector3 _OxygenBoostStrength, int _AddOxygen)
+    {
+        flyingStates.addedVelocity += _OxygenBoostStrength;
+        flyingStates.boostFuel += _AddOxygen;
     }
 
 
