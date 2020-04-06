@@ -21197,6 +21197,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602328107}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1622675284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8236564281514881612, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    type: 3}
+  m_PrefabInstance: {fileID: 2102254511017681611}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1625977720
 GameObject:
   m_ObjectHideFlags: 0
@@ -28767,17 +28773,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 210694388, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
       propertyPath: maxBoostFuel
-      value: 50
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: camFollowDist
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254510633308088, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+      propertyPath: windStream
+      value: 
+      objectReference: {fileID: 1622675284}
+    - target: {fileID: 172879173049171949, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 172879173049171949, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 172879173049171949, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 172879173049171949, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: TrailModule.ribbonCount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2269002444128628369, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2269002444128628369, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2269002444128628369, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2269002444128628369, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: TrailModule.ribbonCount
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}

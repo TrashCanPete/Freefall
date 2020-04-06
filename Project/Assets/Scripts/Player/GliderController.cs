@@ -6,6 +6,8 @@ using UnityEngine.Audio;
 public class GliderController : MonoBehaviour
 {
     [SerializeField]
+    private GameObject windStream;
+    [SerializeField]
     public enum _collison {UpDraft, Oxygen }
     public GameObject boostLight;
     public GameObject meshGrp;
@@ -96,9 +98,12 @@ public class GliderController : MonoBehaviour
         //Calling Scripts
         debugLines = GetComponent<DebugLines>();
         flyingStates = GetComponent<FlyingStates>();
+        playerCollider = GetComponent<BoxCollider>();
 
         boostLight.SetActive(false);
-        playerCollider = GetComponent<BoxCollider>();
+        windStream.SetActive(false);
+
+
     }
 
     private void Update()
@@ -122,7 +127,6 @@ public class GliderController : MonoBehaviour
         }
 
 
-
         if (flyingStates.boostFuel == 0)
         {
             Debug.Log("Out of fuel");
@@ -142,16 +146,7 @@ public class GliderController : MonoBehaviour
                 flyingStates.isBoosting = false;
                 boostLight.SetActive(false);
             }
-            if (Input.GetAxis("XboxLeftShfit") >= 1)
-            {
-                flyingStates.isBoosting = true;
-                boostLight.SetActive(true);
-            }
-            else if (Input.GetAxis("XboxLeftShfit") <= 0)
-            {
-                flyingStates.isBoosting = false;
-                boostLight.SetActive(false);
-            }
+
         }
 
 
@@ -191,7 +186,14 @@ public class GliderController : MonoBehaviour
 
 
         flyingStates.rb.velocity = flyingStates.baseVelocity + flyingStates.addedVelocity;
-
+        if (flyingStates.rb.velocity.magnitude >= 75f)
+        {
+            windStream.SetActive(true);
+        }
+        else if (flyingStates.rb.velocity.magnitude <= 125f) 
+        { 
+            windStream.SetActive(false); 
+        }
 
         flyingStates.TerminalBoost();
         flyingStates.UseBoosFuel();
@@ -269,23 +271,20 @@ public class GliderController : MonoBehaviour
     public void UpDraftCounter(_collison col)
     {
         var addedSpeed = flyingStates.addedVelocity.magnitude;
-        /*if (addedSpeed > maxCurrentSpeedInUpDraft)
-        {
-            Debug.Log("Col UpDraft Inside");
-            flyingStates.baseVelocity *= upDraftForwardVelocity;
-        }*/
 
        if (col == _collison.UpDraft)
         {
             Debug.Log("Col UpDraft");
             if (addedSpeed > maxCurrentSpeedInUpDraft)
             {
+                //Slows you down
                 Debug.Log("Col UpDraft Inside");
                 flyingStates.baseVelocity *= upDraftForwardVelocity;
             }
         }
         else if (col == _collison.Oxygen)
         {
+            //Slows you down
             Debug.Log("Col Oxygen");
             flyingStates.baseVelocity *= upDraftForwardVelocity * 0.5f;
         }
