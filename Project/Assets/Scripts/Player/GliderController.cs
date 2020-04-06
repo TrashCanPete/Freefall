@@ -142,7 +142,18 @@ public class GliderController : MonoBehaviour
                 flyingStates.isBoosting = false;
                 boostLight.SetActive(false);
             }
+            if (Input.GetAxis("XboxLeftShfit") >= 1)
+            {
+                flyingStates.isBoosting = true;
+                boostLight.SetActive(true);
+            }
+            else if (Input.GetAxis("XboxLeftShfit") <= 0)
+            {
+                flyingStates.isBoosting = false;
+                boostLight.SetActive(false);
+            }
         }
+
 
         PlayerRotationSpeeds();
         PlayerRotation();
