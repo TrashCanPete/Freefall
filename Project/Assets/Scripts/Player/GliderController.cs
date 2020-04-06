@@ -90,7 +90,6 @@ public class GliderController : MonoBehaviour
 
     public Transform lookAtTransform;
 
-
     //Start
     private void Start()
     {
@@ -133,12 +132,12 @@ public class GliderController : MonoBehaviour
         }
         else if (flyingStates.boostFuel > 0)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetButtonDown("Shift"))
             {
                 flyingStates.isBoosting = true;
                 boostLight.SetActive(true);
             }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            else if (Input.GetButtonUp("Shift"))
             {
                 flyingStates.isBoosting = false;
                 boostLight.SetActive(false);
@@ -153,7 +152,6 @@ public class GliderController : MonoBehaviour
             Application.Quit();
         }
         RotatingMesh();
-
 
     }
 
