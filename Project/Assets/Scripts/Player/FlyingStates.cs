@@ -14,6 +14,8 @@ public class FlyingStates : MonoBehaviour
 
     public bool canTurnUp;
 
+
+
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
     [Header("Basic Variables")]
     public float boostFuel;
@@ -63,31 +65,38 @@ public class FlyingStates : MonoBehaviour
     //glider force variables---------------------------------glider force variables---------------------------------glider force variables---------------------------------
     [Header("Force Variables")]
 
-
+    //standard force
     [SerializeField]
     private float standardForce;
+
     [SerializeField]
     private float divingForce;
     [SerializeField]
+    private float terminalForce;
+
+    [SerializeField]
     private float risingForce;
+    [SerializeField]
+    private float maxRisingForce;
 
     public float addedForceReduction;
 
-    [SerializeField]
-    private float terminalForce;
-    [SerializeField]
-    private float maxRisingForce;
+
+
 
     //Angles--------------------------------------------------Angles--------------------------------------------------Angles--------------------------------------------------
     [Header("Angle Variables")]
     [SerializeField]
     private float diveThreshold;
     [SerializeField]
+    private float terminalThreshold;
+    [SerializeField]
     private float riseThreshold;
 
 
     //Counters----------------------------------------------//Counters----------------------------------------------//Counters----------------------------------------------
     [Header("Counters")]
+    //diving
     [SerializeField]
     private float maxDivingCounter;
     [SerializeField]
@@ -95,6 +104,17 @@ public class FlyingStates : MonoBehaviour
     [SerializeField]
     private float divingCounterStep;
 
+
+    //terminal velocity dive
+    [SerializeField]
+    private float maxTerminalDivingCounter;
+    [SerializeField]
+    private float terminalDivingRateCounter;
+    [SerializeField]
+    private float terminalDivingStepCounter;
+
+
+    //rising
     [SerializeField]
     private float maxRisingCounter;
     [SerializeField]
@@ -102,6 +122,7 @@ public class FlyingStates : MonoBehaviour
     [SerializeField]
     private float risingCounterStep;
 
+    //rising twist
     [SerializeField]
     private float maxRisingTwistCounter;
     [SerializeField]
@@ -118,8 +139,7 @@ public class FlyingStates : MonoBehaviour
     
     public bool isBoosting = false;
 
-    [SerializeField]
-    private float maxBoostFuel;
+    public float maxBoostFuel;
     [SerializeField]
     private float fuelConsumption;
 
@@ -178,21 +198,28 @@ public class FlyingStates : MonoBehaviour
             Debug.Log("Diving");
             currentTargetSpeed = divingMaxVelocity;
             currentTargetForce = divingForce;
-            divingCounterRate += divingCounterStep;
-            if (divingCounterRate >= maxDivingCounter)
-            {
-                Debug.Log("Terminal Velocity!!!!!!");
-                currentTargetSpeed = terminalVelocity;
-                currentTargetForce = terminalForce;
-                isInTerminalVelocity = true;
-                //wings in
-                wingsIn.SetActive(true);
-                wingsOut.SetActive(false);
-                if (isInTerminalVelocity == true)
-                {
-                    canTerminalBoost = true;
-                }
 
+            if (yAngle >= terminalThreshold)
+            {
+                divingCounterRate += divingCounterStep;
+                Debug.Log("Terminal Velocity!!!!");
+                if (divingCounterRate >= maxDivingCounter)
+                {
+                    currentTargetSpeed = terminalVelocity;
+                    currentTargetForce = terminalForce;
+                    terminalDivingRateCounter += terminalDivingStepCounter;
+                    if (terminalDivingRateCounter >= terminalDivingStepCounter)
+                    {
+                        //wings in
+                        isInTerminalVelocity = true;
+                        wingsIn.SetActive(true);
+                        wingsOut.SetActive(false);
+                    }
+                    if (isInTerminalVelocity == true)
+                    {
+                        canTerminalBoost = true;
+                    }
+                }
             }
         }
         //Rising-----------------------------------
@@ -250,6 +277,8 @@ public class FlyingStates : MonoBehaviour
             else if (canTerminalBoost == true)
             {
                 //wings out
+
+
                 wingsIn.SetActive(false);
                 wingsOut.SetActive(true);
                 baseVelocity += transform.forward * terminalBoostSpeed;

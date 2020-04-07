@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class OxygenPlant : MonoBehaviour
 {
+    public GameObject player;
     [SerializeField]
     private float windStrength;
     [SerializeField]
     private int oxygen;
+    [SerializeField]
+    private FlyingStates flyingStates;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        flyingStates = GetComponent<FlyingStates>();
     }
 
     // Update is called once per frame
@@ -24,7 +29,7 @@ public class OxygenPlant : MonoBehaviour
     {
         if (other.tag == ("Player"))
         {
-            other.GetComponent<GliderController>().OxygenPlantPush(Vector3.up * windStrength, oxygen);
+            other.GetComponent<GliderController>().OxygenPlantPush ( windStrength ,oxygen);
             Destroy(gameObject);
         }
     }

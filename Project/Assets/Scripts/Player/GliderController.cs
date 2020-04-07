@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class GliderController : MonoBehaviour
 {
+    public Transform StartPosition;
+    public Transform playerForward;
     [SerializeField]
     private GameObject windStream;
     [SerializeField]
@@ -85,6 +87,8 @@ public class GliderController : MonoBehaviour
     private float upDraftForwardVelocity;
     [SerializeField]
     private float maxCurrentSpeedInUpDraft;
+    [SerializeField]
+    private float oxygenPlantBoost;
 
     //public scripts
     public DebugLines debugLines;
@@ -95,6 +99,7 @@ public class GliderController : MonoBehaviour
     //Start
     private void Start()
     {
+        transform.position = StartPosition.transform.position;
         //Calling Scripts
         debugLines = GetComponent<DebugLines>();
         flyingStates = GetComponent<FlyingStates>();
@@ -158,6 +163,11 @@ public class GliderController : MonoBehaviour
             Application.Quit();
         }
         RotatingMesh();
+
+        if (transform.position.y <= 0)
+        {
+            transform.position = StartPosition.transform.position;
+        }
 
     }
 
@@ -279,14 +289,14 @@ public class GliderController : MonoBehaviour
             {
                 //Slows you down
                 Debug.Log("Col UpDraft Inside");
-                flyingStates.baseVelocity *= upDraftForwardVelocity;
+                flyingStates.baseVelocity *= (0.5f * upDraftForwardVelocity);
             }
         }
         else if (col == _collison.Oxygen)
         {
             //Slows you down
             Debug.Log("Col Oxygen");
-            flyingStates.baseVelocity *= upDraftForwardVelocity * 0.5f;
+            flyingStates.baseVelocity *= (0.5f * oxygenPlantBoost);
         }
         
     }
@@ -296,9 +306,9 @@ public class GliderController : MonoBehaviour
         Debug.Log("Pushed by wind");
         flyingStates.addedVelocity += _windStrength;
     }
-    public void OxygenPlantPush( Vector3 _OxygenBoostStrength, int _AddOxygen)
+    public void OxygenPlantPush( float _OxygenBoostStrength, int _AddOxygen)
     {
-        flyingStates.addedVelocity += _OxygenBoostStrength;
+        flyingStates.addedVelocity += (transform.forward * _OxygenBoostStrength);
         flyingStates.boostFuel += _AddOxygen;
     }
 

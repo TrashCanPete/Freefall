@@ -6,6 +6,7 @@ TagManager:
   tags:
   - UpDraft
   - Oxygen
+  - Obstacle
   layers:
   - Default
   - TransparentFX
