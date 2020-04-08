@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 7777988757450374396}
   - component: {fileID: 2102254509313447437}
   - component: {fileID: 210694388}
+  - component: {fileID: 691811038}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -905,11 +906,6 @@ MonoBehaviour:
   windStream: {fileID: 8236564281514881612}
   boostLight: {fileID: 1372639567725072007}
   meshGrp: {fileID: 6984909891423472651}
-  camFollowDist: 4
-  camHeightDist: 1
-  offSet: 1
-  maxFOV: 70
-  minFOV: 60
   pitch: 0
   xRotationSpeed: 50
   yRotationSpeed: 50
@@ -921,14 +917,11 @@ MonoBehaviour:
   maxPitchSpeedRotation: 1.85
   minPitchSpeedRotation: 1.35
   PitchrotationChangeRate: 0.25
-  cameraSpeed: 0
-  cameraSpeedOffset: 10
   upDraftForwardVelocity: 0.5
   maxCurrentSpeedInUpDraft: 50
   oxygenPlantBoost: 2
   debugLines: {fileID: 7777988757450374396}
   flyingStates: {fileID: 210694388}
-  lookAtTransform: {fileID: 1698550693818839712}
 --- !u!114 &210694388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,6 +983,30 @@ MonoBehaviour:
   isBoosting: 0
   maxBoostFuel: 50
   fuelConsumption: 0.1
+--- !u!114 &691811038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102254509313447435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5536b885b35ab4083844496525f222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyingStates: {fileID: 0}
+  lookAtTransform: {fileID: 1698550693818839712}
+  lookAtOffsetX: 0
+  lookAtOffsetY: 1.5
+  lookAtOffsetZ: 0
+  camFollowDist: 4
+  camHeightDist: 1
+  offSet: 1
+  maxFOV: 70
+  minFOV: 60
+  cameraSpeed: 0
+  cameraSpeedOffset: 10
 --- !u!1 &2102254510633308090
 GameObject:
   m_ObjectHideFlags: 0
