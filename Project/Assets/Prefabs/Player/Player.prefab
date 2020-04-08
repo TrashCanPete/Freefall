@@ -900,6 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136fa4ccd2ccb2842af5c1147e3f8fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartPosition: {fileID: 0}
   playerForward: {fileID: 0}
   windStream: {fileID: 8236564281514881612}
   boostLight: {fileID: 1372639567725072007}
@@ -11769,7 +11770,7 @@ GameObject:
   m_Layer: 0
   m_Name: LookAt
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11781,7 +11782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5439781486477696489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0.754, z: 0.075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2102254509313447434}
