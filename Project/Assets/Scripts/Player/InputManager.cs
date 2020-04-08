@@ -9,8 +9,8 @@ public class InputManager : MonoBehaviour
 
     //input variables
     [SerializeField]
-    private float pitch;
-    private float yaw;
+    public float pitch;
+    public float yaw;
 
     [SerializeField]
     private float xRotationSpeed;

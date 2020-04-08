@@ -100,7 +100,7 @@ public class GliderController : MonoBehaviour
 
         camFollow.CameraFollow();
 
-
+        input.InputData();
 
         PlayerRotationSpeeds();
         PlayerRotation();
@@ -169,8 +169,8 @@ public class GliderController : MonoBehaviour
         var verticalRollValue = 10;
         var horizontalRollValue = 10;
 
-        var verticalRoll = pitch * verticalRollValue;
-        var horizontalRoll = yaw * -horizontalRollValue;
+        var verticalRoll = input.pitch * verticalRollValue;
+        var horizontalRoll = input.yaw * -horizontalRollValue;
 
         verticalRoll = Mathf.Clamp(verticalRoll, -verticalRollValue, verticalRollValue);
         horizontalRoll = Mathf.Clamp(horizontalRoll, -horizontalRollValue + 1, horizontalRollValue - 1);
@@ -204,13 +204,13 @@ public class GliderController : MonoBehaviour
         flyingStates.yAngle = flyingStates.rot.x;
 
         //adding the pitch inputs/data into the rot.x plus clamping the values
-        flyingStates.rot.x += pitch;
+        flyingStates.rot.x += input.pitch;
 
         //max being the being first as when looking up the rotation is at its lowest, vise versa
         flyingStates.rot.x = Mathf.Clamp(flyingStates.rot.x, maxXAngle, minXAngle);
 
 
-        flyingStates.rot.y += yaw;
+        flyingStates.rot.y += input.yaw;
         //rotating the glider by the rigidbody via the rot values
 
 
