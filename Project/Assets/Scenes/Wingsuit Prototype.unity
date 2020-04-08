@@ -3077,7 +3077,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2102254511017681611}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 691811036}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7adbc8b199bf4454eaca1e41a5eee059, type: 3}
@@ -5307,6 +5307,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686772759}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &691811036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2102254509313447435, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    type: 3}
+  m_PrefabInstance: {fileID: 2102254511017681611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &691811044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691811036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba19d16ba78d814fabcdd165eba8ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitch: 0
+  yaw: 0
+  xRotationSpeed: 50
+  yRotationSpeed: 50
 --- !u!1 &698897481
 GameObject:
   m_ObjectHideFlags: 0
