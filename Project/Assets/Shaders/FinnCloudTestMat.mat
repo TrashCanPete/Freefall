@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FinnCloudTestMat
+  m_Shader: {fileID: -6465566751694194690, guid: 5b6f8cd640c20094d973228610cb0d6a,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_5E914204: -0.15
+    - Vector1_6FC0738F: 20
+    - Vector1_AF480FB0: 0.005
+    - Vector1_F326F04: 0.73
+    m_Colors:
+    - Color_761E3BF0: {r: 1, g: 1, b: 1, a: 0}
+    - Color_9CF0A665: {r: 0.7654859, g: 0.8867924, b: 0.8867924, a: 0}
+    - Vector4_46291EA8: {r: -1, g: 1.43, b: -1.03, a: 1.02}
+    - Vector4_58BB93F7: {r: 1, g: 0, b: 0, a: 99.5}
