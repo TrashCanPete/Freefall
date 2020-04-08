@@ -14,22 +14,7 @@ public class GliderController : MonoBehaviour
     public GameObject boostLight;
     public GameObject meshGrp;
 
-    //Camera follow distance
-    [Header("Cam Variables")]
 
-    [SerializeField]
-    private float camFollowDist;
-    [SerializeField]
-    private float camHeightDist;
-
-
-    [SerializeField]
-    private float offSet;
-
-    [SerializeField]
-    public float maxFOV;
-    [SerializeField]
-    public float minFOV;
 
     //input variables
     [SerializeField]
@@ -69,10 +54,7 @@ public class GliderController : MonoBehaviour
 
 
     //Counters----------------------------------------------//Counters----------------------------------------------//Counters----------------------------------------------
-    [SerializeField]
-    private float cameraSpeed;
-    [SerializeField]
-    private float cameraSpeedOffset;
+
 
 
     private float colliderXIn = 0.3f;
@@ -93,17 +75,20 @@ public class GliderController : MonoBehaviour
     //public scripts
     public DebugLines debugLines;
     public FlyingStates flyingStates;
+    private CamFollow camFollow;
 
-    public Transform lookAtTransform;
+
 
     //Start
     private void Start()
     {
+
         transform.position = StartPosition.transform.position;
         //Calling Scripts
         debugLines = GetComponent<DebugLines>();
         flyingStates = GetComponent<FlyingStates>();
         playerCollider = GetComponent<BoxCollider>();
+        camFollow = GetComponent<CamFollow>();
 
         boostLight.SetActive(false);
         windStream.SetActive(false);
@@ -113,10 +98,11 @@ public class GliderController : MonoBehaviour
 
     private void Update()
     {
+
         //drawing lines
         debugLines.DebugDrawLines();
 
-        CamFollow();
+        camFollow.CameraFollow();
 
         //Getting the input data for rotatiing
         yaw = yRotationSpeed * Input.GetAxis("Horizontal") * currentYawRotationSpeed * Time.deltaTime;
@@ -173,7 +159,7 @@ public class GliderController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        cameraSpeed = flyingStates.Speed + cameraSpeedOffset;
+
 
         flyingStates.rot.x += flyingStates.drop;
 
@@ -313,17 +299,6 @@ public class GliderController : MonoBehaviour
     }
 
 
-    //Camera Functions-------------------------------------Camera Functions-------------------------------------Camera Functions-------------------------------------
-    public void CamFollow()
-    {
-        //3.5 0.75 close 7 2 far
-
-        Camera.main.fieldOfView = Mathf.Abs(flyingStates.Speed / offSet + cameraSpeedOffset);
-        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFOV, maxFOV);
-        Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + transform.up * (camHeightDist);
-        Camera.main.transform.position = moveCamTo;
-        Camera.main.transform.LookAt(transform.position, Vector3.up);
-    }
 
     //Debugging----------------------------------------------Debugging----------------------------------------------Debugging----------------------------------------------
 
@@ -337,37 +312,4 @@ public class GliderController : MonoBehaviour
         }
     }
 
-    public void Storage()
-    {
-        /*
-        if (yaw == 0 && pitch == 0)
-        {
-            roll = 0;
-            fRoll = 0;
-        }
-
-        if (yaw > 0)
-        {
-            roll = 15;
-        }
-
-        else if (yaw < 0)
-        {
-            roll = -15;
-        }
-
-        if (pitch > 0)
-        {
-            fRoll = 15;
-        }
-
-        if (pitch < 0)
-        {
-            fRoll = -15;
-        }
-        */
-        var fRoll = 10;
-        var roll = 10;
-        meshGrp.transform.localRotation = Quaternion.RotateTowards(meshGrp.transform.localRotation, Quaternion.Euler(yaw * fRoll, 0,pitch * -roll), 100.0f * Time.deltaTime);
-    }
 }
