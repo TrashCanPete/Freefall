@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LevelBlockout.unity
     guid: 78b00c6c5bd961a4db5be96c29fc35fe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelBlockout_2.unity
     guid: 98abd829d8b0c6c40813bdcec4d7465e
+  - enabled: 1
+    path: Assets/Scenes/Glider Prototype.unity
+    guid: ed0c43c255dc5fc40aaeaf3b3393681d
   m_configObjects: {}
