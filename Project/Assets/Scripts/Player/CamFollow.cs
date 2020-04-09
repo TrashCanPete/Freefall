@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CamFollow : MonoBehaviour
 {
-    public FlyingStates flyingStates;
+    private FlyingStates flyingStates;
 
 
 
