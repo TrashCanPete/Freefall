@@ -130,6 +130,10 @@ public class GliderController : MonoBehaviour
         {
             UpDraftCounter(_collison.Oxygen);
         }
+        if (other.tag == ("Finish"))
+        {
+            Application.Quit(1);
+        }
     }
 
     private void OnCollisionStay(Collision collision)

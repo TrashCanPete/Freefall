@@ -8638,12 +8638,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1181468103 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7552439619062999416, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-    type: 3}
-  m_PrefabInstance: {fileID: 2102254511017681611}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1197271850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15425,35 +15419,6 @@ PrefabInstance:
       propertyPath: StartPosition
       value: 
       objectReference: {fileID: 1552236577}
-    - target: {fileID: 2102254509313447437, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: windStream
-      value: 
-      objectReference: {fileID: 1181468103}
-    - target: {fileID: 3722268669473268760, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4158245662273365150, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 394146538090850866, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102254509313447433, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 691811038, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
-      propertyPath: camFollowDist
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4340283474024758405, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
