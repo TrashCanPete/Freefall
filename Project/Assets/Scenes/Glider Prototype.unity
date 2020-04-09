@@ -2823,10 +2823,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 210694388, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
-      propertyPath: maxBoostFuel
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 2102254509313447434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2887,10 +2883,6 @@ PrefabInstance:
       propertyPath: StartPosition
       value: 
       objectReference: {fileID: 1754115926}
-    - target: {fileID: 691811038, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
-      propertyPath: lookAtOffsetY
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
 --- !u!1 &897815245 stripped
