@@ -358,7 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2102254509313447435, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
   windStrength: 25
-  oxygen: 10
+  oxygen: 50
   flyingStates: {fileID: 0}
 --- !u!1 &8704529850101225233
 GameObject:
