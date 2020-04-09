@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 7777988757450374396}
   - component: {fileID: 2102254509313447437}
   - component: {fileID: 210694388}
+  - component: {fileID: 4965049939930838607}
   - component: {fileID: 691811038}
   - component: {fileID: 691811044}
   m_Layer: 0
@@ -692,6 +693,30 @@ MonoBehaviour:
   isBoosting: 0
   maxBoostFuel: 50
   fuelConsumption: 0.1
+--- !u!114 &4965049939930838607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102254509313447435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f2a6697a242024a82a572be66266a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minXAngle: 75
+  maxXAngle: -85
+  currentYawRotationSpeed: 0
+  maxYawSpeedRotation: 1.5
+  minYawSpeedRotation: 1
+  YawrotationChangeRate: 0.25
+  currentPitchRotationSpeed: 0
+  maxPitchSpeedRotation: 1.85
+  minPitchSpeedRotation: 1.35
+  PitchrotationChangeRate: 0.25
+  meshGrp: {fileID: 6984909891423472651}
+  flyingStates: {fileID: 210694388}
 --- !u!114 &691811038
 MonoBehaviour:
   m_ObjectHideFlags: 0
