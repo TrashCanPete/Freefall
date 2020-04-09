@@ -1,10 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Project/Assets/Scenes/SceneBlockout.unity.meta~Stashed changes.meta~Stashed changes.meta
 <<<<<<< Updated upstream
 guid: 670622f70f66b421e84daa01f31dff22
 =======
 guid: 5769b268f267c754b80eae9f0e997f48
 >>>>>>> Stashed changes
 DefaultImporter:
+=======
+guid: bf622a6a861552a4abdae75cf737aa0f
+PrefabImporter:
+>>>>>>> master:Project/Assets/Prefabs/Start Position.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

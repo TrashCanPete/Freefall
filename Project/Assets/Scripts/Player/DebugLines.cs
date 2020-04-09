@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DebugLines : MonoBehaviour
 {
-    public GliderController gliderController;
+    private GliderController gliderController;
     private FlyingStates flyingStates;
     // Start is called before the first frame update
     void Start()

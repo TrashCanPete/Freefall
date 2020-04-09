@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     private GliderController gliderController;
     private FlyingStates flyingStates;
+    private RotationController rotationController;
 
     //input variables
     [SerializeField]
@@ -21,6 +22,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rotationController = GetComponent<RotationController>();
         flyingStates = GetComponent<FlyingStates>();
         gliderController = GetComponent<GliderController>();
     }
@@ -33,16 +35,16 @@ public class InputManager : MonoBehaviour
     public void InputData()
     {
         //Getting the input data for rotatiing
-        yaw = yRotationSpeed * Input.GetAxis("Horizontal") * gliderController.currentYawRotationSpeed * Time.deltaTime;
+        yaw = yRotationSpeed * Input.GetAxis("Horizontal") * rotationController.currentYawRotationSpeed * Time.deltaTime;
 
         if (flyingStates.canTurnUp == true)
         {
-            pitch = xRotationSpeed * Input.GetAxis("Vertical") * gliderController.currentPitchRotationSpeed * Time.deltaTime;
+            pitch = xRotationSpeed * Input.GetAxis("Vertical") * rotationController.currentPitchRotationSpeed * Time.deltaTime;
         }
         else if (flyingStates.canTurnUp == false)
         {
             pitch = Mathf.Clamp(pitch, 0, 1);
-            pitch = xRotationSpeed * Input.GetAxis("Vertical") * gliderController.currentPitchRotationSpeed * Time.deltaTime;
+            pitch = xRotationSpeed * Input.GetAxis("Vertical") * rotationController.currentPitchRotationSpeed * Time.deltaTime;
         }
 
 

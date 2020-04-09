@@ -12,42 +12,6 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     public enum _collison {UpDraft, Oxygen }
     public GameObject boostLight;
-    public GameObject meshGrp;
-
-
-
-
-
-    //rotation variables--------------------------------------rotation variables--------------------------------------rotation variables--------------------------------------
-    [Header("Rotation Variables")]
-
-    [SerializeField]
-    private float minXAngle;
-    [SerializeField]
-    private float maxXAngle;
-
-    [Header("Yaw Speeds - Up and Down")]
-    //Yaw-------------------------
-    public float currentYawRotationSpeed;
-    [SerializeField]
-    private float maxYawSpeedRotation;
-    [SerializeField]
-    private float minYawSpeedRotation;
-    [SerializeField]
-    private float YawrotationChangeRate;
-
-    [Header("Pitch Speeds - Left and Right")]
-    //Pitch--------------------
-    public float currentPitchRotationSpeed;
-    [SerializeField]
-    private float maxPitchSpeedRotation;
-    [SerializeField]
-    private float minPitchSpeedRotation;
-    [SerializeField]
-    private float PitchrotationChangeRate;
-
-
-    //Counters----------------------------------------------//Counters----------------------------------------------//Counters----------------------------------------------
 
 
 
@@ -71,6 +35,7 @@ public class GliderController : MonoBehaviour
     public FlyingStates flyingStates;
     private CamFollow camFollow;
     private InputManager input;
+    private RotationController rotationController;
 
 
 
@@ -85,6 +50,9 @@ public class GliderController : MonoBehaviour
         playerCollider = GetComponent<BoxCollider>();
         camFollow = GetComponent<CamFollow>();
         input = GetComponent<InputManager>();
+        rotationController = GetComponent<RotationController>();
+
+
 
         boostLight.SetActive(false);
         windStream.SetActive(false);
@@ -102,11 +70,11 @@ public class GliderController : MonoBehaviour
 
         input.InputData();
 
-        PlayerRotationSpeeds();
-        PlayerRotation();
+        rotationController.PlayerRotationSpeeds();
+        rotationController.PlayerRotation();
 
 
-        RotatingMesh();
+        rotationController.RotatingMesh();
 
         if (transform.position.y <= 0)
         {
@@ -162,21 +130,21 @@ public class GliderController : MonoBehaviour
         {
             UpDraftCounter(_collison.Oxygen);
         }
+        if (other.tag == ("Finish"))
+        {
+            Application.Quit(1);
+        }
     }
 
-    public void RotatingMesh()
+    private void OnCollisionStay(Collision collision)
     {
-        var verticalRollValue = 10;
-        var horizontalRollValue = 10;
-
-        var verticalRoll = input.pitch * verticalRollValue;
-        var horizontalRoll = input.yaw * -horizontalRollValue;
-
-        verticalRoll = Mathf.Clamp(verticalRoll, -verticalRollValue, verticalRollValue);
-        horizontalRoll = Mathf.Clamp(horizontalRoll, -horizontalRollValue + 1, horizontalRollValue - 1);
-
-        meshGrp.transform.localRotation = Quaternion.RotateTowards(meshGrp.transform.localRotation, Quaternion.Euler(verticalRoll, 0, horizontalRoll), 50.0f * Time.deltaTime);
+        if (collision.gameObject.tag == ("Obstacle"))
+        {
+            transform.position = StartPosition.transform.position;
+        }
     }
+
+
     public void ReduceAddVelocity()
     {
         //Reduce the added velocity to 0 over time
@@ -184,38 +152,7 @@ public class GliderController : MonoBehaviour
 
     }
 
-    //Player Rotation------------------------------------Player Rotation------------------------------------Player Rotation------------------------------------
-    public void PlayerRotationSpeeds()
-    {
-        if (flyingStates.Speed <= 100)
-        {
-            currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, maxPitchSpeedRotation, PitchrotationChangeRate);
-            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, maxYawSpeedRotation, YawrotationChangeRate);
-        }
-        else if (flyingStates.Speed >= 100)
-        {
-            currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, minPitchSpeedRotation, PitchrotationChangeRate);
-            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, minYawSpeedRotation, YawrotationChangeRate);
-        }
-    }
-    public void PlayerRotation()
-    {
-        //Getting the angle that the glider is facing
-        flyingStates.yAngle = flyingStates.rot.x;
 
-        //adding the pitch inputs/data into the rot.x plus clamping the values
-        flyingStates.rot.x += input.pitch;
-
-        //max being the being first as when looking up the rotation is at its lowest, vise versa
-        flyingStates.rot.x = Mathf.Clamp(flyingStates.rot.x, maxXAngle, minXAngle);
-
-
-        flyingStates.rot.y += input.yaw;
-        //rotating the glider by the rigidbody via the rot values
-
-
-        flyingStates.rb.transform.rotation = Quaternion.Euler(flyingStates.rot);
-    }
 
 
 

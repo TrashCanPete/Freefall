@@ -1,9 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Project/Assets/Scenes/SceneBlockout.unity.meta~Stashed changes.meta
 <<<<<<< Updated upstream
 guid: 6e2d2ca6d59f5446ab9e0dd71b6ac82c
 =======
 guid: c0f2cce00c6c1b34cbd8eb99ec92e6eb
 >>>>>>> Stashed changes
+=======
+guid: be0b94dda6000404888f2292fcbf5885
+folderAsset: yes
+>>>>>>> master:Project/Assets/Concepts.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
