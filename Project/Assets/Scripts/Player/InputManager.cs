@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     private GliderController gliderController;
     private FlyingStates flyingStates;
     private RotationController rotationController;
+    public AnimationScript animationScript;
 
     //input variables
     [SerializeField]
@@ -22,6 +23,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animationScript = GetComponent<AnimationScript>();
         rotationController = GetComponent<RotationController>();
         flyingStates = GetComponent<FlyingStates>();
         gliderController = GetComponent<GliderController>();
@@ -30,7 +32,7 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void InputData()
     {
@@ -44,8 +46,10 @@ public class InputManager : MonoBehaviour
         else if (flyingStates.canTurnUp == false)
         {
             pitch = Mathf.Clamp(pitch, 0, 1);
-            pitch = xRotationSpeed * Input.GetAxis("Vertical") * rotationController.currentPitchRotationSpeed * Time.deltaTime;
+            //pitch = xRotationSpeed * Input.GetAxis("Vertical") * rotationController.currentPitchRotationSpeed * Time.deltaTime;
         }
+        animationScript.TiltingAnimation();
+        animationScript.TurningAnimation();
 
 
         if (flyingStates.boostFuel == 0)
@@ -61,6 +65,7 @@ public class InputManager : MonoBehaviour
             {
                 flyingStates.isBoosting = true;
                 gliderController.boostLight.SetActive(true);
+                animationScript.BoostingAnimation();
             }
             else if (Input.GetButtonUp("Shift"))
             {
@@ -73,5 +78,8 @@ public class InputManager : MonoBehaviour
         {
             Application.Quit();
         }
+
+
+
     }
 }

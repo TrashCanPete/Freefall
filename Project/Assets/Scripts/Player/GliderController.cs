@@ -36,6 +36,7 @@ public class GliderController : MonoBehaviour
     private CamFollow camFollow;
     private InputManager input;
     private RotationController rotationController;
+    private AnimationScript animationScript;
 
 
 
@@ -44,6 +45,7 @@ public class GliderController : MonoBehaviour
     {
 
         transform.position = StartPosition.transform.position;
+
         //Calling Scripts
         debugLines = GetComponent<DebugLines>();
         flyingStates = GetComponent<FlyingStates>();
@@ -51,7 +53,7 @@ public class GliderController : MonoBehaviour
         camFollow = GetComponent<CamFollow>();
         input = GetComponent<InputManager>();
         rotationController = GetComponent<RotationController>();
-
+        animationScript = GetComponent<AnimationScript>();
 
 
         boostLight.SetActive(false);
@@ -163,27 +165,29 @@ public class GliderController : MonoBehaviour
 
        if (col == _collison.UpDraft)
         {
-            Debug.Log("Col UpDraft");
             if (addedSpeed > maxCurrentSpeedInUpDraft)
             {
                 //Slows you down
-                Debug.Log("Col UpDraft Inside");
                 flyingStates.baseVelocity *= (0.5f * upDraftForwardVelocity);
             }
         }
         else if (col == _collison.Oxygen)
         {
             //Slows you down
-            Debug.Log("Col Oxygen");
             flyingStates.baseVelocity *= (0.5f * oxygenPlantBoost);
+
+            animationScript.PlayerOxygenPlantAnimation();
+
         }
         
     }
 
     public void WindMovePlayer(Vector3 _windStrength)
     {
-        Debug.Log("Pushed by wind");
         flyingStates.addedVelocity += _windStrength;
+
+        rotationController.RotatePlayerTowardsUpDraft();
+
     }
     public void OxygenPlantPush( float _OxygenBoostStrength, int _AddOxygen)
     {

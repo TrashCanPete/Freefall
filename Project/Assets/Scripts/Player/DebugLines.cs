@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class DebugLines : MonoBehaviour
 {
-    private GliderController gliderController;
     private FlyingStates flyingStates;
     // Start is called before the first frame update
     void Start()
     {
         flyingStates = GetComponent<FlyingStates>();
-        gliderController.GetComponent<GliderController>();
     }
 
     // Update is called once per frame

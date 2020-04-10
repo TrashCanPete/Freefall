@@ -24,7 +24,7 @@ public class UpDraft : MonoBehaviour
         if (other.tag == ("Player"))
         {
             other.GetComponent<GliderController>().WindMovePlayer(facingDirection * windStrength);
-            Debug.Log("Wind Pushing");
+
         }
     }
 

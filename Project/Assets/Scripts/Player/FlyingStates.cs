@@ -175,7 +175,6 @@ public class FlyingStates : MonoBehaviour
             Mid = true;
             Low = false;
 
-            Debug.Log("Standard");
             ResetSpeedAndForceValues();
 
             risingCounterRate = 0;
@@ -195,14 +194,13 @@ public class FlyingStates : MonoBehaviour
             Mid = false;
             Low = true;
 
-            Debug.Log("Diving");
             currentTargetSpeed = divingMaxVelocity;
             currentTargetForce = divingForce;
 
             if (yAngle >= terminalThreshold)
             {
                 divingCounterRate += divingCounterStep;
-                Debug.Log("Terminal Velocity!!!!");
+
                 if (divingCounterRate >= maxDivingCounter)
                 {
                     currentTargetSpeed = terminalVelocity;
@@ -229,7 +227,6 @@ public class FlyingStates : MonoBehaviour
             Mid = false;
             Low = false;
 
-            Debug.Log("Rising");
             currentTargetSpeed = risingMaxVelocity;
             currentTargetForce = risingForce;
             risingCounterRate += risingCounterStep;
@@ -272,7 +269,6 @@ public class FlyingStates : MonoBehaviour
 
             if (!canTerminalBoost)
             {
-                Debug.Log("canBoost is false");
             }
             else if (canTerminalBoost == true)
             {

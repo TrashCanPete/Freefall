@@ -51,6 +51,7 @@ MonoBehaviour:
   windStrength: 100
   oxygen: 10
   flyingStates: {fileID: 0}
+  animationScript: {fileID: 0}
 --- !u!135 &6402795676511528138
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -351,7 +352,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8704529850070546168}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9b069940f0fcdc4494a114189224bbd, type: 3}
   m_Name: 
@@ -360,6 +361,7 @@ MonoBehaviour:
   windStrength: 25
   oxygen: 50
   flyingStates: {fileID: 0}
+  animationScript: {fileID: 0}
 --- !u!1 &8704529850101225233
 GameObject:
   m_ObjectHideFlags: 0

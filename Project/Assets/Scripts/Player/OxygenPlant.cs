@@ -12,6 +12,8 @@ public class OxygenPlant : MonoBehaviour
     [SerializeField]
     private FlyingStates flyingStates;
 
+    public AnimationScript animationScript;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class OxygenPlant : MonoBehaviour
         {
             other.GetComponent<GliderController>().OxygenPlantPush ( windStrength ,oxygen);
             Destroy(gameObject);
+
         }
     }
 }

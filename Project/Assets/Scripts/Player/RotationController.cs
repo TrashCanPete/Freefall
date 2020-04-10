@@ -48,7 +48,6 @@ public class RotationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void RotatingMesh()
@@ -97,5 +96,12 @@ public class RotationController : MonoBehaviour
 
         flyingStates.rb.transform.rotation = Quaternion.Euler(flyingStates.rot);
     }
+
+    public void RotatePlayerTowardsUpDraft()
+    {
+        
+    }
+
+
 
 }
