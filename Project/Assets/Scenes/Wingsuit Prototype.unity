@@ -1652,6 +1652,12 @@ Transform:
   m_Father: {fileID: 1251154945}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.112}
+--- !u!54 &386247486 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 876402977763883352, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    type: 3}
+  m_PrefabInstance: {fileID: 876402978115834470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &424397053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7465,6 +7471,11 @@ PrefabInstance:
       propertyPath: StartPosition
       value: 
       objectReference: {fileID: 1754115926}
+    - target: {fileID: 876402976663485067, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 386247486}
     - target: {fileID: 876402977851381310, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: m_Controller
