@@ -10181,7 +10181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba19d16ba78d814fabcdd165eba8ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationScript: {fileID: 0}
+  animationScript: {fileID: 876402977763883358}
   pitch: 0
   yaw: 0
   xRotationSpeed: 50
@@ -10198,6 +10198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c218bb9424e163648b076fc1c1da872e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 8258870696273354945}
   animationScript: {fileID: 876402977763883358}
 --- !u!1 &876402977802414127
 GameObject:
@@ -15111,6 +15112,12 @@ PrefabInstance:
 --- !u!4 &2024197495446638011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 38209f81b82fe404f973edd34ef33ce1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6444035525992818337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8258870696273354945 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 38209f81b82fe404f973edd34ef33ce1,
     type: 3}
   m_PrefabInstance: {fileID: 6444035525992818337}
   m_PrefabAsset: {fileID: 0}

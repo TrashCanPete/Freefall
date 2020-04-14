@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimationScript : MonoBehaviour
 {
+    public Animator anim;
     public AnimationScript animationScript;
     private InputManager inputManager;
     // Start is called before the first frame update
