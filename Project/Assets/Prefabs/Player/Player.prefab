@@ -10077,7 +10077,7 @@ MonoBehaviour:
   rb: {fileID: 876402977763883352}
   rot: {x: 0, y: 0, z: 0}
   wingsOut: {fileID: 876402976367098305}
-  wingsIn: {fileID: 0}
+  wingsIn: {fileID: 876402976367098305}
   canTurnUp: 1
   boostFuel: 0
   yAngle: 0
