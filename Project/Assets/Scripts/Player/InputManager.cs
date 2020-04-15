@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     private FlyingStates flyingStates;
     private RotationController rotationController;
     public AnimationScript animationScript;
+   
 
     //input variables
     [SerializeField]
