@@ -5,30 +5,34 @@ using UnityEngine;
 public class BlendTreeAnimation : MonoBehaviour
        
 {
-    private Animator anim;
+    public Animator anim;
+    private InputManager inputManager;
 
+    private float y;
+    private float x;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
+        inputManager = GetComponent<InputManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (anim = null) return;
+        //if (anim = null) return;
         
-        var x = Input.GetAxis("Horizontal");
-        var y = Input.GetAxis("Vertical");
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
         Move(x, y);
 
     }
 
     public void Move(float x, float y)
     {
-        anim.SetFloat("Velx", x);
-        anim.SetFloat("Vely", y);
+        anim.SetFloat("VelX", x);
+        anim.SetFloat("VelY", y);
     }
 }

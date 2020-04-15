@@ -17,13 +17,19 @@ public class AnimationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var x = Input.GetAxis("Horizontal");
+        var y = Input.GetAxis("Vertical");
+        //Calling blend tree function
+        Move(x, y);
     }
 
-    public void CheckForAnimations()
+    //Blend tree Function
+    public void Move(float x, float y)
     {
-
+        anim.SetFloat("VelX", x);
+        anim.SetFloat("VelY", y);
     }
+
     public void TiltingAnimation()
     {
         if (inputManager.pitch > 0)
