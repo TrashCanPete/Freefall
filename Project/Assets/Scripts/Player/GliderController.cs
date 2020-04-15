@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class GliderController : MonoBehaviour
 {
     public Transform StartPosition;
-    public Transform playerForward;
     [SerializeField]
     private GameObject windStream;
     [SerializeField]
@@ -146,6 +146,7 @@ public class GliderController : MonoBehaviour
         EndGameUI.SetActive(true);
         yield return new WaitForSeconds(3);
         EndGameUI.SetActive(false);
+        SceneManager.LoadScene(0);
     }
 
     private void OnCollisionStay(Collision collision)

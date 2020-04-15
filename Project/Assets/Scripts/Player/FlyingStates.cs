@@ -9,8 +9,8 @@ public class FlyingStates : MonoBehaviour
     // Rotation
     public Vector3 rot;
 
-    public GameObject wingsOut;
-    public GameObject wingsIn;
+    private GameObject wingsOut;
+    private GameObject wingsIn;
 
     public bool canTurnUp;
 
