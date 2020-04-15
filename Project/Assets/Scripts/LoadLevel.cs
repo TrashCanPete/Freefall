@@ -3,24 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadLevel : MonoBehaviour
-   
+public class LoadLevel : MonoBehaviour  
 {
+
     public GameObject endScreenUI;
 
+    private void Start()
+    {
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == ("Player"))
         {
-            Invoke("LoadScene", 2);
             endScreenUI.SetActive(true);
         }
-    }  
-
-    void LoadScene()
+    }
+    public void StartWaitToEnd()
     {
-        SceneManager.LoadScene("LevelBlockout_2");
+        StartCoroutine(WaitToEnd());
+    }
+    public IEnumerator WaitToEnd()
+    {
+        endScreenUI.SetActive(true);
+        Debug.Log("WaitToEnd");
+        yield return new WaitForSeconds(3);
+        LoadScene(0);
+    }
+    public void LoadScene(int _level)
+    {
         endScreenUI.SetActive(false);
+        SceneManager.LoadScene(_level);
+    }
+    public void ExitScene()
+    {
+        Application.Quit();
     }
 }
 

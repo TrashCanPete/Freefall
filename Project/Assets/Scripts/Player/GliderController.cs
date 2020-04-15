@@ -37,7 +37,7 @@ public class GliderController : MonoBehaviour
     private InputManager input;
     private RotationController rotationController;
     private AnimationScript animationScript;
-
+    private LoadLevel loadLevel;
 
 
     //Start
@@ -54,7 +54,7 @@ public class GliderController : MonoBehaviour
         input = GetComponent<InputManager>();
         rotationController = GetComponent<RotationController>();
         animationScript = GetComponent<AnimationScript>();
-
+        loadLevel = GetComponent<LoadLevel>();
 
         boostLight.SetActive(false);
         windStream.SetActive(false);
@@ -134,7 +134,8 @@ public class GliderController : MonoBehaviour
         }
         if (other.tag == ("Finish"))
         {
-            Application.Quit(1);
+            Debug.Log("Finsih");
+            loadLevel.StartWaitToEnd();
         }
     }
 
