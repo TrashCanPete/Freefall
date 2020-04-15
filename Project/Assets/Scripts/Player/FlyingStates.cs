@@ -151,8 +151,8 @@ public class FlyingStates : MonoBehaviour
     {
         canTurnUp = true;
         //wings out
-        wingsIn.SetActive(false);
-        wingsOut.SetActive(true);
+        //wingsIn.SetActive(false);
+        //wingsOut.SetActive(true);
 
 
         boostFuel = maxBoostFuel / 2;
@@ -210,8 +210,8 @@ public class FlyingStates : MonoBehaviour
                     {
                         //wings in
                         isInTerminalVelocity = true;
-                        wingsIn.SetActive(true);
-                        wingsOut.SetActive(false);
+                        //wingsIn.SetActive(true);
+                        //wingsOut.SetActive(false);
                     }
                     if (isInTerminalVelocity == true)
                     {
@@ -275,8 +275,8 @@ public class FlyingStates : MonoBehaviour
                 //wings out
 
 
-                wingsIn.SetActive(false);
-                wingsOut.SetActive(true);
+                //wingsIn.SetActive(false);
+                //wingsOut.SetActive(true);
                 baseVelocity += transform.forward * terminalBoostSpeed;
                 canTerminalBoost = false;
             }

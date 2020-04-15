@@ -4327,7 +4327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d49497e81febd42be312b4e15e9636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endScreenUI: {fileID: 1112483519}
+  endScreenUI: {fileID: 0}
 --- !u!4 &1274683038
 Transform:
   m_ObjectHideFlags: 0
@@ -7461,6 +7461,11 @@ PrefabInstance:
       propertyPath: StartPosition
       value: 
       objectReference: {fileID: 1754115926}
+    - target: {fileID: 876402977763883357, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: EndGameUI
+      value: 
+      objectReference: {fileID: 1112483519}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
 --- !u!1001 &4297458295833026022
