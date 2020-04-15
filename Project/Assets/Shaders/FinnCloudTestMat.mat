@@ -8,11 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FinnCloudTestMat
-  m_Shader: {fileID: 4800000, guid: 76950036d28fe7d45a289dad87861ca7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5b6f8cd640c20094d973228610cb0d6a,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -22,7 +23,10 @@ Material:
     m_Floats:
     - Vector1_118F9AE3: 10
     - Vector1_160035B9: 0.001
+    - Vector1_2B82D60C: 1
+    - Vector1_2E07F5CF: 2
     - Vector1_306F2F1F: 1
+    - Vector1_4A85707F: 1
     - Vector1_53879FF9: 1
     - Vector1_5E914204: 1
     - Vector1_6EF1F52E: 1
@@ -31,8 +35,10 @@ Material:
     - Vector1_767C2BCB: 100
     - Vector1_7C6FDCBA: 1
     - Vector1_7DCA2CFD: 1
+    - Vector1_A73DCC8E: 1
     - Vector1_AF480FB0: 10
-    - Vector1_CC7180D: 1500
+    - Vector1_CC7180D: 1
+    - Vector1_E199C397: 5
     - Vector1_F326F04: 1
     m_Colors:
     - Color_761E3BF0: {r: 0.94864726, g: 0.9622642, b: 0.9492346, a: 0}
