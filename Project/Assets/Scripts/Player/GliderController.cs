@@ -12,6 +12,7 @@ public class GliderController : MonoBehaviour
     [SerializeField]
     public enum _collison {UpDraft, Oxygen }
     public GameObject boostLight;
+    public GameObject EndGameUI;
 
 
 
@@ -60,6 +61,7 @@ public class GliderController : MonoBehaviour
         windStream.SetActive(false);
 
 
+        EndGameUI.SetActive(false);
     }
 
     private void Update()
@@ -135,8 +137,15 @@ public class GliderController : MonoBehaviour
         if (other.tag == ("Finish"))
         {
             Debug.Log("Finsih");
-            loadLevel.StartWaitToEnd();
+            StartCoroutine("WaitToEndGame");
         }
+    }
+
+    private IEnumerator WaitToEndGame()
+    {
+        EndGameUI.SetActive(true);
+        yield return new WaitForSeconds(3);
+        EndGameUI.SetActive(false);
     }
 
     private void OnCollisionStay(Collision collision)
