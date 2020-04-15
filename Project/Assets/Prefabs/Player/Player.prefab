@@ -10052,9 +10052,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPosition: {fileID: 0}
-  playerForward: {fileID: 0}
   windStream: {fileID: 876402976338633809}
   boostLight: {fileID: 876402977802414127}
+  EndGameUI: {fileID: 0}
   upDraftForwardVelocity: 0.5
   maxCurrentSpeedInUpDraft: 50
   oxygenPlantBoost: 2
@@ -10074,8 +10074,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 876402977763883352}
   rot: {x: 0, y: 0, z: 0}
-  wingsOut: {fileID: 876402976367098305}
-  wingsIn: {fileID: 876402976367098305}
   canTurnUp: 1
   boostFuel: 0
   yAngle: 0
