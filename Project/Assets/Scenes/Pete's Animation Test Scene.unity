@@ -132,6 +132,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6444035526232564164}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &332992537 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 38209f81b82fe404f973edd34ef33ce1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6444035526232564164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1057577945
 GameObject:
   m_ObjectHideFlags: 0
@@ -9846,6 +9852,7 @@ GameObject:
   - component: {fileID: 876402976433880633}
   - component: {fileID: 876402976433880634}
   - component: {fileID: 876402976433880642}
+  - component: {fileID: 876402976433880630}
   - component: {fileID: 876402976433880629}
   m_Layer: 0
   m_Name: Player
@@ -9861,11 +9868,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876402976433880628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 652698ee480102040acb46a677000814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 332992537}
+--- !u!114 &876402976433880630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876402976433880628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c218bb9424e163648b076fc1c1da872e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 332992537}
+  animationScript: {fileID: 876402976433880630}
 --- !u!114 &876402976433880632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9879,9 +9901,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartPosition: {fileID: 232094016}
-  playerForward: {fileID: 0}
   windStream: {fileID: 876402977719984948}
   boostLight: {fileID: 876402976524840778}
+  EndGameUI: {fileID: 0}
   upDraftForwardVelocity: 0.5
   maxCurrentSpeedInUpDraft: 50
   oxygenPlantBoost: 2
@@ -15033,8 +15055,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 876402976433880637}
   rot: {x: 0, y: 0, z: 0}
-  wingsOut: {fileID: 876402977696317092}
-  wingsIn: {fileID: 876402977696317092}
   canTurnUp: 1
   boostFuel: 0
   yAngle: 0
