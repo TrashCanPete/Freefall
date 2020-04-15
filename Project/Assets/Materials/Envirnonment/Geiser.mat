@@ -39,7 +39,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_4BBD05C8:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8ad6aeffc3ec4433fa91f3f5b57d3568, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_757D16ED:
@@ -171,11 +171,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_32BE65BB: 0
+    - Vector1_32BE65BB: 0.1
     - Vector1_34AAD316: 0
+    - Vector1_645B6179: 1.98
     - Vector1_704F258: 0
     - Vector1_7931FF1E: 0
-    - Vector1_ECFE3A08: 0.38
+    - Vector1_ECFE3A08: 0.8
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -326,7 +327,7 @@ Material:
     - Color_4C429F89: {r: 1, g: 1, b: 1, a: 0}
     - Color_663CFF7: {r: 0, g: 0, b: 0, a: 0}
     - Color_BAF6AB9C: {r: 0.735849, g: 0.12842648, b: 0.12842648, a: 0}
-    - Color_EA14033: {r: 0.8207547, g: 0.28085384, b: 0.14324492, a: 0}
+    - Color_EA14033: {r: 0.8207547, g: 0.2808538, b: 0.14324489, a: 1}
     - _BaseColor: {r: 0.8113208, g: 0.44733503, b: 0.28702387, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.8113208, g: 0.44733503, b: 0.28702387, a: 1}
