@@ -79,7 +79,8 @@ public class InputManager : MonoBehaviour
         {
             Application.Quit();
         }
-
+        Debug.Log("vertical " + pitch);
+        Debug.Log("horizontal "+ yaw);
 
 
     }
