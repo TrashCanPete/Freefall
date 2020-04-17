@@ -47,7 +47,7 @@ ModelImporter:
     second: Roll Left
   - first:
       74: 644589263403131068
-    second: Take 001 (1)
+    second: Stalling
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -483,7 +483,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Take 001 (1)
+      name: Stalling
       takeName: Take 001
       internalID: 0
       firstFrame: 365
