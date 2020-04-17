@@ -36,6 +36,18 @@ ModelImporter:
   - first:
       74: 186983411015710181
     second: Roll Right
+  - first:
+      74: -4576982708555260549
+    second: Boost Transition
+  - first:
+      74: -9215930238783567901
+    second: Boost Idle
+  - first:
+      74: 1465369574596688972
+    second: Roll Left
+  - first:
+      74: 644589263403131068
+    second: Take 001 (1)
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -69,7 +81,7 @@ ModelImporter:
       takeName: Take 001
       internalID: 0
       firstFrame: 1
-      lastFrame: 540
+      lastFrame: 740
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -155,7 +167,7 @@ ModelImporter:
       name: Right Turn
       takeName: Take 001
       internalID: 0
-      firstFrame: 155
+      firstFrame: 160
       lastFrame: 185
       wrapMode: 0
       orientationOffsetY: 0
@@ -308,7 +320,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -358,8 +370,124 @@ ModelImporter:
       name: Roll Right
       takeName: Take 001
       internalID: 0
-      firstFrame: 425
-      lastFrame: 540
+      firstFrame: 480
+      lastFrame: 520
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Boost Transition
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 545
+      lastFrame: 625
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Boost Idle
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 625
+      lastFrame: 685
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Roll Left
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 690
+      lastFrame: 730
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: Take 001 (1)
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 365
+      lastFrame: 425
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
