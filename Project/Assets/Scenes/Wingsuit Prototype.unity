@@ -1296,7 +1296,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0.1484375, z: 0.02734375, w: -0.03125}
+  m_BoundingSphereOverride: {x: 0.01953125, y: 0.0859375, z: 0.015625, w: -0.01953125}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1880,11 +1880,6 @@ PrefabInstance:
       propertyPath: EndGameUI
       value: 
       objectReference: {fileID: 1105737049}
-    - target: {fileID: 7636088673735311992, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.142
-      objectReference: {fileID: 0}
     - target: {fileID: 2766690669113946427, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1903,7 +1898,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 853573261}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913384242}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7adbc8b199bf4454eaca1e41a5eee059, type: 3}
@@ -4379,27 +4374,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1875229565}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1913384242 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 876402977763883345, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-    type: 3}
-  m_PrefabInstance: {fileID: 853573261}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1913384253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913384242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cda5f910d07d048f4ae71b2f8b0c5881, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  capemovement: {fileID: 2100000, guid: 880e49ed30cb54b59b3ef7bd25740948, type: 2}
-  Windspeed: 0
-  windSpeedDivide: 250
 --- !u!4 &1950017557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8704529850070546118, guid: 6b23e6f490cdf4740822f791820afd56,

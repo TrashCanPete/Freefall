@@ -8,7 +8,11 @@ public class InputManager : MonoBehaviour
     private FlyingStates flyingStates;
     private RotationController rotationController;
     public AnimationScript animationScript;
-   
+
+    public float minBoost;
+    public float maxBoost;
+    public float boostVariable;
+    private float boostUpdater;
 
     //input variables
     [SerializeField]
@@ -24,16 +28,19 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         animationScript = GetComponent<AnimationScript>();
         rotationController = GetComponent<RotationController>();
         flyingStates = GetComponent<FlyingStates>();
         gliderController = GetComponent<GliderController>();
+
     }
+
 
     // Update is called once per frame
     void Update()
     {
-
+        boostVariable = boostUpdater;
     }
     public void InputData()
     {
@@ -56,7 +63,7 @@ public class InputManager : MonoBehaviour
         if (flyingStates.boostFuel == 0)
         {
             Debug.Log("Out of fuel");
-            gliderController.boostLight.SetActive(false);
+
             flyingStates.isBoosting = false;
 
         }
@@ -65,13 +72,17 @@ public class InputManager : MonoBehaviour
             if (Input.GetButtonDown("Shift"))
             {
                 flyingStates.isBoosting = true;
-                gliderController.boostLight.SetActive(true);
+                boostUpdater = maxBoost;
+
+
                 animationScript.BoostingAnimation();
             }
             else if (Input.GetButtonUp("Shift"))
             {
                 flyingStates.isBoosting = false;
-                gliderController.boostLight.SetActive(false);
+
+                boostUpdater = minBoost;
+
             }
 
         }
