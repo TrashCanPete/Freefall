@@ -5,17 +5,24 @@ using UnityEngine;
 public class CapeMovement : MonoBehaviour
 {
 
-    public FlyingStates flyingStates;
+    private FlyingStates flyingStates;
     public Material capemovement;
-    public float Windspeed;
-    
+    [SerializeField]
+    private float Windspeed;
+    [SerializeField]
+    private float windSpeedDivide;
 
-   
+
+    private void Start()
+    {
+        flyingStates = GetComponent<FlyingStates>();
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        capemovement.SetFloat("Vector1_f973097f", Windspeed);
+        Windspeed = flyingStates.Speed;
+        capemovement.SetFloat("Vector1_6AEB6D23", (Windspeed / windSpeedDivide ));
     }
 }
 
