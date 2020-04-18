@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cape
-  m_Shader: {fileID: -6465566751694194690, guid: debd9c9a31cfc4aae8ad09d04eff3fe9,
+  m_Shader: {fileID: -6465566751694194690, guid: 086f3ef3ed29e4cb3894bf4c92c088d0,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -24,16 +24,35 @@ Material:
         m_Texture: {fileID: 2800000, guid: f3750b71e3f4449cabb2777b03765f03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - Texture2D_40175E96:
+        m_Texture: {fileID: 2800000, guid: 3b6ddcfecfadd4aa78fab1024105c095, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_8C21BEA4:
         m_Texture: {fileID: 2800000, guid: 3b6ddcfecfadd4aa78fab1024105c095, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_CB3FBA6D:
+        m_Texture: {fileID: 2800000, guid: f3750b71e3f4449cabb2777b03765f03, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2DLOD_A97444F2_Texture_1:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_5E1AD078_Out_0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_A4D8D889_Out_0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_6AEB6D23: 0.41959354
+    - Vector1_6AEB6D23: 0.19999948
+    - Vector1_A0555989: 0.74
     - Vector1_C3C12810: 2.15
     - Vector1_F973097F: 0.19
-    m_Colors: []
+    - Vector1_FC2727F2: 0.08
+    m_Colors:
+    - Color_EC76DC76: {r: 0.09545213, g: 0.25995106, b: 0.5188679, a: 0}
