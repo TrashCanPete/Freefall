@@ -9918,6 +9918,7 @@ GameObject:
   - component: {fileID: 876402977423686168}
   - component: {fileID: 876402977423686374}
   - component: {fileID: 876402977423686169}
+  - component: {fileID: 3114957067994467486}
   m_Layer: 0
   m_Name: RightWIndStream
   m_TagString: Untagged
@@ -10772,7 +10773,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 4
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -10825,7 +10826,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -14660,6 +14661,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &3114957067994467486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876402977423686171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0005c38c7fe82f4fb7703c6ace721df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 876402977423686374}
+  flyingStates: {fileID: 876402976663485067}
 --- !u!1 &876402977763883345
 GameObject:
   m_ObjectHideFlags: 0
@@ -14766,7 +14781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136fa4ccd2ccb2842af5c1147e3f8fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPosition: {fileID: 0}
+  StartPosition: {fileID: 8344261458487587589, guid: 670622f70f66b421e84daa01f31dff22,
+    type: 3}
   windStream: {fileID: 876402976338633809}
   boostLight: {fileID: 876402977802414127}
   EndGameUI: {fileID: 0}
@@ -14790,6 +14806,10 @@ MonoBehaviour:
   rb: {fileID: 876402977763883352}
   rot: {x: 0, y: 0, z: 0}
   canTurnUp: 1
+  wingsObj: {fileID: 5092760780805168639}
+  streamOn: 1
+  streamOff: 0
+  streamState: 0
   boostFuel: 0
   yAngle: 0
   Speed: 0
@@ -15000,6 +15020,7 @@ GameObject:
   - component: {fileID: 876402978019747190}
   - component: {fileID: 876402978019747188}
   - component: {fileID: 876402978019747191}
+  - component: {fileID: 1049902410796016967}
   m_Layer: 0
   m_Name: LeftWIndStream
   m_TagString: Untagged
@@ -15854,7 +15875,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 4
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -15907,7 +15928,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -19742,6 +19763,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1049902410796016967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876402978019747177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0005c38c7fe82f4fb7703c6ace721df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 876402978019747188}
+  flyingStates: {fileID: 876402976663485067}
 --- !u!1 &1641469693857364973
 GameObject:
   m_ObjectHideFlags: 0
@@ -20207,6 +20242,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8922655386512629843}
     m_Modifications:
+    - target: {fileID: 5564044880399876383, guid: e4e4780bc898f45f09799fcbe9b8bb4d,
+        type: 3}
+      propertyPath: m_Name
+      value: Jets
+      objectReference: {fileID: 0}
     - target: {fileID: 5564044880399876376, guid: e4e4780bc898f45f09799fcbe9b8bb4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20322,11 +20362,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.17
       objectReference: {fileID: 0}
-    - target: {fileID: 5564044880399876383, guid: e4e4780bc898f45f09799fcbe9b8bb4d,
-        type: 3}
-      propertyPath: m_Name
-      value: Jets
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4e4780bc898f45f09799fcbe9b8bb4d, type: 3}
 --- !u!1001 &4085794190410724328
@@ -20425,11 +20460,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Character_Final
       objectReference: {fileID: 0}
-    - target: {fileID: -7779101231469831562, guid: 38209f81b82fe404f973edd34ef33ce1,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 869c391483a0a46138a10b2c8fcbee41, type: 2}
     - target: {fileID: -6057140222963153312, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
       propertyPath: m_Controller
@@ -20490,16 +20520,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4149469589771533769, guid: 38209f81b82fe404f973edd34ef33ce1,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00007405578
-      objectReference: {fileID: 0}
-    - target: {fileID: -4149469589771533769, guid: 38209f81b82fe404f973edd34ef33ce1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.10006085
-      objectReference: {fileID: 0}
     - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -20525,11 +20545,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: eb1c232dcb6ff5547894c665c9f475a0, type: 2}
-    - target: {fileID: -2486302875367690569, guid: 38209f81b82fe404f973edd34ef33ce1,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: be7ebb7d70601484f8122c18d3a09623, type: 2}
     - target: {fileID: 4474966549656876107, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -20540,6 +20555,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2486302875367690569, guid: 38209f81b82fe404f973edd34ef33ce1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: be7ebb7d70601484f8122c18d3a09623, type: 2}
     - target: {fileID: 8931490864506682176, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -20550,8 +20570,29 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.057052433
       objectReference: {fileID: 0}
+    - target: {fileID: -7779101231469831562, guid: 38209f81b82fe404f973edd34ef33ce1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 869c391483a0a46138a10b2c8fcbee41, type: 2}
+    - target: {fileID: -4149469589771533769, guid: 38209f81b82fe404f973edd34ef33ce1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00007405578
+      objectReference: {fileID: 0}
+    - target: {fileID: -4149469589771533769, guid: 38209f81b82fe404f973edd34ef33ce1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.10006085
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38209f81b82fe404f973edd34ef33ce1, type: 3}
+--- !u!1 &5092760780805168639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2288056045045709662, guid: 38209f81b82fe404f973edd34ef33ce1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6444035525992818337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8922655386512629843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2503565880995284722, guid: 38209f81b82fe404f973edd34ef33ce1,

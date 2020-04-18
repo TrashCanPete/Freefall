@@ -57,9 +57,9 @@ public class GliderController : MonoBehaviour
         animationScript = GetComponent<AnimationScript>();
         loadLevel = GetComponent<LoadLevel>();
 
-        boostLight.SetActive(false);
-        windStream.SetActive(false);
-
+        //boostLight.SetActive(false);
+        //windStream.SetActive(false);
+        flyingStates.WingStreamsOff();
 
         EndGameUI.SetActive(false);
     }
@@ -112,11 +112,30 @@ public class GliderController : MonoBehaviour
         flyingStates.rb.velocity = flyingStates.baseVelocity + flyingStates.addedVelocity;
         if (flyingStates.rb.velocity.magnitude >= 75f)
         {
-            windStream.SetActive(true);
+            if (flyingStates.wingsOut == false)
+            {
+
+            }
+            else if (flyingStates.wingsOut == true)
+            {
+                flyingStates.WingStreamsOn();
+            }
+
+            //windStream.SetActive(true);
         }
         else if (flyingStates.rb.velocity.magnitude <= 125f) 
-        { 
-            windStream.SetActive(false); 
+        {
+
+            if (flyingStates.wingsOut == false)
+            {
+
+            }
+            else if (flyingStates.wingsOut == true)
+            {
+                flyingStates.WingStreamsOff();
+            }
+
+            //windStream.SetActive(false); 
         }
 
         flyingStates.TerminalBoost();

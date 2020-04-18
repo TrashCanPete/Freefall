@@ -19,6 +19,5 @@ public class AirBoost : MonoBehaviour
     {
         var emission = ps.emission;
         emission.rateOverTime = inputManager.boostVariable;
-        //Debug.Log("Emission rate over time " + emission.rateOverTime);
     }
 }

@@ -9,11 +9,17 @@ public class FlyingStates : MonoBehaviour
     // Rotation
     public Vector3 rot;
 
-    private GameObject wingsOut;
-    private GameObject wingsIn;
 
     public bool canTurnUp;
 
+    public GameObject wingsObj;
+
+    //Windstream variables
+    public float streamOn = 4;
+    public float streamOff = 0;
+    public float streamState;
+
+    public bool wingsOut;
 
 
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
@@ -140,6 +146,7 @@ public class FlyingStates : MonoBehaviour
     public bool isBoosting = false;
 
     public float maxBoostFuel;
+
     [SerializeField]
     private float fuelConsumption;
 
@@ -149,11 +156,10 @@ public class FlyingStates : MonoBehaviour
     //Start
     private void Start()
     {
+        wingsOut = true;
         canTurnUp = true;
         //wings out
-        //wingsIn.SetActive(false);
-        //wingsOut.SetActive(true);
-
+        WingsOut();
 
         boostFuel = maxBoostFuel / 2;
         rb = GetComponent<Rigidbody>();
@@ -171,9 +177,9 @@ public class FlyingStates : MonoBehaviour
         //Standard------------------------
         if (yAngle <= diveThreshold && yAngle >= riseThreshold)
         {
-            High = false;
-            Mid = true;
-            Low = false;
+            //High = false;
+            //Mid = true;
+            //Low = false;
 
             ResetSpeedAndForceValues();
 
@@ -190,9 +196,9 @@ public class FlyingStates : MonoBehaviour
         //Diving------------------------------------------
         else if (yAngle >= diveThreshold)
         {
-            High = false;
-            Mid = false;
-            Low = true;
+            //High = false;
+            //Mid = false;
+            //Low = true;
 
             currentTargetSpeed = divingMaxVelocity;
             currentTargetForce = divingForce;
@@ -209,9 +215,10 @@ public class FlyingStates : MonoBehaviour
                     if (terminalDivingRateCounter >= terminalDivingStepCounter)
                     {
                         //wings in
+                        WingsIn();
+
                         isInTerminalVelocity = true;
-                        //wingsIn.SetActive(true);
-                        //wingsOut.SetActive(false);
+
                     }
                     if (isInTerminalVelocity == true)
                     {
@@ -223,9 +230,9 @@ public class FlyingStates : MonoBehaviour
         //Rising-----------------------------------
         else if (yAngle <= riseThreshold)
         {
-            High = true;
-            Mid = false;
-            Low = false;
+            //High = true;
+            //Mid = false;
+            //Low = false;
 
             currentTargetSpeed = risingMaxVelocity;
             currentTargetForce = risingForce;
@@ -273,10 +280,8 @@ public class FlyingStates : MonoBehaviour
             else if (canTerminalBoost == true)
             {
                 //wings out
+                WingsOut();
 
-
-                //wingsIn.SetActive(false);
-                //wingsOut.SetActive(true);
                 baseVelocity += transform.forward * terminalBoostSpeed;
                 canTerminalBoost = false;
             }
@@ -302,6 +307,40 @@ public class FlyingStates : MonoBehaviour
             boostFuel -= fuelConsumption;
         }
     }
+
+
+
+    public void WingsIn()
+    {
+        wingsOut = false;
+        wingsObj.SetActive(false);
+        WingStreamsOff();
+    }
+
+
+
+    public void WingsOut()
+    {
+        wingsOut = true;
+        wingsObj.SetActive(true);
+        WingStreamsOn();
+    }
+
+
+
+    public void WingStreamsOff()
+    {
+        streamState = streamOff;
+    }
+
+
+    public void WingStreamsOn()
+    {
+        streamState = streamOn;
+    }
+
+
+
 
 
 }
