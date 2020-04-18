@@ -65,6 +65,7 @@ public class InputManager : MonoBehaviour
             Debug.Log("Out of fuel");
 
             flyingStates.isBoosting = false;
+            boostUpdater = minBoost;
 
         }
         else if (flyingStates.boostFuel > 0)
@@ -90,8 +91,6 @@ public class InputManager : MonoBehaviour
         {
             Application.Quit();
         }
-        Debug.Log("vertical " + pitch);
-        Debug.Log("horizontal "+ yaw);
 
 
     }
