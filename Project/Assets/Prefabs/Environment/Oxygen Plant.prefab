@@ -70,10 +70,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8704529850070546118}
     m_Modifications:
-    - target: {fileID: 9083861559165434793, guid: b5804d94b8f15774e9e5f3aa003bfee9,
+    - target: {fileID: 4975544865130359207, guid: b5804d94b8f15774e9e5f3aa003bfee9,
         type: 3}
-      propertyPath: m_TagString
-      value: Oxygen
+      propertyPath: m_Name
+      value: Freefall_Plant_Model
       objectReference: {fileID: 0}
     - target: {fileID: 8311382570676509620, guid: b5804d94b8f15774e9e5f3aa003bfee9,
         type: 3}
@@ -145,11 +145,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4975544865130359207, guid: b5804d94b8f15774e9e5f3aa003bfee9,
+    - target: {fileID: 5811350981630318702, guid: b5804d94b8f15774e9e5f3aa003bfee9,
         type: 3}
-      propertyPath: m_Name
-      value: Freefall_Plant_Model
-      objectReference: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f49e3bae1c138db408ce75504cb43cda, type: 2}
     - target: {fileID: 2304720486841431829, guid: b5804d94b8f15774e9e5f3aa003bfee9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -179,6 +179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.42301902
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083861559165434793, guid: b5804d94b8f15774e9e5f3aa003bfee9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Oxygen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5804d94b8f15774e9e5f3aa003bfee9, type: 3}
