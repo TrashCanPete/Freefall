@@ -20,22 +20,37 @@ public class ParticleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        burstController();
-        FadeInController();
+        //burstController();
+        //FadeInController();
     }
 
 
 
     void burstController()
     {
+        if (flyingStates.burstEm == false)
+        {
+        }
+        else if (flyingStates.burstEm == true)
+        {
+            if (wingBurstParticles.isPlaying)
+            {
+                Debug.Log("Burst particles");
+            }
+            var emission = wingBurstParticles.emission;
+            emission.rateOverTime = flyingStates.burstState;
+        }
 
-        var emission = wingBurstParticles.emission;
-        emission.rateOverTime = flyingStates.burstState;
     }
     void FadeInController()
     {
+        if (flyingStates.fadeInEm == false)
+        { }
+        else if (flyingStates.fadeInEm == true)
+        {
+            var emission = FadeInParticles.emission;
+            emission.rateOverTime = flyingStates.fadeInState;
+        }
 
-        var emission = FadeInParticles.emission;
-        emission.rateOverTime = flyingStates.fadeInState;
     }
 }

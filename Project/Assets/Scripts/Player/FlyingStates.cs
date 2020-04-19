@@ -29,6 +29,10 @@ public class FlyingStates : MonoBehaviour
     public float fadeInOn;
     public float fadeInOff;
 
+
+    public bool burstEm;
+    public bool fadeInEm;
+
     public ParticleManager burstParticleManager;
     public ParticleManager fadeInParticleManager;
 
@@ -167,10 +171,12 @@ public class FlyingStates : MonoBehaviour
     //Start
     private void Start()
     {
-        wingsOut = true;
+        burstEm = false;
+        fadeInEm = false;
         canTurnUp = true;
         //wings out
         WingsOut();
+        wingsOut = true;
 
         boostFuel = maxBoostFuel / 2;
         rb = GetComponent<Rigidbody>();
@@ -227,6 +233,7 @@ public class FlyingStates : MonoBehaviour
                     {
                         //wings in
                         WingsIn();
+                        wingsOut = false;
 
                         isInTerminalVelocity = true;
 
@@ -292,6 +299,7 @@ public class FlyingStates : MonoBehaviour
             {
                 //wings out
                 WingsOut();
+                wingsOut = true;
 
                 baseVelocity += transform.forward * terminalBoostSpeed;
                 canTerminalBoost = false;
@@ -326,19 +334,36 @@ public class FlyingStates : MonoBehaviour
     public void WingsIn()
     {
         wingsOut = false;
-        wingsObj.SetActive(false);
-        WingStreamsOff();
-        fadeInState = fadeInOn;
-        StartCoroutine("WingFadeInTimer");
+        if (wingsOut == true)
+        {
+
+        }
+        else if (wingsOut == false)
+        {
+            wingsObj.SetActive(false);
+            WingStreamsOff();
+            fadeInState = fadeInOn;
+            burstState = burstOn;
+            //StartCoroutine("WingFadeInTimer");
+        }
+
+
 
     }
 
     public IEnumerator WingFadeInTimer()
     {
-        yield return new WaitForSeconds(0.5f);
-        fadeInState = fadeInOff;
-        burstState = burstOn;
+        Debug.Log("FadeinStart");
+        fadeInEm = true;
         fadeInParticleManager.FadeInParticles.Play();
+
+        yield return new WaitForSeconds(1f);
+        Debug.Log("FadeinStop");
+        fadeInEm = false;
+        fadeInParticleManager.FadeInParticles.Stop();
+        //fadeInState = fadeInOff;
+
+
 
         StartCoroutine("WingBurstTimer");
     }
@@ -346,8 +371,11 @@ public class FlyingStates : MonoBehaviour
     public IEnumerator WingBurstTimer()
     {
         burstParticleManager.wingBurstParticles.Play();
-        yield return new WaitForSeconds(0.5f);
-        burstState = burstOff;
+        Debug.Log("BurstStart");
+        burstEm = true;
+        yield return new WaitForSeconds(1f);
+        burstParticleManager.wingBurstParticles.Stop();
+        burstEm = false;
     }
 
 
@@ -356,8 +384,16 @@ public class FlyingStates : MonoBehaviour
     public void WingsOut()
     {
         wingsOut = true;
-        wingsObj.SetActive(true);
-        WingStreamsOn();
+        if (wingsOut == false)
+        {
+        }
+        else if (wingsOut == true)
+        {
+            wingsObj.SetActive(true);
+            WingStreamsOn();
+        }
+
+
     }
 
 
