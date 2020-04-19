@@ -73,6 +73,18 @@ public class AnimationScript : MonoBehaviour
     public void BoostingAnimation()
     {
         Debug.Log("Boosting Animation");
+        if (Input.GetButtonDown("Shift"))
+        {
+            anim.SetBool("Boosting", true);
+
+
+            
+        }
+        else if (Input.GetButtonUp("Shift"))
+        {
+            anim.SetBool("Boosting", false);
+
+        }
     }
 
     public void PlayerOxygenPlantAnimation()
