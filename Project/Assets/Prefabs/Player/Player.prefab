@@ -14816,8 +14816,14 @@ MonoBehaviour:
   fadeInState: 0
   fadeInOn: 200
   fadeInOff: 0
+  WingsFadeIn: 0
+  burstEm: 0
+  fadeInEm: 0
+  wingsValue: 0
+  WingsFadeValueBy: 0
   burstParticleManager: {fileID: 4339133337796798015}
   fadeInParticleManager: {fileID: 5002401312137744781}
+  glider: {fileID: 0}
   boostFuel: 0
   yAngle: 0
   Speed: 0

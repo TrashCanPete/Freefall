@@ -29,12 +29,18 @@ public class FlyingStates : MonoBehaviour
     public float fadeInOn;
     public float fadeInOff;
 
-
+    public bool WingsFadeIn;
     public bool burstEm;
     public bool fadeInEm;
 
+    public float wingsValue;
+    [SerializeField]
+    private float WingsFadeValueBy;
+
     public ParticleManager burstParticleManager;
     public ParticleManager fadeInParticleManager;
+
+    public Material glider;
 
 
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
@@ -186,6 +192,18 @@ public class FlyingStates : MonoBehaviour
     private void Update()
     {
         boostFuel = Mathf.Clamp(boostFuel, 0, maxBoostFuel);
+        WingsFader();
+        if (WingsFadeIn == true)
+        {
+            wingsValue = Mathf.Clamp(wingsValue, 0, 1);
+            wingsValue += WingsFadeValueBy * Time.deltaTime;
+        }
+        else if (WingsFadeIn == false)
+        {
+            wingsValue = Mathf.Clamp(wingsValue, 0, 1);
+            wingsValue -= WingsFadeValueBy * Time.deltaTime;
+        }
+
     }
     
     //Start of Method
@@ -329,28 +347,6 @@ public class FlyingStates : MonoBehaviour
 
 
 
-
-
-    public void WingsIn()
-    {
-        wingsOut = false;
-        if (wingsOut == true)
-        {
-
-        }
-        else if (wingsOut == false)
-        {
-            wingsObj.SetActive(false);
-            WingStreamsOff();
-            fadeInState = fadeInOn;
-            burstState = burstOn;
-            //StartCoroutine("WingFadeInTimer");
-        }
-
-
-
-    }
-
     public IEnumerator WingFadeInTimer()
     {
         Debug.Log("FadeinStart");
@@ -380,6 +376,26 @@ public class FlyingStates : MonoBehaviour
 
 
 
+    public void WingsIn()
+    {
+        wingsOut = false;
+        if (wingsOut == true)
+        {
+
+        }
+        else if (wingsOut == false)
+        {
+            //wingsObj.SetActive(false);
+            WingStreamsOff();
+            fadeInState = fadeInOn;
+            burstState = burstOn;
+            WingsFadeIn = true;
+            //StartCoroutine("WingFadeInTimer");
+
+
+        }
+    }
+
 
     public void WingsOut()
     {
@@ -389,14 +405,27 @@ public class FlyingStates : MonoBehaviour
         }
         else if (wingsOut == true)
         {
-            wingsObj.SetActive(true);
+            //wingsObj.SetActive(true);
+
             WingStreamsOn();
+            WingsFadeIn = false;
+
         }
 
 
     }
-
-
+    void WingsFader()
+    {
+        glider.SetFloat("Vector1_40B4CAEF", wingsValue);
+        /*if (WingsFadeIn == true)
+        {
+            glider.SetFloat("Vector1_40B4CAEF", (Mathf.Lerp(1, 0, 0.1f)));
+        }
+        else if (WingsFadeIn == false)
+        {
+            glider.SetFloat("Vector1_40B4CAEF", (Mathf.Lerp(0, 1, 0.1f)));
+        }*/
+    }
 
     public void WingStreamsOff()
     {
