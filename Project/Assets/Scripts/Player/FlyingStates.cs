@@ -21,6 +21,17 @@ public class FlyingStates : MonoBehaviour
 
     public bool wingsOut;
 
+    public float burstState;
+    public float burstOn;
+    public float burstOff;
+
+    public float fadeInState;
+    public float fadeInOn;
+    public float fadeInOff;
+
+    public ParticleManager burstParticleManager;
+    public ParticleManager fadeInParticleManager;
+
 
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
     [Header("Basic Variables")]
@@ -310,12 +321,35 @@ public class FlyingStates : MonoBehaviour
 
 
 
+
+
     public void WingsIn()
     {
         wingsOut = false;
         wingsObj.SetActive(false);
         WingStreamsOff();
+        fadeInState = fadeInOn;
+        StartCoroutine("WingFadeInTimer");
+
     }
+
+    public IEnumerator WingFadeInTimer()
+    {
+        yield return new WaitForSeconds(0.5f);
+        fadeInState = fadeInOff;
+        burstState = burstOn;
+        fadeInParticleManager.FadeInParticles.Play();
+
+        StartCoroutine("WingBurstTimer");
+    }
+
+    public IEnumerator WingBurstTimer()
+    {
+        burstParticleManager.wingBurstParticles.Play();
+        yield return new WaitForSeconds(0.5f);
+        burstState = burstOff;
+    }
+
 
 
 

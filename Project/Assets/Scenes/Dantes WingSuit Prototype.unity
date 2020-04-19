@@ -3324,6 +3324,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 963495541}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1004248115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5002401312137744781, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    type: 3}
+  m_PrefabInstance: {fileID: 1752251070}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a02378048ad2984ebb1cff11d0c4863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1012487642
 GameObject:
   m_ObjectHideFlags: 0
@@ -5622,6 +5634,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 01f9f888c3ddcca4c97c7fcac7c63c0a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b3c02f6e61e6c8408332f08e0c4fb1b, type: 3}
+--- !u!114 &1647291619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4339133337796798015, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    type: 3}
+  m_PrefabInstance: {fileID: 1752251070}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a02378048ad2984ebb1cff11d0c4863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1670251602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 9443a0d11dee9a14996fb1cb69e0621a,
@@ -6163,19 +6187,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 876402976663485067, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: streamOn
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 876402977913173154, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+      propertyPath: burstParticleManager
+      value: 
+      objectReference: {fileID: 1647291619}
+    - target: {fileID: 876402976663485067, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 876402978019747177, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: fadeInParticleManager
+      value: 
+      objectReference: {fileID: 1004248115}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
 --- !u!1 &1754616160
