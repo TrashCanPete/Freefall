@@ -56,8 +56,11 @@ public class InputManager : MonoBehaviour
             pitch = Mathf.Clamp(pitch, 0, 1);
             //pitch = xRotationSpeed * Input.GetAxis("Vertical") * rotationController.currentPitchRotationSpeed * Time.deltaTime;
         }
+        /*
         animationScript.TiltingAnimation();
         animationScript.TurningAnimation();
+        */
+        
 
 
         if (flyingStates.boostFuel == 0)

@@ -22,6 +22,7 @@ public class AnimationScript : MonoBehaviour
         //Calling blend tree function
         Move(x, y);
 
+        
         if (Input.GetButtonDown("Shift"))
         {
             
@@ -32,6 +33,7 @@ public class AnimationScript : MonoBehaviour
         {
             anim.SetBool("Boosting", false);
         }
+        
 
     }
 
@@ -42,6 +44,7 @@ public class AnimationScript : MonoBehaviour
         anim.SetFloat("VelY", y);
     }
 
+    /*
     public void TiltingAnimation()
     {
         if (inputManager.pitch > 0)
@@ -62,6 +65,8 @@ public class AnimationScript : MonoBehaviour
 
     }
 
+
+
     public void TurningAnimation()
     {
         if (inputManager.yaw > 0)
@@ -81,22 +86,11 @@ public class AnimationScript : MonoBehaviour
         }
 
     }
-
-    /*
-    public void BoostingAnimation()
-    {
-        Debug.Log("Boosting Animation");
-        if (Input.GetButtonDown("Shift"))
-        {
-            anim.SetBool("Boosting", true);   
-        }
-
-        else if (Input.GetButtonUp("Shift"))
-        {
-            anim.SetBool("Boosting", false);
-        }
-    }
     */
+
+    
+    
+    
     public void PlayerOxygenPlantAnimation()
     {
         
