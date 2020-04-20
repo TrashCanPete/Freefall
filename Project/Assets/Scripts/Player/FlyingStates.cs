@@ -46,6 +46,9 @@ public class FlyingStates : MonoBehaviour
     public Material rightWing;
     public Material leftWing;
 
+    [SerializeField]
+    private float hexSpeed;
+
 
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
     [Header("Basic Variables")]
@@ -174,6 +177,8 @@ public class FlyingStates : MonoBehaviour
 
     [SerializeField]
     private float fuelConsumption;
+    public ParticleSystem rightHexPS;
+    public ParticleSystem leftHexPS;
 
 
 
@@ -256,6 +261,17 @@ public class FlyingStates : MonoBehaviour
                         //wings in
                         WingsIn();
                         wingsOut = false;
+                        if (burstEm == false)
+                        {
+                            return;
+                        }
+                        else if (burstEm == true)
+                        {
+                            rightHexPS.Play();
+                            leftHexPS.Play();
+                            StartCoroutine("HexWait");
+                        }
+
 
                         isInTerminalVelocity = true;
 
@@ -267,6 +283,7 @@ public class FlyingStates : MonoBehaviour
                 }
             }
         }
+
         //Rising-----------------------------------
         else if (yAngle <= riseThreshold)
         {
@@ -349,34 +366,15 @@ public class FlyingStates : MonoBehaviour
         }
     }
 
-
-
-    public IEnumerator WingFadeInTimer()
+    public IEnumerator HexWait()
     {
-        Debug.Log("FadeinStart");
-        fadeInEm = true;
-        fadeInParticleManager.FadeInParticles.Play();
 
-        yield return new WaitForSeconds(1f);
-        Debug.Log("FadeinStop");
-        fadeInEm = false;
-        fadeInParticleManager.FadeInParticles.Stop();
-        //fadeInState = fadeInOff;
-
-
-
-        StartCoroutine("WingBurstTimer");
-    }
-
-    public IEnumerator WingBurstTimer()
-    {
-        burstParticleManager.wingBurstParticles.Play();
-        Debug.Log("BurstStart");
-        burstEm = true;
-        yield return new WaitForSeconds(1f);
-        burstParticleManager.wingBurstParticles.Stop();
+        yield return new WaitForSeconds(hexSpeed);
         burstEm = false;
+        rightHexPS.Stop();
+        leftHexPS.Stop();
     }
+
 
 
 
@@ -408,6 +406,7 @@ public class FlyingStates : MonoBehaviour
 
             WingStreamsOn();
             WingsFadeIn = false;
+            burstEm = true;
 
         }
 
@@ -417,7 +416,6 @@ public class FlyingStates : MonoBehaviour
     {
         rightWing.SetFloat("Vector1_40B4CAEF", wingsValue);
         leftWing.SetFloat("Vector1_8E308617", wingsValue);
-
     }
 
     public void WingStreamsOff()
