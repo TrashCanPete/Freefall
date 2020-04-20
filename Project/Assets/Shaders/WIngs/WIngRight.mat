@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WIngs
+  m_Name: WIngRight
   m_Shader: {fileID: -6465566751694194690, guid: e37bf2a0de758224e96bfab3c06b4d5c,
     type: 3}
   m_ShaderKeywords: 
@@ -25,13 +25,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_12B8F9D3: 0.003
+    - Vector1_12B8F9D3: 0.005
     - Vector1_2B8755D6: 0.1
     - Vector1_40B4CAEF: 0
     - Vector1_4ADB0C3B: 0
     - Vector1_8B846E9B: 100
     - Vector1_99F983C2: 12.56
-    - Vector1_A03F25B4: 0.15
+    - Vector1_A03F25B4: 0.04
     - Vector1_B0B9DD1C: 5.134
     - Vector1_D4CE4E21: 10
     - Vector1_F77761B7: 2.27
