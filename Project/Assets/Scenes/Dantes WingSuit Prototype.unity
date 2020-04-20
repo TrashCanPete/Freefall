@@ -6195,6 +6195,21 @@ PrefabInstance:
       propertyPath: fadeInParticleManager
       value: 
       objectReference: {fileID: 1004248115}
+    - target: {fileID: 1680944197373238998, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57757162efb3f41258f2d0d8c63803ed, type: 2}
+    - target: {fileID: 1680944197373238998, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57757162efb3f41258f2d0d8c63803ed, type: 2}
+    - target: {fileID: 7455593138074227434, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57757162efb3f41258f2d0d8c63803ed, type: 2}
     - target: {fileID: 4271539934632380068, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
