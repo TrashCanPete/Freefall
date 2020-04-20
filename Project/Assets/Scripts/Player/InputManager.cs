@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     private RotationController rotationController;
     public AnimationScript animationScript;
     public AudioManager audioManager;
+    public ParticleSystem boostPop;
 
     public float minBoost;
     public float maxBoost;
@@ -80,6 +81,7 @@ public class InputManager : MonoBehaviour
                 flyingStates.isBoosting = true;
                 boostUpdater = maxBoost;
                 audioManager.PlayAudio("Boost");
+                boostPop.Play();
             }
 
             else if (Input.GetButtonUp("Shift"))
