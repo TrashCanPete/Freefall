@@ -15224,12 +15224,12 @@ MonoBehaviour:
   rot: {x: 0, y: 0, z: 0}
   canTurnUp: 1
   wingsObj: {fileID: 238795846}
-  streamOn: 4
+  streamOn: 0
   streamOff: 0
   streamState: 0
   wingsOut: 0
   burstState: 0
-  burstOn: 100
+  burstOn: 0
   burstOff: 0
   fadeInState: 0
   fadeInOn: 200

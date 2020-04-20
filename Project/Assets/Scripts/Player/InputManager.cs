@@ -74,10 +74,8 @@ public class InputManager : MonoBehaviour
             {
                 flyingStates.isBoosting = true;
                 boostUpdater = maxBoost;
-
-
-                animationScript.BoostingAnimation();
             }
+
             else if (Input.GetButtonUp("Shift"))
             {
                 flyingStates.isBoosting = false;
