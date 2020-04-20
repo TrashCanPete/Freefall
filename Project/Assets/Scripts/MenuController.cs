@@ -8,8 +8,12 @@ public class MenuController : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject mainMenuUI;
     public GameObject pauseMenuUI;
+    public AudioManager audioManager;
 
-
+    private void Awake()
+    {
+        FindObjectOfType<AudioManager>().StopPlayingAudio("Boost");
+    }
     private void Start()
     {
         
