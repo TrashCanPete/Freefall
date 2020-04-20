@@ -40,6 +40,8 @@ public class GliderController : MonoBehaviour
     private AnimationScript animationScript;
     private LoadLevel loadLevel;
 
+    public AudioManager audioManager;
+
 
     //Start
     private void Start()
@@ -152,6 +154,7 @@ public class GliderController : MonoBehaviour
         else if (other.tag == ("Oxygen"))
         {
             UpDraftCounter(_collison.Oxygen);
+            FindObjectOfType<AudioManager>().PlayAudio("Pop");
         }
         if (other.tag == ("Finish"))
         {

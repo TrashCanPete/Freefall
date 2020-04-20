@@ -66,4 +66,11 @@ MonoBehaviour:
     loop: 1
     mute: 0
     source: {fileID: 0}
+  - name: Pop
+    clip: {fileID: 8300000, guid: 2fa22d08e37730941a0f0ea685f9e4b2, type: 3}
+    volumn: 0.3
+    pitch: 1
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
   songs: []

@@ -2538,6 +2538,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloudDisc
       objectReference: {fileID: 0}
+    - target: {fileID: -5958392120779131566, guid: b1542067c391124419720d05f07ca946,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4584141467972674908, guid: b1542067c391124419720d05f07ca946,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5105d4dc4e4c3864baa604bde0da6337, type: 2}
     - target: {fileID: -4216859302048453862, guid: b1542067c391124419720d05f07ca946,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2608,16 +2618,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 16
       objectReference: {fileID: 0}
-    - target: {fileID: -5958392120779131566, guid: b1542067c391124419720d05f07ca946,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -11.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -4584141467972674908, guid: b1542067c391124419720d05f07ca946,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5105d4dc4e4c3864baa604bde0da6337, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1542067c391124419720d05f07ca946, type: 3}
 --- !u!1 &1323078624 stripped
@@ -4612,6 +4612,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5987221263753901709, guid: 3d4d12fa85b40094bbcb37b76a7fbd01,
+        type: 3}
+      propertyPath: sounds.Array.data[3].loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5987221263753901708, guid: 3d4d12fa85b40094bbcb37b76a7fbd01,
         type: 3}
       propertyPath: m_Name
