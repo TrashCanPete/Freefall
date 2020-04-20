@@ -7,23 +7,20 @@ public class MenuController : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject mainMenuUI;
-    public GameObject fade;
-    public GameObject fadeBlack;
     public GameObject pauseMenuUI;
 
 
     private void Start()
     {
-        Time.timeScale = 0f;
+        
     }
 
     public void PlayGame()
     {
-        Time.timeScale = 1f;
+        LoadGame();
         mainMenuUI.SetActive(false);
         pauseMenuUI.SetActive(false);
-        fade.SetActive(true);
-        fadeBlack.SetActive(true);
+        
         
 
     }
@@ -54,8 +51,7 @@ public class MenuController : MonoBehaviour
     {
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
-        fade.SetActive(false);
-        fadeBlack.SetActive(false);
+        
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
@@ -66,8 +62,12 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadScene()
+    public void LoadGame()
     {
-        SceneManager.LoadScene("LevelBlockout");
+        SceneManager.LoadScene("Peter's Test Scene");
+    }
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

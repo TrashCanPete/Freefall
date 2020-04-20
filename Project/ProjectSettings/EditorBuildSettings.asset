@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Finn Test Scene.unity
     guid: 31ec4871f696961439e96580eba044ad
+  - enabled: 1
+    path: Assets/Scenes/Peter's Test Scene.unity
+    guid: 7760f0062f74a04489c93e6c19f97e7d
   m_configObjects: {}
