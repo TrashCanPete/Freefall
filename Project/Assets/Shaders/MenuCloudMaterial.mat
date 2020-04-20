@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MenuCloudMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 5b6f8cd640c20094d973228610cb0d6a,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_118F9AE3: 1
+    - Vector1_160035B9: 10
+    - Vector1_2B82D60C: 1
+    - Vector1_2E07F5CF: 2
+    - Vector1_4A85707F: 1
+    - Vector1_53879FF9: 100
+    - Vector1_5E914204: 1
+    - Vector1_6EF1F52E: 3
+    - Vector1_6FA2E258: 1
+    - Vector1_6FC0738F: 0.1
+    - Vector1_767C2BCB: 0.1
+    - Vector1_7C6FDCBA: 1
+    - Vector1_7DCA2CFD: 2
+    - Vector1_A73DCC8E: 1
+    - Vector1_AF480FB0: 10
+    - Vector1_CC7180D: 0
+    - Vector1_E199C397: 5
+    - Vector1_F326F04: 0
+    m_Colors:
+    - Color_761E3BF0: {r: 0.8416696, g: 0.9061152, b: 0.9245283, a: 0}
+    - Color_9CF0A665: {r: 0.5802777, g: 0.75471693, b: 0.75471693, a: 0}
+    - Vector4_46291EA8: {r: 0, g: 1, b: -1, a: 2}
+    - Vector4_58BB93F7: {r: 1, g: 0, b: 0, a: 0}
