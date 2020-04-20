@@ -37,10 +37,14 @@ public class FlyingStates : MonoBehaviour
     [SerializeField]
     private float WingsFadeValueBy;
 
+    [SerializeField]
+    private float wingsOutMultiplyer;
+
     public ParticleManager burstParticleManager;
     public ParticleManager fadeInParticleManager;
 
-    public Material glider;
+    public Material rightWing;
+    public Material leftWing;
 
 
     //basic variable trackers------------------------------basic variable trackers------------------------------basic variable trackers------------------------------
@@ -201,7 +205,7 @@ public class FlyingStates : MonoBehaviour
         else if (WingsFadeIn == false)
         {
             wingsValue = Mathf.Clamp(wingsValue, 0, 1);
-            wingsValue -= WingsFadeValueBy * Time.deltaTime;
+            wingsValue -= (WingsFadeValueBy + wingsOutMultiplyer ) * Time.deltaTime;
         }
 
     }
@@ -385,14 +389,10 @@ public class FlyingStates : MonoBehaviour
         }
         else if (wingsOut == false)
         {
-            //wingsObj.SetActive(false);
             WingStreamsOff();
             fadeInState = fadeInOn;
             burstState = burstOn;
             WingsFadeIn = true;
-            //StartCoroutine("WingFadeInTimer");
-
-
         }
     }
 
@@ -405,7 +405,6 @@ public class FlyingStates : MonoBehaviour
         }
         else if (wingsOut == true)
         {
-            //wingsObj.SetActive(true);
 
             WingStreamsOn();
             WingsFadeIn = false;
@@ -416,15 +415,9 @@ public class FlyingStates : MonoBehaviour
     }
     void WingsFader()
     {
-        glider.SetFloat("Vector1_40B4CAEF", wingsValue);
-        /*if (WingsFadeIn == true)
-        {
-            glider.SetFloat("Vector1_40B4CAEF", (Mathf.Lerp(1, 0, 0.1f)));
-        }
-        else if (WingsFadeIn == false)
-        {
-            glider.SetFloat("Vector1_40B4CAEF", (Mathf.Lerp(0, 1, 0.1f)));
-        }*/
+        rightWing.SetFloat("Vector1_40B4CAEF", wingsValue);
+        leftWing.SetFloat("Vector1_8E308617", wingsValue);
+
     }
 
     public void WingStreamsOff()
