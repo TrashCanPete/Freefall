@@ -14920,8 +14920,11 @@ MonoBehaviour:
   offSet: 1
   maxFOV: 70
   minFOV: 60
+  baseFOV: 0
+  fovDivision: 0
   cameraSpeed: 0
   cameraSpeedOffset: 10
+  playerRB: {fileID: 876402977763883352}
 --- !u!114 &876402977763883303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14935,7 +14938,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationScript: {fileID: 876402977763883358}
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 5987221263753901709, guid: 3d4d12fa85b40094bbcb37b76a7fbd01,
+    type: 3}
   boostPop: {fileID: 7855041421544398309}
   minBoost: 0
   maxBoost: 70

@@ -8,7 +8,6 @@ public class MenuController : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject mainMenuUI;
     public GameObject pauseMenuUI;
-    public AudioManager audioManager;
 
     
     private void Start()
@@ -66,7 +65,7 @@ public class MenuController : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Peter's Test Scene");
+        SceneManager.LoadScene("Main_GameScene");
     }
     public void QuitToMenu()
     {

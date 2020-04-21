@@ -158,9 +158,13 @@ public class GliderController : MonoBehaviour
             UpDraftCounter(_collison.Oxygen);
             FindObjectOfType<AudioManager>().PlayAudio("Pop");
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.tag == ("Finish"))
         {
-            Debug.Log("Finsih");
+            Debug.Log("Finish");
             StartCoroutine("WaitToEndGame");
         }
     }
@@ -168,7 +172,7 @@ public class GliderController : MonoBehaviour
     private IEnumerator WaitToEndGame()
     {
         EndGameUI.SetActive(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1.5f);
         EndGameUI.SetActive(false);
         SceneManager.LoadScene(0);
     }

@@ -35,6 +35,7 @@ public class InputManager : MonoBehaviour
         rotationController = GetComponent<RotationController>();
         flyingStates = GetComponent<FlyingStates>();
         gliderController = GetComponent<GliderController>();
+        audioManager = GetComponent<AudioManager>();
         
     }
 
@@ -80,7 +81,7 @@ public class InputManager : MonoBehaviour
             {
                 flyingStates.isBoosting = true;
                 boostUpdater = maxBoost;
-                audioManager.PlayAudio("Boost");
+                FindObjectOfType<AudioManager>().PlayAudio("Boost");
                 boostPop.Play();
             }
 
