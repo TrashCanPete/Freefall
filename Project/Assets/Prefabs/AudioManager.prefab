@@ -60,17 +60,17 @@ MonoBehaviour:
     mute: 0
     source: {fileID: 0}
   - name: Boost
-    clip: {fileID: 8300000, guid: 9e50621842bda5249a19119c23984513, type: 3}
+    clip: {fileID: 8300000, guid: 0cf3d71e8a2134df78a89bf364af0497, type: 3}
     volumn: 0.3
     pitch: 1
     loop: 1
     mute: 0
     source: {fileID: 0}
   - name: Pop
-    clip: {fileID: 8300000, guid: 2fa22d08e37730941a0f0ea685f9e4b2, type: 3}
+    clip: {fileID: 8300000, guid: 7b4d369a32dea4ac8ad57a5d5e04aa8f, type: 3}
     volumn: 0.3
     pitch: 1
-    loop: 1
+    loop: 0
     mute: 0
     source: {fileID: 0}
   - name: OutOfFuel
