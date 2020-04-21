@@ -10,13 +10,10 @@ public class MenuController : MonoBehaviour
     public GameObject pauseMenuUI;
     public AudioManager audioManager;
 
-    private void Awake()
-    {
-        FindObjectOfType<AudioManager>().StopPlayingAudio("Boost");
-    }
+    
     private void Start()
     {
-        
+        Time.timeScale = 1f;
     }
 
     public void PlayGame()
@@ -53,6 +50,7 @@ public class MenuController : MonoBehaviour
 
     void Pause()
     {
+        Debug.Log("Paused");
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
         
