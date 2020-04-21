@@ -73,6 +73,11 @@ public class InputManager : MonoBehaviour
             flyingStates.isBoosting = false;
             boostUpdater = minBoost;
             FindObjectOfType<AudioManager>().StopPlayingAudio("Boost");
+            if (Input.GetButtonDown("Shift"))
+            {
+                FindObjectOfType<AudioManager>().PlayAudio("OutOfBoost");
+            }
+
 
         }
         else if (flyingStates.boostFuel > 0)

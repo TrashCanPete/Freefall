@@ -73,4 +73,11 @@ MonoBehaviour:
     loop: 1
     mute: 0
     source: {fileID: 0}
+  - name: OutOfFuel
+    clip: {fileID: 8300000, guid: 21b8e5bfb4093418f94af1b758ba581e, type: 3}
+    volumn: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
   songs: []
