@@ -33,7 +33,29 @@ public class AnimationScript : MonoBehaviour
         {
             anim.SetBool("Boosting", false);
         }
-        
+
+        if (Input.GetButtonDown("Roll_Right"))
+        {
+
+            anim.SetBool("Rolling_Right", true);
+        }
+
+        else if (Input.GetButtonUp("Roll_Right"))
+        {
+            anim.SetBool("Rolling_Right", false);
+        }
+
+        if (Input.GetButtonDown("Roll_Left"))
+        {
+
+            anim.SetBool("Rolling_Left", true);
+        }
+
+        else if (Input.GetButtonUp("Roll_Left"))
+        {
+            anim.SetBool("Rolling_Left", false);
+        }
+
 
     }
 
