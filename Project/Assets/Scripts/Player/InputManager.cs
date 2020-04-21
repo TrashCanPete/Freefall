@@ -66,17 +66,18 @@ public class InputManager : MonoBehaviour
         
 
 
-        if (flyingStates.boostFuel == 0)
+        if (flyingStates.boostFuel <= 0)
         {
             Debug.Log("Out of fuel");
+            if (Input.GetButtonDown("Shift"))
+            {
+                FindObjectOfType<AudioManager>().PlayAudio("OutOfFuel");
+            }
 
             flyingStates.isBoosting = false;
             boostUpdater = minBoost;
             FindObjectOfType<AudioManager>().StopPlayingAudio("Boost");
-            if (Input.GetButtonDown("Shift"))
-            {
-                FindObjectOfType<AudioManager>().PlayAudio("OutOfBoost");
-            }
+
 
 
         }
