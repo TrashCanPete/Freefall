@@ -735,6 +735,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 803678194}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &465604759 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 876402977763883352, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+    type: 3}
+  m_PrefabInstance: {fileID: 853573261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &526264457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1788,6 +1794,26 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 772881407}
+    - target: {fileID: 876402977763883359, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: playerRB
+      value: 
+      objectReference: {fileID: 465604759}
+    - target: {fileID: 876402977763883359, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: baseFOV
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 876402977763883359, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: fovDivision
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 876402977763883359, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: cameraSpeedOffset
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
 --- !u!114 &853573262 stripped
@@ -4469,6 +4495,12 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 772881407}
+    - target: {fileID: 1111048637249148881, guid: 5126c5fe0a335c9488f6b1315825f62b,
+        type: 3}
+      propertyPath: mainMenuUI
+      value: 
+      objectReference: {fileID: 7394914441085846046, guid: 7bd9acb9fda102f4a88fd6237cd85d70,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5126c5fe0a335c9488f6b1315825f62b, type: 3}
 --- !u!4 &2086917057 stripped

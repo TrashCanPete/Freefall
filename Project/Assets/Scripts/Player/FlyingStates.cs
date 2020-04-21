@@ -340,7 +340,7 @@ public class FlyingStates : MonoBehaviour
                 WingsOut();
                 wingsOut = true;
 
-                baseVelocity += transform.forward * terminalBoostSpeed;
+                //baseVelocity += transform.forward * terminalBoostSpeed;
                 canTerminalBoost = false;
             }
         }

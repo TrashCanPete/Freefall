@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class CamFollow : MonoBehaviour
 {
@@ -34,11 +36,18 @@ public class CamFollow : MonoBehaviour
     [SerializeField]
     public float minFOV;
 
+    [SerializeField]
+    private float baseFOV;
+
+    [SerializeField]
+    private float fovDivision;
 
     [SerializeField]
     private float cameraSpeed;
     [SerializeField]
     private float cameraSpeedOffset;
+
+    public Rigidbody playerRB;
 
 
 
@@ -58,7 +67,8 @@ public class CamFollow : MonoBehaviour
     public void CameraFollow()
     {
         //3.5 0.75 close 7 2 far
-
+        //var localVel = transform.InverseTransformDirection(playerRB.velocity);
+        //Camera.main.fieldOfView = baseFOV + (localVel.z / fovDivision);
         Camera.main.fieldOfView = Mathf.Abs(flyingStates.Speed / offSet + cameraSpeedOffset);
         Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFOV, maxFOV);
         Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + transform.up * (camHeightDist);

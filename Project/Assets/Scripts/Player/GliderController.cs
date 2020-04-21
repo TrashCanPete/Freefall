@@ -20,6 +20,8 @@ public class GliderController : MonoBehaviour
     private float colliderXOut = 2.4f;
     private BoxCollider playerCollider;
 
+    private float oxygenBoostStrength;
+
 
     //UpDraft Variables------------------------------------UpDraft Variables------------------------------------UpDraft Variables------------------------------------
     [Header("Up Draft Variables")]
@@ -175,7 +177,7 @@ public class GliderController : MonoBehaviour
     {
         if (collision.gameObject.tag == ("Obstacle"))
         {
-            transform.position = StartPosition.transform.position;
+            SceneManager.LoadScene("Main_GameScene");
         }
     }
 
@@ -207,7 +209,7 @@ public class GliderController : MonoBehaviour
         else if (col == _collison.Oxygen)
         {
             //Slows you down
-            flyingStates.baseVelocity *= (0.5f * oxygenPlantBoost);
+            //flyingStates.baseVelocity *= (0.5f * oxygenPlantBoost);
 
             animationScript.PlayerOxygenPlantAnimation();
 
@@ -224,11 +226,14 @@ public class GliderController : MonoBehaviour
     }
     public void OxygenPlantPush( float _OxygenBoostStrength, int _AddOxygen)
     {
-        flyingStates.addedVelocity += (transform.forward * _OxygenBoostStrength);
+
         flyingStates.boostFuel += _AddOxygen;
     }
 
-
+    void PlantAddSpeed()
+    {
+        flyingStates.addedVelocity += (transform.forward * oxygenBoostStrength);
+    }
 
     //Debugging----------------------------------------------Debugging----------------------------------------------Debugging----------------------------------------------
 
