@@ -1,0 +1,105 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="WaterDrop_data" version="1.3.0" audacityversion="2.3.2" sel0="0.0000000000" sel1="0.0000000000" vpos="224" h="0.0000000000" zoom="1062.2390569210" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="10 FX3352 Mouth Pop 2" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.316228" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="52933">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fc63.au" len="52933" min="-0.947479" max="0.782684" rms="0.044047"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="10 FX3352 Mouth Pop 2" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.316228" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="52933">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f8d9.au" len="52933" min="-0.947601" max="0.782684" rms="0.044058"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Cracksplash" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="48000" gain="0.079433" pan="0.0" colorindex="0">
+		<waveclip offset="0.11483333" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="37000">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f35c.au" len="37000" min="-0.471194" max="0.508236" rms="0.026267"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Cracksplash" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="48000" gain="0.079433" pan="0.0" colorindex="0">
+		<waveclip offset="0.11483333" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="37000">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fb14.au" len="37000" min="-0.491286" max="0.611974" rms="0.029754"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Lildrip" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="48000" gain="2.818383" pan="0.0" colorindex="0">
+		<waveclip offset="-0.03012500" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="19762">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1ff59.au" len="19762" min="-0.074707" max="0.074799" rms="0.010672"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Lildrip" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="48000" gain="2.818383" pan="0.0" colorindex="0">
+		<waveclip offset="-0.03012500" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="19762">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fedd.au" len="19762" min="-0.074707" max="0.074799" rms="0.010672"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Waterdropbong" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.177828" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="20810">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fcaa.au" len="20810" min="-0.797516" max="0.82099" rms="0.066191"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Waterdropbong" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.177828" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="20810">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fd51.au" len="20810" min="-0.797524" max="0.820993" rms="0.066191"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="LastDrop" channel="0" linked="1" mute="0" solo="0" height="153" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="-0.00659864" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="11499">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f93e.au" len="11499" min="-0.055847" max="0.143494" rms="0.005406"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="LastDrop" channel="1" linked="0" mute="0" solo="0" height="147" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="-0.00659864" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="11499">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f423.au" len="11499" min="-0.084076" max="0.171387" rms="0.007932"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
