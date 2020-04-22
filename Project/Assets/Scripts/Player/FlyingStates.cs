@@ -322,7 +322,6 @@ public class FlyingStates : MonoBehaviour
             }
         }
     }
-    //End of Method
 
     //Boost using Terminal Velocity-------------------Boost using Terminal Velocity-------------------Boost using Terminal Velocity-------------------
     public void TerminalBoost()

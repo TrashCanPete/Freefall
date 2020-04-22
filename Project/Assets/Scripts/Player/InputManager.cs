@@ -40,14 +40,12 @@ public class InputManager : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         boostVariable = boostUpdater;
     }
     public void InputData()
     {
-        //Getting the input data for rotatiing
         yaw = yRotationSpeed * Input.GetAxis("Horizontal") * rotationController.currentYawRotationSpeed * Time.deltaTime;
 
         if (flyingStates.canTurnUp == true)
@@ -57,12 +55,7 @@ public class InputManager : MonoBehaviour
         else if (flyingStates.canTurnUp == false)
         {
             pitch = Mathf.Clamp(pitch, 0, 1);
-            //pitch = xRotationSpeed * Input.GetAxis("Vertical") * rotationController.currentPitchRotationSpeed * Time.deltaTime;
         }
-        /*
-        animationScript.TiltingAnimation();
-        animationScript.TurningAnimation();
-        */
         
 
 

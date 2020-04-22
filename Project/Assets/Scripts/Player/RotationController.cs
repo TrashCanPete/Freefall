@@ -11,7 +11,7 @@ public class RotationController : MonoBehaviour
     [SerializeField]
     private float maxXAngle;
 
-    [Header("Yaw Speeds - Up and Down")]
+    [Header("Yaw Speeds - Left and Right")]
     //Yaw-------------------------
     public float currentYawRotationSpeed;
     [SerializeField]
@@ -19,9 +19,12 @@ public class RotationController : MonoBehaviour
     [SerializeField]
     private float minYawSpeedRotation;
     [SerializeField]
-    private float YawrotationChangeRate;
+    private float yawRotationChangeRate;
+    [SerializeField]
+    private float wingsInYawRotation;
 
-    [Header("Pitch Speeds - Left and Right")]
+
+    [Header("Pitch Speeds - Up and Down")]
     //Pitch--------------------
     public float currentPitchRotationSpeed;
     [SerializeField]
@@ -29,8 +32,11 @@ public class RotationController : MonoBehaviour
     [SerializeField]
     private float minPitchSpeedRotation;
     [SerializeField]
-    private float PitchrotationChangeRate;
+    private float pitchRotationChangeRate;
 
+
+
+    [Header("References")]
 
     public GameObject meshGrp;
 
@@ -38,14 +44,12 @@ public class RotationController : MonoBehaviour
     private FlyingStates flyingStates;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         flyingStates = GetComponent<FlyingStates>();
         input = GetComponent<InputManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
     }
@@ -68,13 +72,18 @@ public class RotationController : MonoBehaviour
     {
         if (flyingStates.Speed <= 100)
         {
-            currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, maxPitchSpeedRotation, PitchrotationChangeRate);
-            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, maxYawSpeedRotation, YawrotationChangeRate);
+            currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, maxPitchSpeedRotation, pitchRotationChangeRate);
+            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, maxYawSpeedRotation, yawRotationChangeRate);
         }
         else if (flyingStates.Speed >= 100)
         {
-            currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, minPitchSpeedRotation, PitchrotationChangeRate);
-            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, minYawSpeedRotation, YawrotationChangeRate);
+            currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, minPitchSpeedRotation, pitchRotationChangeRate);
+            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, minYawSpeedRotation, yawRotationChangeRate);
+        }
+        else if (flyingStates.wingsOut == false)
+        {
+            currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, wingsInYawRotation, yawRotationChangeRate);
+            //currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, currentPitchRotationSpeed, pitchRotationChangeRate);
         }
     }
 
@@ -101,7 +110,5 @@ public class RotationController : MonoBehaviour
     {
         
     }
-
-
 
 }
