@@ -43,6 +43,7 @@ public class GliderController : MonoBehaviour
     private LoadLevel loadLevel;
 
     public AudioManager audioManager;
+    public ParticleSystem plantPopPS;
 
 
     //Start
@@ -66,6 +67,8 @@ public class GliderController : MonoBehaviour
         flyingStates.WingStreamsOff();
 
         EndGameUI.SetActive(false);
+
+        plantPopPS.Stop();
     }
 
     private void Update()
@@ -153,11 +156,7 @@ public class GliderController : MonoBehaviour
             Debug.Log("Col Trigger UpDraft");
             UpDraftCounter(_collison.UpDraft);
         }
-        else if (other.tag == ("Oxygen"))
-        {
-            UpDraftCounter(_collison.Oxygen);
-            FindObjectOfType<AudioManager>().PlayAudio("Pop");
-        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -167,7 +166,22 @@ public class GliderController : MonoBehaviour
             Debug.Log("Finish");
             StartCoroutine("WaitToEndGame");
         }
+        else if (other.tag == ("Oxygen"))
+        {
+            UpDraftCounter(_collison.Oxygen);
+
+            FindObjectOfType<AudioManager>().PlayAudio("Pop");
+            plantPopPS.Play();
+            //StartCoroutine("PlantBurstTimer");
+
+        }
     }
+    IEnumerator PlantBurstTimer()
+    {
+        yield return new WaitForSeconds(0.2f);
+        plantPopPS.Stop();
+    }
+
 
     private IEnumerator WaitToEndGame()
     {

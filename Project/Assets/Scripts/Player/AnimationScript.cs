@@ -12,6 +12,9 @@ public class AnimationScript : MonoBehaviour
     {
         animationScript = GetComponent<AnimationScript>();
         inputManager = GetComponent<InputManager>();
+
+        anim.SetBool("Rolling_Left", false);
+
     }
 
     // Update is called once per frame

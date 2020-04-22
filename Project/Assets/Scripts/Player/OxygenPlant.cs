@@ -11,13 +11,23 @@ public class OxygenPlant : MonoBehaviour
     private int oxygen;
     [SerializeField]
     private FlyingStates flyingStates;
+    private GameObject thisGO;
 
+    [SerializeField]
+    private SkinnedMeshRenderer plantRenderer;
+    [SerializeField]
+    public ParticleSystem spores;
+
+    //public ParticleSystem plantPopPS;
     public AnimationScript animationScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        plantRenderer = GetComponent<SkinnedMeshRenderer>();
+
+        thisGO = this.gameObject;
         flyingStates = GetComponent<FlyingStates>();
     }
 
@@ -32,8 +42,16 @@ public class OxygenPlant : MonoBehaviour
         if (other.tag == ("Player"))
         {
             other.GetComponent<GliderController>().OxygenPlantPush ( windStrength ,oxygen);
-            Destroy(gameObject);
 
+            plantRenderer.enabled = false;
+            StartCoroutine("WaitToDestroy");
         }
     }
+
+    IEnumerator WaitToDestroy()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
+
 }

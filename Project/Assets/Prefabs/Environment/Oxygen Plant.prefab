@@ -4801,6 +4801,9 @@ MonoBehaviour:
   oxygen: 25
   flyingStates: {fileID: 876402976663485067, guid: c40fecc86b0a2f242be8fde29d1ccc68,
     type: 3}
+  plantRenderer: {fileID: 0}
+  spores: {fileID: 1808209418}
+  plantPopPS: {fileID: 0}
   animationScript: {fileID: 876402977763883358, guid: c40fecc86b0a2f242be8fde29d1ccc68,
     type: 3}
 --- !u!1 &8704529850070546168
@@ -4831,22 +4834,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2255529564270458319}
-  - {fileID: 1665153712}
+  - {fileID: 1650491449235154532}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5606274549411889064
+--- !u!1001 &6569280459798815612
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 8704529850070546118}
     m_Modifications:
-    - target: {fileID: 5606274548828865799, guid: 0d2a01e485d7a407d80dccb007dfee25,
-        type: 3}
-      propertyPath: m_Name
-      value: Spash
-      objectReference: {fileID: 0}
     - target: {fileID: 5606274548828865816, guid: 0d2a01e485d7a407d80dccb007dfee25,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4902,13 +4900,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5606274548828865799, guid: 0d2a01e485d7a407d80dccb007dfee25,
+        type: 3}
+      propertyPath: m_Name
+      value: PlantSpash
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d2a01e485d7a407d80dccb007dfee25, type: 3}
---- !u!4 &1665153712 stripped
+--- !u!4 &1650491449235154532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5606274548828865816, guid: 0d2a01e485d7a407d80dccb007dfee25,
     type: 3}
-  m_PrefabInstance: {fileID: 5606274549411889064}
+  m_PrefabInstance: {fileID: 6569280459798815612}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7789739001798241915
 PrefabInstance:
@@ -5016,6 +5019,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Oxygen
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083861559165434793, guid: b5804d94b8f15774e9e5f3aa003bfee9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248372418513963803, guid: b5804d94b8f15774e9e5f3aa003bfee9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5804d94b8f15774e9e5f3aa003bfee9, type: 3}
