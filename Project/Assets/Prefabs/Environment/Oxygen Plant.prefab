@@ -4798,12 +4798,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 876402977763883345, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
   windStrength: 100
-  oxygen: 25
+  oxygen: 10
   flyingStates: {fileID: 876402976663485067, guid: c40fecc86b0a2f242be8fde29d1ccc68,
     type: 3}
   plantRenderer: {fileID: 0}
   spores: {fileID: 1808209418}
-  plantPopPS: {fileID: 0}
   animationScript: {fileID: 876402977763883358, guid: c40fecc86b0a2f242be8fde29d1ccc68,
     type: 3}
 --- !u!1 &8704529850070546168
@@ -4920,10 +4919,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8704529850070546118}
     m_Modifications:
-    - target: {fileID: 4975544865130359207, guid: b5804d94b8f15774e9e5f3aa003bfee9,
+    - target: {fileID: 9083861559165434793, guid: b5804d94b8f15774e9e5f3aa003bfee9,
         type: 3}
-      propertyPath: m_Name
-      value: Freefall_Plant_Model
+      propertyPath: m_TagString
+      value: Oxygen
+      objectReference: {fileID: 0}
+    - target: {fileID: 9083861559165434793, guid: b5804d94b8f15774e9e5f3aa003bfee9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8311382570676509620, guid: b5804d94b8f15774e9e5f3aa003bfee9,
         type: 3}
@@ -4980,6 +4984,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4975544865130359207, guid: b5804d94b8f15774e9e5f3aa003bfee9,
+        type: 3}
+      propertyPath: m_Name
+      value: Freefall_Plant_Model
+      objectReference: {fileID: 0}
     - target: {fileID: 5811350981630318702, guid: b5804d94b8f15774e9e5f3aa003bfee9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5014,16 +5023,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.42301902
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083861559165434793, guid: b5804d94b8f15774e9e5f3aa003bfee9,
-        type: 3}
-      propertyPath: m_TagString
-      value: Oxygen
-      objectReference: {fileID: 0}
-    - target: {fileID: 9083861559165434793, guid: b5804d94b8f15774e9e5f3aa003bfee9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3248372418513963803, guid: b5804d94b8f15774e9e5f3aa003bfee9,
         type: 3}

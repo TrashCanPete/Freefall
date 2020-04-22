@@ -14874,7 +14874,7 @@ MonoBehaviour:
   terminalBoostSpeed: 80
   boostSpeed: 2
   isBoosting: 0
-  maxBoostFuel: 100
+  maxBoostFuel: 75
   fuelConsumption: 0.1
   rightHexPS: {fileID: 1170918589616286017}
   leftHexPS: {fileID: 8225766712344502206}
@@ -20823,7 +20823,7 @@ PrefabInstance:
     - target: {fileID: 5606274548828865799, guid: 0d2a01e485d7a407d80dccb007dfee25,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d2a01e485d7a407d80dccb007dfee25, type: 3}

@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Menu.unity
-    guid: e1d14a967bca596418bdce9d7b924f49
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scenes/Main_GameScene.unity
     guid: 1df87bcb8f8b49142a3ed1ddb256435c
   - enabled: 0
@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Peter's Test Scene.unity
     guid: 7760f0062f74a04489c93e6c19f97e7d
+  - enabled: 1
+    path: Assets/Scenes/Wingsuit Prototype.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
