@@ -80,4 +80,11 @@ MonoBehaviour:
     loop: 0
     mute: 0
     source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 5f4bc6b7c3c554f07b480232944632dc, type: 3}
+    volumn: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
   songs: []

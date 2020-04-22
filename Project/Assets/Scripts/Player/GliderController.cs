@@ -196,6 +196,7 @@ public class GliderController : MonoBehaviour
         if (collision.gameObject.tag == ("Obstacle"))
         {
             SceneManager.LoadScene("Main_GameScene");
+            FindObjectOfType<AudioManager>().PlayAudio("Death");
         }
     }
 
