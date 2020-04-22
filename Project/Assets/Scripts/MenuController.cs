@@ -8,8 +8,11 @@ public class MenuController : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject mainMenuUI;
     public GameObject pauseMenuUI;
+    public GameObject optionsMenuUI;
+    public GameObject controlsMenuUI;
+    public GameObject confirmationScreen;
 
-    
+
     private void Start()
     {
         Time.timeScale = 1f;
@@ -42,9 +45,12 @@ public class MenuController : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
+        controlsMenuUI.SetActive(false);
+        confirmationScreen.SetActive(false);
     }
 
     void Pause()
