@@ -50,7 +50,7 @@ public class GliderController : MonoBehaviour
     private void Start()
     {
 
-        transform.position = StartPosition.transform.position;
+        
 
         //Calling Scripts
         debugLines = GetComponent<DebugLines>();
@@ -191,14 +191,7 @@ public class GliderController : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.tag == ("Obstacle"))
-        {
-            SceneManager.LoadScene("Main_GameScene");
-            FindObjectOfType<AudioManager>().PlayAudio("Death");
-        }
-    }
+    
 
 
     public void ReduceAddVelocity()
