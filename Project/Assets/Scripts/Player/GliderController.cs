@@ -171,7 +171,7 @@ public class GliderController : MonoBehaviour
             UpDraftCounter(_collison.Oxygen);
 
             FindObjectOfType<AudioManager>().PlayAudio("Pop");
-            plantPopPS.Play();
+            //plantPopPS.Play();
             //StartCoroutine("PlantBurstTimer");
 
         }
