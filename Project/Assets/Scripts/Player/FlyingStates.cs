@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlyingStates : MonoBehaviour
 {
@@ -63,6 +64,9 @@ public class FlyingStates : MonoBehaviour
     private bool High;
     private bool Mid;
     private bool Low;
+
+    [SerializeField]
+    private bool isRising;
 
     [SerializeField]
     private bool isInTerminalVelocity;
@@ -170,7 +174,7 @@ public class FlyingStates : MonoBehaviour
     private float terminalBoostSpeed;
 
     public float boostSpeed;
-    
+
     public bool isBoosting = false;
 
     public float maxBoostFuel;
@@ -181,7 +185,10 @@ public class FlyingStates : MonoBehaviour
     public ParticleSystem leftHexPS;
     public ParticleSystem divingParticle;
 
-
+    [SerializeField]
+    private Text speedUI;
+    [SerializeField]
+    private Text maxSpeedUI;
 
     //Start
     private void Start()
@@ -199,6 +206,9 @@ public class FlyingStates : MonoBehaviour
 
     private void Update()
     {
+        speedUI.text = ("Speed " + Speed);
+        maxSpeedUI.text = ("MaxSpeed " + currentTargetSpeed);
+
         boostFuel = Mathf.Clamp(boostFuel, 0, maxBoostFuel);
         WingsFader();
         if (WingsFadeIn == true)
@@ -209,11 +219,11 @@ public class FlyingStates : MonoBehaviour
         else if (WingsFadeIn == false)
         {
             wingsValue = Mathf.Clamp(wingsValue, 0, 1);
-            wingsValue -= (WingsFadeValueBy + wingsOutMultiplyer ) * Time.deltaTime;
+            wingsValue -= (WingsFadeValueBy + wingsOutMultiplyer) * Time.deltaTime;
         }
 
     }
-    
+
     //Start of Method
     public void CheckFlyingStates()
     {
@@ -221,16 +231,17 @@ public class FlyingStates : MonoBehaviour
         if (yAngle <= diveThreshold && yAngle >= riseThreshold)
         {
 
-            ResetSpeedAndForceValues();
+            StartCoroutine("ResetSpeedDelay");
 
             risingCounterRate = 0;
             divingCounterRate = 0;
+            terminalDivingRateCounter = 0;
             drop = Mathf.Lerp(drop, minDrop, 0.25f);
             canTurnUp = true;
 
             if (divingCounterRate == 0)
             {
-                ResetSpeedAndForceValues();
+                StartCoroutine("ResetSpeedDelay");
             }
         }
         //Diving------------------------------------------
@@ -281,36 +292,52 @@ public class FlyingStates : MonoBehaviour
         //Rising-----------------------------------
         else if (yAngle <= riseThreshold)
         {
-            currentTargetSpeed = risingMaxVelocity;
-            currentTargetForce = risingForce;
-            risingCounterRate += risingCounterStep;
-
-            if (risingCounterRate >= maxRisingCounter)
+            isRising = true;
+            if (isRising)
             {
-                Debug.Log("Max Climb");
-                currentTargetSpeed = maxRisingVelocity;
-                currentTargetForce = maxRisingForce;
+                StartCoroutine("RisingAngle");
+            }
 
-                risingTwistRate += risingTwistStep;
-                if (risingTwistRate >= maxRisingTwistCounter)
+
+        }
+    }
+
+    private IEnumerator RisingAngle()
+    {
+        yield return new WaitForSeconds(2);
+
+        currentTargetSpeed = risingMaxVelocity;
+        currentTargetForce = risingForce;
+        risingCounterRate += risingCounterStep;
+
+        if (risingCounterRate >= maxRisingCounter)
+        {
+            Debug.Log("Max Climb");
+            currentTargetSpeed = maxRisingVelocity;
+            currentTargetForce = maxRisingForce;
+
+            risingTwistRate += risingTwistStep;
+            if (risingTwistRate >= maxRisingTwistCounter)
+            {
+                if (isBoosting == true)
                 {
-                    if (isBoosting == true)
+                    Debug.Log("Let it Rise");
+                }
+                else if (isBoosting == false)
+                {
+                    drop += dropChange;
+                    drop = Mathf.Clamp(drop, minDrop, maxDrop);
+                    if (drop >= 2)
                     {
-                        Debug.Log("Let it Rise");
-                    }
-                    else if (isBoosting == false)
-                    {
-                        drop += dropChange;
-                        drop = Mathf.Clamp(drop, minDrop, maxDrop);
-                        if (drop >= 2)
-                        {
-                            canTurnUp = false;
-                        }
+                        canTurnUp = false;
                     }
                 }
             }
         }
+
     }
+    //Rising-----------------------------------
+
 
     //Boost using Terminal Velocity-------------------Boost using Terminal Velocity-------------------Boost using Terminal Velocity-------------------
     public void TerminalBoost()
@@ -338,6 +365,13 @@ public class FlyingStates : MonoBehaviour
 
     }
     //Reset--------------------------------------------Reset--------------------------------------------Reset--------------------------------------------
+
+    private IEnumerator ResetSpeedDelay()
+    {
+        yield return new WaitForSeconds(1);
+        ResetSpeedAndForceValues();
+    }
+
     public void ResetSpeedAndForceValues()
     {
         currentTargetSpeed = standardMaxVelocity;

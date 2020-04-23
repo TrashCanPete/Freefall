@@ -70,7 +70,6 @@ public class GliderController : MonoBehaviour
 
         EndGameUI.SetActive(false);
 
-        plantPopPS.Stop();
     }
 
     private void Update()
@@ -121,7 +120,7 @@ public class GliderController : MonoBehaviour
         flyingStates.rb.velocity = flyingStates.baseVelocity + flyingStates.addedVelocity;
 
 
-        if (flyingStates.rb.velocity.magnitude >= 75f)
+        if (flyingStates.rb.velocity.magnitude >= 100f)
         {
 
             if (!isPlayingAudio)
@@ -180,15 +179,9 @@ public class GliderController : MonoBehaviour
             UpDraftCounter(_collison.Oxygen);
 
             FindObjectOfType<AudioManager>().PlayAudio("Pop");
-            //plantPopPS.Play();
-            //StartCoroutine("PlantBurstTimer");
+
 
         }
-    }
-    IEnumerator PlantBurstTimer()
-    {
-        yield return new WaitForSeconds(0.2f);
-        plantPopPS.Stop();
     }
 
 
@@ -231,8 +224,6 @@ public class GliderController : MonoBehaviour
         {
             //Slows you down
             //flyingStates.baseVelocity *= (0.5f * oxygenPlantBoost);
-
-            animationScript.PlayerOxygenPlantAnimation();
 
         }
         

@@ -83,7 +83,6 @@ public class RotationController : MonoBehaviour
         else if (flyingStates.wingsOut == false)
         {
             currentYawRotationSpeed = Mathf.Lerp(currentYawRotationSpeed, wingsInYawRotation, yawRotationChangeRate);
-            //currentPitchRotationSpeed = Mathf.Lerp(currentPitchRotationSpeed, currentPitchRotationSpeed, pitchRotationChangeRate);
         }
     }
 

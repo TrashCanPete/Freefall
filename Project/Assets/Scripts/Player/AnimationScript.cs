@@ -91,7 +91,7 @@ public class AnimationScript : MonoBehaviour
     }
 
 
-
+    /*
     public void TurningAnimation()
     {
         if (inputManager.yaw > 0)
@@ -112,13 +112,5 @@ public class AnimationScript : MonoBehaviour
 
     }
     */
-
-    
-    
-    
-    public void PlayerOxygenPlantAnimation()
-    {
-        
-    }
 
 }

@@ -14839,6 +14839,7 @@ MonoBehaviour:
   Speed: 0
   currentTargetSpeed: 0
   currentTargetForce: 0
+  isRising: 0
   isInTerminalVelocity: 0
   canTerminalBoost: 0
   minDrop: 0.01
@@ -14847,26 +14848,26 @@ MonoBehaviour:
   dropChange: 0.05
   baseVelocity: {x: 0, y: 0, z: 0}
   addedVelocity: {x: 0, y: 0, z: 0}
-  standardMaxVelocity: 50
-  divingMaxVelocity: 100
-  risingMaxVelocity: 10
-  terminalVelocity: 200
-  maxRisingVelocity: 5
-  standardForce: 0.5
-  divingForce: 0.65
-  terminalForce: 1
-  risingForce: 0.55
-  maxRisingForce: 0.85
+  standardMaxVelocity: 100
+  divingMaxVelocity: 175
+  risingMaxVelocity: 25
+  terminalVelocity: 300
+  maxRisingVelocity: 0
+  standardForce: 0.8
+  divingForce: 1.25
+  terminalForce: 2
+  risingForce: 1
+  maxRisingForce: 5
   addedForceReduction: 0.98
   diveThreshold: 15
-  terminalThreshold: 45
+  terminalThreshold: 35
   riseThreshold: -10
   maxDivingCounter: 10
   divingCounterRate: 0
   divingCounterStep: 0.15
-  maxTerminalDivingCounter: 5
+  maxTerminalDivingCounter: 3
   terminalDivingRateCounter: 0
-  terminalDivingStepCounter: 0.05
+  terminalDivingStepCounter: 0.1
   maxRisingCounter: 2
   risingCounterRate: 0
   risingCounterStep: 0.01
@@ -14881,6 +14882,8 @@ MonoBehaviour:
   rightHexPS: {fileID: 1170918589616286017}
   leftHexPS: {fileID: 8225766712344502206}
   divingParticle: {fileID: 4570197618401782767}
+  speedUI: {fileID: 0}
+  maxSpeedUI: {fileID: 0}
 --- !u!114 &876402977763883356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14979,7 +14982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cda5f910d07d048f4ae71b2f8b0c5881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  capemovement: {fileID: 0}
+  capemovement: {fileID: 2100000, guid: b946a1bb5178e4051ab810e93cdbb9d8, type: 2}
   Windspeed: 0
   windSpeedDivide: 250
 --- !u!114 &1741253199580449925
@@ -15052,7 +15055,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &876402977913173155
 Transform:
   m_ObjectHideFlags: 0
@@ -20778,6 +20781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DivingDownParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 4244523429871906940, guid: bc29384725bcd42bab1a730cf96ea33c,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4244523429871906930, guid: bc29384725bcd42bab1a730cf96ea33c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20831,11 +20839,6 @@ PrefabInstance:
     - target: {fileID: 4244523429871906930, guid: bc29384725bcd42bab1a730cf96ea33c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4244523429871906940, guid: bc29384725bcd42bab1a730cf96ea33c,
-        type: 3}
-      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -21163,26 +21166,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 876402976367098318}
     m_Modifications:
-    - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
+    - target: {fileID: -927199367670048503, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.013196283
+      propertyPath: m_Name
+      value: Player_Character_Final
       objectReference: {fileID: 0}
-    - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
+    - target: {fileID: -6057140222963153312, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.69923735
-      objectReference: {fileID: 0}
-    - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.025048206
-      objectReference: {fileID: 0}
-    - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7143288
-      objectReference: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8eb7b03b9b5e1234ca47d37effce04e4, type: 2}
     - target: {fileID: -4216859302048453862, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21238,16 +21231,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 38209f81b82fe404f973edd34ef33ce1,
+    - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
-      propertyPath: m_Name
-      value: Player_Character_Final
+      propertyPath: m_LocalRotation.x
+      value: -0.013196283
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 38209f81b82fe404f973edd34ef33ce1,
+    - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8eb7b03b9b5e1234ca47d37effce04e4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.69923735
+      objectReference: {fileID: 0}
+    - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.025048206
+      objectReference: {fileID: 0}
+    - target: {fileID: -3802134588326721037, guid: 38209f81b82fe404f973edd34ef33ce1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7143288
+      objectReference: {fileID: 0}
     - target: {fileID: -4461984386526322555, guid: 38209f81b82fe404f973edd34ef33ce1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
