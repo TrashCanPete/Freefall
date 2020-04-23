@@ -60,8 +60,8 @@ MonoBehaviour:
     mute: 0
     source: {fileID: 0}
   - name: Boost
-    clip: {fileID: 8300000, guid: 0cf3d71e8a2134df78a89bf364af0497, type: 3}
-    volumn: 0.1
+    clip: {fileID: 8300000, guid: c98b15f348aa7431eb9619b056e6b9a0, type: 3}
+    volumn: 0.3
     pitch: 1
     loop: 0
     mute: 0
