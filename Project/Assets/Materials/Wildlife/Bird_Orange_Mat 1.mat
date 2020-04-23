@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bird MAT
+  m_Name: Bird_Orange_Mat 1
   m_Shader: {fileID: -6465566751694194690, guid: 5fbf01cefa32e9c4b99e8d946eb97687,
     type: 3}
   m_ShaderKeywords: 
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_4BBD05C8:
-        m_Texture: {fileID: 2800000, guid: 57dffc6b6d138654fa267e12b2b1d07b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 77e8d49d240b0704e9c533e91fe8c57f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_757D16ED:
@@ -31,6 +31,7 @@ Material:
     m_Floats:
     - Vector1_32BE65BB: 0
     - Vector1_34AAD316: 0.2
+    - Vector1_645B6179: 0
     - Vector1_704F258: 0.35
     - Vector1_7931FF1E: 0
     - Vector1_ECFE3A08: 0

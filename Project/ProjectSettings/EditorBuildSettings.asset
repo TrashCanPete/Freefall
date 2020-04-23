@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main_Menu_2.unity
     guid: 73c58bb951157ee47924bae20075819c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main_GameScene.unity
     guid: 1df87bcb8f8b49142a3ed1ddb256435c
   - enabled: 0
@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Wingsuit Prototype.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Peter's Test Scene.unity
     guid: ce75692d5bdf782428283f34da10ca71
   m_configObjects: {}

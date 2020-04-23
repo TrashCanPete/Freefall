@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -18030,19 +18030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed421e18d6e93bc4a928a0b5e9456ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1752682377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752682364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92b0fa7267757774aa387dcb16b7485a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 769456807}
 --- !u!4 &1754115926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6457723427023237045, guid: 616555d82e76f5c4c8eb3450a2d00787,
@@ -24281,6 +24268,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1741253199580449925, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 769456807}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
 --- !u!1 &1944074560 stripped

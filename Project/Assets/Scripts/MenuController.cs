@@ -24,11 +24,6 @@ public class MenuController : MonoBehaviour
     public void PlayGame()
     {
         LoadGame();
-        mainMenuUI.SetActive(false);
-        pauseMenuUI.SetActive(false);
-        
-        
-
     }
 
     void Update()
@@ -74,7 +69,7 @@ public class MenuController : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Peter's Test Scene");
+        SceneManager.LoadScene("Main_GameScene");
     }
     public void QuitToMenu()
     {
