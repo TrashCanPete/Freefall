@@ -11712,6 +11712,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CloudDisc
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b1542067c391124419720d05f07ca946,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b1542067c391124419720d05f07ca946,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11808,10 +11813,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323078624}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
 --- !u!4 &1323078626 stripped
@@ -14882,21 +14887,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5987221263753901709, guid: 3d4d12fa85b40094bbcb37b76a7fbd01,
-        type: 3}
-      propertyPath: sounds.Array.data[3].loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5987221263753901709, guid: 3d4d12fa85b40094bbcb37b76a7fbd01,
-        type: 3}
-      propertyPath: sounds.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: c0d5fd54417a54d10bfd10e3db149967, type: 3}
-    - target: {fileID: 5987221263753901709, guid: 3d4d12fa85b40094bbcb37b76a7fbd01,
-        type: 3}
-      propertyPath: sounds.Array.data[0].volumn
-      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5987221263753900402, guid: 3d4d12fa85b40094bbcb37b76a7fbd01,
         type: 3}
