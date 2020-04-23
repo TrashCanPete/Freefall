@@ -121,7 +121,6 @@ public class GliderController : MonoBehaviour
         {
             if (flyingStates.wingsOut == false)
             {
-
             }
             else if (flyingStates.wingsOut == true)
             {

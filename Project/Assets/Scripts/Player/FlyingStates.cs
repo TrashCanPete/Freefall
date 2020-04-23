@@ -179,7 +179,7 @@ public class FlyingStates : MonoBehaviour
     private float fuelConsumption;
     public ParticleSystem rightHexPS;
     public ParticleSystem leftHexPS;
-
+    public ParticleSystem divingParticle;
 
 
 
@@ -191,7 +191,6 @@ public class FlyingStates : MonoBehaviour
         canTurnUp = true;
         //wings out
         WingsOut();
-        wingsOut = true;
 
         boostFuel = maxBoostFuel / 2;
         rb = GetComponent<Rigidbody>();
@@ -221,9 +220,6 @@ public class FlyingStates : MonoBehaviour
         //Standard------------------------
         if (yAngle <= diveThreshold && yAngle >= riseThreshold)
         {
-            //High = false;
-            //Mid = true;
-            //Low = false;
 
             ResetSpeedAndForceValues();
 
@@ -240,9 +236,7 @@ public class FlyingStates : MonoBehaviour
         //Diving------------------------------------------
         else if (yAngle >= diveThreshold)
         {
-            //High = false;
-            //Mid = false;
-            //Low = true;
+
 
             currentTargetSpeed = divingMaxVelocity;
             currentTargetForce = divingForce;
@@ -259,8 +253,11 @@ public class FlyingStates : MonoBehaviour
                     if (terminalDivingRateCounter >= terminalDivingStepCounter)
                     {
                         //wings in
-                        WingsIn();
-                        wingsOut = false;
+                        if (wingsOut == true)
+                        {
+                            WingsIn();
+                        }
+
                         if (burstEm == false)
                         {
                             return;
@@ -271,10 +268,7 @@ public class FlyingStates : MonoBehaviour
                             leftHexPS.Play();
                             StartCoroutine("HexWait");
                         }
-
-
                         isInTerminalVelocity = true;
-
                     }
                     if (isInTerminalVelocity == true)
                     {
@@ -287,10 +281,6 @@ public class FlyingStates : MonoBehaviour
         //Rising-----------------------------------
         else if (yAngle <= riseThreshold)
         {
-            //High = true;
-            //Mid = false;
-            //Low = false;
-
             currentTargetSpeed = risingMaxVelocity;
             currentTargetForce = risingForce;
             risingCounterRate += risingCounterStep;
@@ -317,7 +307,6 @@ public class FlyingStates : MonoBehaviour
                             canTurnUp = false;
                         }
                     }
-
                 }
             }
         }
@@ -336,8 +325,10 @@ public class FlyingStates : MonoBehaviour
             else if (canTerminalBoost == true)
             {
                 //wings out
-                WingsOut();
-                wingsOut = true;
+                if (wingsOut == false)
+                {
+                    WingsOut();
+                }
 
                 //baseVelocity += transform.forward * terminalBoostSpeed;
                 canTerminalBoost = false;
@@ -367,7 +358,6 @@ public class FlyingStates : MonoBehaviour
 
     public IEnumerator HexWait()
     {
-
         yield return new WaitForSeconds(hexSpeed);
         burstEm = false;
         rightHexPS.Stop();
@@ -375,39 +365,33 @@ public class FlyingStates : MonoBehaviour
     }
 
 
-
-
     public void WingsIn()
     {
-        wingsOut = false;
-        if (wingsOut == true)
-        {
+        divingParticle.Play();
+        Debug.Log("diving particle On");
 
-        }
-        else if (wingsOut == false)
-        {
-            WingStreamsOff();
-            fadeInState = fadeInOn;
-            burstState = burstOn;
-            WingsFadeIn = true;
-        }
+
+        WingStreamsOff();
+        fadeInState = fadeInOn;
+        burstState = burstOn;
+        WingsFadeIn = true;
+
+        wingsOut = false;
     }
+
 
 
     public void WingsOut()
     {
+
+        divingParticle.Stop();
+        Debug.Log("diving particle off");
+
+        WingStreamsOn();
+        WingsFadeIn = false;
+        burstEm = true;
+
         wingsOut = true;
-        if (wingsOut == false)
-        {
-        }
-        else if (wingsOut == true)
-        {
-
-            WingStreamsOn();
-            WingsFadeIn = false;
-            burstEm = true;
-
-        }
 
 
     }
