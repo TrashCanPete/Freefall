@@ -23,7 +23,6 @@ public class MenuController : MonoBehaviour
 
     public void PlayGame()
     {
-        animator.SetTrigger("FadeOut");
         LoadGame();
         mainMenuUI.SetActive(false);
         pauseMenuUI.SetActive(false);
@@ -75,7 +74,7 @@ public class MenuController : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("Main_GameScene");
+        SceneManager.LoadScene("Peter's Test Scene");
     }
     public void QuitToMenu()
     {

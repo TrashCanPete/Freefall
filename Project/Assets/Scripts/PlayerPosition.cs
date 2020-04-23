@@ -24,7 +24,7 @@ public class PlayerPosition : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            anim.SetBool("Dead", true);
+            anim.SetTrigger("Dead");
             playerDeath.Death();
             
         }
