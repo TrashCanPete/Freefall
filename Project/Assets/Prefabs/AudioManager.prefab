@@ -47,35 +47,35 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: c0d5fd54417a54d10bfd10e3db149967, type: 3}
-    volumn: 0.12
+    volumn: 0.02
     pitch: 1
     loop: 1
     mute: 0
     source: {fileID: 0}
   - name: Flying
     clip: {fileID: 8300000, guid: 9cff9815a6d2dec4ab5ae27f730fe392, type: 3}
-    volumn: 0.1
+    volumn: 0
     pitch: 1
     loop: 1
     mute: 0
     source: {fileID: 0}
   - name: Boost
     clip: {fileID: 8300000, guid: 0cf3d71e8a2134df78a89bf364af0497, type: 3}
-    volumn: 0.07
+    volumn: 0.1
     pitch: 1
     loop: 0
     mute: 0
     source: {fileID: 0}
   - name: Pop
     clip: {fileID: 8300000, guid: 8a07e0c43835a4e72ad209b0ffd689c9, type: 3}
-    volumn: 0.6
+    volumn: 0.7
     pitch: 1
     loop: 0
     mute: 0
     source: {fileID: 0}
   - name: OutOfFuel
     clip: {fileID: 8300000, guid: 21b8e5bfb4093418f94af1b758ba581e, type: 3}
-    volumn: 0.2
+    volumn: 0.3
     pitch: 1
     loop: 0
     mute: 0
