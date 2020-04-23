@@ -1,25 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class PlayerPosition : MonoBehaviour
 {
     private GameMaster gm;
+    private PlayerDeath playerDeath;
+    private Animator anim;
     
     private void Start()
     {
+        playerDeath = GetComponent<PlayerDeath>();
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        anim = GetComponentInChildren<Animator>();
         transform.position = gm.lastCheckpointPos;
     }
 
 
-    private void OnCollisionStay(Collision collision)
+  
+
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            FindObjectOfType<AudioManager>().PlayAudio("Death");
+            anim.SetBool("Dead", true);
+            playerDeath.Death();
+            
         }
     }
 }

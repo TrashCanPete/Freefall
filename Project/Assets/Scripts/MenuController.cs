@@ -6,6 +6,9 @@ using UnityEngine;
 public class MenuController : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+
+    public Animator animator;
+
     public GameObject mainMenuUI;
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
@@ -20,6 +23,7 @@ public class MenuController : MonoBehaviour
 
     public void PlayGame()
     {
+        animator.SetTrigger("FadeOut");
         LoadGame();
         mainMenuUI.SetActive(false);
         pauseMenuUI.SetActive(false);
