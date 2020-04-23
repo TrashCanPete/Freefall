@@ -87,4 +87,25 @@ MonoBehaviour:
     loop: 0
     mute: 0
     source: {fileID: 0}
+  - name: FlyingFast
+    clip: {fileID: 8300000, guid: 35440ecef87b4477e83c96cbdd50fbdd, type: 3}
+    volumn: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: WingsIn
+    clip: {fileID: 8300000, guid: eabfc6cd6c5674f219d6dcc6e864a348, type: 3}
+    volumn: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: WingsOut
+    clip: {fileID: 8300000, guid: eabfc6cd6c5674f219d6dcc6e864a348, type: 3}
+    volumn: 0.3
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
   songs: []

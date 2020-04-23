@@ -45,12 +45,14 @@ public class GliderController : MonoBehaviour
     public AudioManager audioManager;
     public ParticleSystem plantPopPS;
 
+    private bool isPlayingAudio;
+    private AudioManager audio;
 
     //Start
     private void Start()
     {
 
-        
+        audio = FindObjectOfType<AudioManager>();
 
         //Calling Scripts
         debugLines = GetComponent<DebugLines>();
@@ -117,21 +119,31 @@ public class GliderController : MonoBehaviour
 
 
         flyingStates.rb.velocity = flyingStates.baseVelocity + flyingStates.addedVelocity;
+
+
         if (flyingStates.rb.velocity.magnitude >= 75f)
         {
+
+            if (!isPlayingAudio)
+            {
+                audio.PlayAudio("FlyingFast");
+                isPlayingAudio = true;
+            }
+
             if (flyingStates.wingsOut == false)
             {
             }
             else if (flyingStates.wingsOut == true)
             {
                 flyingStates.WingStreamsOn();
+
             }
-
-            //windStream.SetActive(true);
         }
-        else if (flyingStates.rb.velocity.magnitude <= 125f) 
-        {
 
+        else
+        {
+            audio.StopPlayingAudio("FlyingFast");
+            isPlayingAudio = false;
             if (flyingStates.wingsOut == false)
             {
 
@@ -140,8 +152,6 @@ public class GliderController : MonoBehaviour
             {
                 flyingStates.WingStreamsOff();
             }
-
-            //windStream.SetActive(false); 
         }
 
         flyingStates.TerminalBoost();

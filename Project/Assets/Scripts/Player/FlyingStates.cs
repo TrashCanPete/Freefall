@@ -327,6 +327,7 @@ public class FlyingStates : MonoBehaviour
                 //wings out
                 if (wingsOut == false)
                 {
+                    FindObjectOfType<AudioManager>().PlayAudio("WingsOut");
                     WingsOut();
                 }
 
@@ -375,11 +376,11 @@ public class FlyingStates : MonoBehaviour
         fadeInState = fadeInOn;
         burstState = burstOn;
         WingsFadeIn = true;
+        FindObjectOfType<AudioManager>().PlayAudio("WingsIn");
 
         wingsOut = false;
+
     }
-
-
 
     public void WingsOut()
     {
@@ -404,12 +405,14 @@ public class FlyingStates : MonoBehaviour
     public void WingStreamsOff()
     {
         streamState = streamOff;
+
     }
 
 
     public void WingStreamsOn()
     {
         streamState = streamOn;
+
     }
 
 

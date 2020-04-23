@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-
+        //Audio Design
         if (instance == null)
         {
             instance = this;
@@ -67,9 +67,6 @@ public class AudioManager : MonoBehaviour
     }
 
 
-
-
-
     public void StopPlayingAudio(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -78,7 +75,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-
         s.source.Stop();
     }
 }
