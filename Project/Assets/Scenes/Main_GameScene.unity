@@ -1188,12 +1188,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 198.87201, y: 175.064, z: 182.919}
---- !u!54 &85404814 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 876402977763883352, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-    type: 3}
-  m_PrefabInstance: {fileID: 1937500714}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &107517875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6614,6 +6608,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main_Menu_Spire
       objectReference: {fileID: 0}
+    - target: {fileID: 1343668330028841203, guid: a1e142a3daa75fc488f8524407afa5f8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 2665835085363235552, guid: a1e142a3daa75fc488f8524407afa5f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9356,24 +9355,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1813288756}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1112446870 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 876402977763883345, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-    type: 3}
-  m_PrefabInstance: {fileID: 1937500714}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1112446871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112446870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed421e18d6e93bc4a928a0b5e9456ea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1113368462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23488,19 +23469,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 876402977763883357, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
-      propertyPath: StartPosition
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 876402977763883357, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
       propertyPath: EndGameUI
       value: 
       objectReference: {fileID: 856058366}
-    - target: {fileID: 876402977763883359, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: playerRB
-      value: 
-      objectReference: {fileID: 85404814}
     - target: {fileID: 876402977763883303, guid: c40fecc86b0a2f242be8fde29d1ccc68,
         type: 3}
       propertyPath: audioManager
@@ -23523,6 +23494,26 @@ PrefabInstance:
       objectReference: {fileID: 1869117649}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
+--- !u!1 &1946845628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1343668330028841203, guid: a1e142a3daa75fc488f8524407afa5f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 802300436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1946845629
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946845628}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 392269180516562891, guid: f8ceedb53be88274f99dd13aec27f218, type: 3}
 --- !u!1 &1951866228 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 9443a0d11dee9a14996fb1cb69e0621a,
