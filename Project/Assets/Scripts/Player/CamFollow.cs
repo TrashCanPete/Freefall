@@ -55,7 +55,7 @@ public class CamFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lookAtTransform.transform.position = new Vector3(lookAtOffsetX, lookAtOffsetY, lookAtOffsetZ);
+        //lookAtTransform.transform.position = new Vector3(lookAtOffsetX, lookAtOffsetY, lookAtOffsetZ);
         flyingStates = GetComponent<FlyingStates>();
     }
 
@@ -69,8 +69,12 @@ public class CamFollow : MonoBehaviour
         //3.5 0.75 close 7 2 far
         //var localVel = transform.InverseTransformDirection(playerRB.velocity);
         //Camera.main.fieldOfView = baseFOV + (localVel.z / fovDivision);
+
+
         Camera.main.fieldOfView = Mathf.Abs(flyingStates.Speed / offSet + cameraSpeedOffset);
         Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, minFOV, maxFOV);
+
+
         Vector3 moveCamTo = transform.position - transform.forward * camFollowDist + transform.up * (camHeightDist);
         Camera.main.transform.position = moveCamTo;
         Camera.main.transform.LookAt(lookAtTransform.transform.position, Vector3.up);
