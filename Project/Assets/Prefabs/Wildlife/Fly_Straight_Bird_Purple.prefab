@@ -445,10 +445,9 @@ GameObject:
   - component: {fileID: 6916084587778364540}
   - component: {fileID: 3562590896685971718}
   - component: {fileID: 8568618989418996280}
-  - component: {fileID: 7944400814524060226}
   - component: {fileID: 601917612726601672}
   m_Layer: 0
-  m_Name: Fly_Straight_Bird
+  m_Name: Fly_Straight_Bird_Purple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -505,19 +504,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7944400814524060226
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7611513909799003759}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1472985, y: 0.021674804, z: 0.052476652}
-  m_Center: {x: 0.0009159994, y: 0.003079071, z: 0.027898941}
 --- !u!114 &601917612726601672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df1fb99ab213e147a3aeb5f27aa3b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
 --- !u!1 &8193604404803913779
 GameObject:
   m_ObjectHideFlags: 0

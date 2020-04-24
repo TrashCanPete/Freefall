@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5092758867627984877}
-  m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4712.9526, y: 256.78995, z: 4712.9526}
+  m_LocalScale: {x: 4712.9526, y: 13557.167, z: 6.0855913}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -106,6 +106,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4d193b2f6f5be4b9b160848a0adc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  birdPrefab: {fileID: 7611513909799003759, guid: 1251e09d51ef841468eedd856aa26a62,
+  birdPrefab1: {fileID: 7611513909799003759, guid: 1251e09d51ef841468eedd856aa26a62,
+    type: 3}
+  birdPrefab2: {fileID: 1522286368626634777, guid: 730d5cfd2c87dc347a41fb5c93ef40fd,
+    type: 3}
+  birdPrefab3: {fileID: 2199256123655852833, guid: 047a1fe181fa3ef4198eeaf8f75984c9,
     type: 3}
   target: {fileID: 0}
+  target1: {fileID: 0}
+  target2: {fileID: 0}
+  target3: {fileID: 0}
+  target4: {fileID: 0}

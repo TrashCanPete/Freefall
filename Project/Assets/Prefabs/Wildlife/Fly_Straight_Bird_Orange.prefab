@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 2556750170699989514}
   - component: {fileID: 5616381786208251760}
   - component: {fileID: 749956416912438350}
-  - component: {fileID: 1351526851833267252}
   - component: {fileID: 8420543903479206334}
   m_Layer: 0
   m_Name: Fly_Straight_Bird_Orange
@@ -133,19 +132,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1351526851833267252
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522286368626634777}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1472985, y: 0.021674804, z: 0.052476652}
-  m_Center: {x: 0.0009159994, y: 0.003079071, z: 0.027898941}
 --- !u!114 &8420543903479206334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df1fb99ab213e147a3aeb5f27aa3b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 3
 --- !u!1 &2777194765924129123
 GameObject:
   m_ObjectHideFlags: 0
