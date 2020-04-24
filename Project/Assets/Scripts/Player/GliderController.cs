@@ -48,6 +48,10 @@ public class GliderController : MonoBehaviour
     private bool isPlayingAudio;
     private AudioManager audio;
 
+    [SerializeField]
+    private bool inUpDraft;
+
+
     //Start
     private void Start()
     {
@@ -155,6 +159,10 @@ public class GliderController : MonoBehaviour
 
         flyingStates.TerminalBoost();
         flyingStates.UseBoosFuel();
+
+
+
+
     }
 
     private void OnTriggerStay(Collider other)
