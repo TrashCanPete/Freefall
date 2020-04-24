@@ -33,7 +33,7 @@ public class FlockScript : MonoBehaviour
             Instantiate(birdPrefab1, target.transform.position, Quaternion.identity);
             Instantiate(birdPrefab2, target1.transform.position, Quaternion.identity);
             Instantiate(birdPrefab3, target2.transform.position, Quaternion.identity);
-            Instantiate(birdPrefab1, target3.transform.position, Quaternion.identity);
+            Instantiate(birdPrefab2, target3.transform.position, Quaternion.identity);
             Instantiate(birdPrefab1, target4.transform.position, Quaternion.identity);
             Destroy(this);
         }
