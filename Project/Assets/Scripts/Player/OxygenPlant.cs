@@ -12,6 +12,8 @@ public class OxygenPlant : MonoBehaviour
     [SerializeField]
     private FlyingStates flyingStates;
     private GameObject thisGO;
+    [SerializeField]
+    private GliderController gliderController;
 
     [SerializeField]
     private SkinnedMeshRenderer plantRenderer;
@@ -26,7 +28,7 @@ public class OxygenPlant : MonoBehaviour
     void Start()
     {
         plantRenderer = GetComponent<SkinnedMeshRenderer>();
-
+        gliderController = GetComponent<GliderController>();
         thisGO = this.gameObject;
         flyingStates = GetComponent<FlyingStates>();
     }
@@ -42,9 +44,14 @@ public class OxygenPlant : MonoBehaviour
         if (other.tag == ("Player"))
         {
             other.GetComponent<GliderController>().OxygenPlantPush ( windStrength ,oxygen);
-
             plantRenderer.enabled = false;
             StartCoroutine("WaitToDestroy");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == ("Player"))
+        {
         }
     }
 

@@ -48,14 +48,15 @@ public class GliderController : MonoBehaviour
     private bool isPlayingAudio;
     private AudioManager audio;
 
-    [SerializeField]
-    private bool inUpDraft;
+    public bool inUpDraft;
 
+    private Vector3 updraftDirection;
+    public Vector3 currentSpeed;
 
     //Start
     private void Start()
     {
-
+        inUpDraft = false;
         audio = FindObjectOfType<AudioManager>();
 
         //Calling Scripts
@@ -139,7 +140,6 @@ public class GliderController : MonoBehaviour
             else if (flyingStates.wingsOut == true)
             {
                 flyingStates.WingStreamsOn();
-
             }
         }
 
@@ -160,9 +160,15 @@ public class GliderController : MonoBehaviour
         flyingStates.TerminalBoost();
         flyingStates.UseBoosFuel();
 
-
-
-
+        if (inUpDraft == true)
+        {
+            currentSpeed = flyingStates.rb.velocity;
+            var upDraftBoost = 3;
+            for (int i = 0; i < upDraftBoost; i++)
+            {
+                flyingStates.addedVelocity += (updraftDirection);
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -187,12 +193,20 @@ public class GliderController : MonoBehaviour
             UpDraftCounter(_collison.Oxygen);
 
             FindObjectOfType<AudioManager>().PlayAudio("Pop");
-
-
+        }
+        else if (other.tag == ("UpDraft"))
+        {
+            inUpDraft = true;
         }
     }
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == ("UpDraft"))
+        {
+            inUpDraft = false;
+        }
+    }
     private IEnumerator WaitToEndGame()
     {
         EndGameUI.SetActive(true);
@@ -208,12 +222,7 @@ public class GliderController : MonoBehaviour
     {
         //Reduce the added velocity to 0 over time
         flyingStates.addedVelocity = Vector3.Lerp(flyingStates.addedVelocity, Vector3.zero, flyingStates.addedForceReduction * Time.deltaTime);
-
     }
-
-
-
-
 
     //Interaction-------------------------------------------Interaction-------------------------------------------Interaction-------------------------------------------
     public void UpDraftCounter(_collison col)
@@ -227,22 +236,20 @@ public class GliderController : MonoBehaviour
                 //Slows you down
                 flyingStates.baseVelocity *= (0.5f * upDraftForwardVelocity);
             }
+
         }
         else if (col == _collison.Oxygen)
         {
             //Slows you down
             //flyingStates.baseVelocity *= (0.5f * oxygenPlantBoost);
-
         }
         
     }
 
     public void WindMovePlayer(Vector3 _windStrength)
     {
-        flyingStates.addedVelocity += _windStrength;
-
-        rotationController.RotatePlayerTowardsUpDraft();
-
+        updraftDirection = _windStrength;
+        //flyingStates.addedVelocity += _windStrength;
     }
     public void OxygenPlantPush( float _OxygenBoostStrength, int _AddOxygen)
     {
@@ -253,18 +260,6 @@ public class GliderController : MonoBehaviour
     void PlantAddSpeed()
     {
         flyingStates.addedVelocity += (transform.forward * oxygenBoostStrength);
-    }
-
-    //Debugging----------------------------------------------Debugging----------------------------------------------Debugging----------------------------------------------
-
-    public void TestingKeys()
-    {
-        //Test the vertical Up Draft
-        if (Input.GetKey(KeyCode.Space))
-        {
-            WindMovePlayer(Vector3.up * 100);
-            WindMovePlayer(Vector3.up * 100);
-        }
     }
 
 }

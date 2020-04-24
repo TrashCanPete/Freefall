@@ -9694,7 +9694,7 @@ GameObject:
   - component: {fileID: 6386528408250242971}
   m_Layer: 0
   m_Name: Geyser
-  m_TagString: Untagged
+  m_TagString: UpDraft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
