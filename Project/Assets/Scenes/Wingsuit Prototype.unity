@@ -3368,11 +3368,6 @@ PrefabInstance:
       propertyPath: EndGameUI
       value: 
       objectReference: {fileID: 398808588}
-    - target: {fileID: 876402977763883359, guid: c40fecc86b0a2f242be8fde29d1ccc68,
-        type: 3}
-      propertyPath: maxFOV
-      value: 120
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
 --- !u!1001 &1302385730
