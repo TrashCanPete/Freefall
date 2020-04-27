@@ -326,7 +326,7 @@ public class FlyingStates : MonoBehaviour
         baseVelocity += (-transform.forward * resistance) * Time.deltaTime;
 
 
-        //currentTargetSpeed = risingMaxVelocity;
+        currentTargetSpeed = risingMaxVelocity;
         //currentTargetForce = risingForce;
         //risingCounterRate += risingCounterStep;
 
