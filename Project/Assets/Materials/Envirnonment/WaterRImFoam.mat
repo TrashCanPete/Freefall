@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: waterFoam
-  m_Shader: {fileID: -6465566751694194690, guid: 9d0bc04d2b22847d6be7abe113088c51,
+  m_Name: WaterRImFoam
+  m_Shader: {fileID: -6465566751694194690, guid: ba3bb84a51134438aad497522952f40c,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -65,16 +65,28 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_1A802473_Out_0:
+        m_Texture: {fileID: 2800000, guid: c88ad212d485b434dbcc25248a794faa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_ED0BD4A_Out_0:
+        m_Texture: {fileID: 2800000, guid: c88ad212d485b434dbcc25248a794faa, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_3D8D3358: 1.5
-    - Vector1_4F258124: 0
-    - Vector1_6EE10AB8: 8.43
-    - Vector1_86562A8D: -0.48
-    - Vector1_88700B1A: 4.6
-    - Vector1_B688F117: -9.6
-    - Vector1_BAD7FA51: 0.1
+    - Vector1_30FC55D7: 0.09
+    - Vector1_3D8D3358: 8.87
+    - Vector1_41308D6B: 5.9
+    - Vector1_4F258124: 7.28
+    - Vector1_51E7AEB2: 3.83
+    - Vector1_6EE10AB8: 9.59
+    - Vector1_86562A8D: 1.24
+    - Vector1_88700B1A: 3.44
+    - Vector1_B688F117: -3.01
+    - Vector1_BAD7FA51: 0.35
     - Vector1_D6D5A62E: 0.1
-    - Vector1_FE509639: 3.48
+    - Vector1_D8775560: 0.03
+    - Vector1_FE509639: -4.98
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -97,9 +109,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_57D18332: {r: 0, g: 0, b: 0, a: 0}
-    - Color_B41A41E: {r: 0.20714667, g: 0.30711547, b: 0.8962264, a: 0}
-    - _BaseColor: {r: 0.74038804, g: 0.7543313, b: 0.8867924, a: 1}
+    - Color_57D18332: {r: 1, g: 1, b: 1, a: 0}
+    - Color_693787C6: {r: 0.25698647, g: 0.45594957, b: 0.7264151, a: 0}
+    - Color_A7882F59: {r: 0.13572444, g: 0.18863365, b: 0.4716981, a: 0}
+    - Color_B41A41E: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 0.3019758, g: 0.3260932, b: 0.5471698, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
