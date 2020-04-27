@@ -13,10 +13,8 @@ public class PlayerDeath : MonoBehaviour
     }
     public void Death()
     {
-        
         Invoke("ReloadCheckpoint", 2f);
         anim.SetTrigger("Fade_Out");
-
     }
 
     void ReloadCheckpoint()

@@ -42,6 +42,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.mute = s.mute;
+            
 
             s.source.outputAudioMixerGroup = soundFXMixer;
         }
@@ -91,7 +92,6 @@ public class AudioManager : MonoBehaviour
         Music m = Array.Find(songs, songs => songs.name == name);
         if (m == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
         m.source.Play();
@@ -107,5 +107,12 @@ public class AudioManager : MonoBehaviour
             return;
         }
         m.source.Stop();
+    }
+
+    public void ClickButton()
+    {
+        Debug.Log(this);
+        PlayAudio("Button Click");
+        PlayAudio("Play Button");
     }
 }

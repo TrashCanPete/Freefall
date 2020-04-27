@@ -45,13 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectsMuted: 0
   sounds:
-  - name: Theme
-    clip: {fileID: 8300000, guid: c0d5fd54417a54d10bfd10e3db149967, type: 3}
-    volumn: 0.12
-    pitch: 1
-    loop: 1
-    mute: 0
-    source: {fileID: 0}
   - name: Flying
     clip: {fileID: 8300000, guid: 9cff9815a6d2dec4ab5ae27f730fe392, type: 3}
     volumn: 0
@@ -108,4 +101,36 @@ MonoBehaviour:
     loop: 0
     mute: 0
     source: {fileID: 0}
-  songs: []
+  - name: Button Highlight
+    clip: {fileID: 8300000, guid: 56a981d7a518dc5469434673039cb606, type: 3}
+    volumn: 0.005
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: Play Button
+    clip: {fileID: 8300000, guid: da1d648414e7490498c9c26524211f2f, type: 3}
+    volumn: 1
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  - name: Button Click
+    clip: {fileID: 8300000, guid: 251f11c737a8b17478bd3ff2c372aac2, type: 3}
+    volumn: 0.1
+    pitch: 1
+    loop: 0
+    mute: 0
+    source: {fileID: 0}
+  songs:
+  - name: Theme
+    clip: {fileID: 8300000, guid: c0d5fd54417a54d10bfd10e3db149967, type: 3}
+    volumn: 0.12
+    pitch: 1
+    loop: 1
+    mute: 0
+    source: {fileID: 0}
+  musicMixer: {fileID: -840189874346821228, guid: 93688eb1f1e187444a8da7094b4929c6,
+    type: 2}
+  soundFXMixer: {fileID: 8276391112514951943, guid: 93688eb1f1e187444a8da7094b4929c6,
+    type: 2}
