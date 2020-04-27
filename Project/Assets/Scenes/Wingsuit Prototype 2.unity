@@ -2677,6 +2677,36 @@ PrefabInstance:
       propertyPath: maxSpeedUI
       value: 
       objectReference: {fileID: 2145530926}
+    - target: {fileID: 876402976663485067, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: windResistanceDivider
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 876402976663485067, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: windResistCounter
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 876402977763883303, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: canRollRightTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 876402977763883303, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: canRollLeftTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 876402977763883303, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: canRollRightStep
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 876402977763883303, guid: c40fecc86b0a2f242be8fde29d1ccc68,
+        type: 3}
+      propertyPath: canRollLeftStep
+      value: 0.025
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c40fecc86b0a2f242be8fde29d1ccc68, type: 3}
 --- !u!1001 &253268593
