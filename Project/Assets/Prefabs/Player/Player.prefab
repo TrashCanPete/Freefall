@@ -14955,6 +14955,7 @@ MonoBehaviour:
   plantPopPS: {fileID: 0}
   inUpDraft: 0
   currentSpeed: {x: 0, y: 0, z: 0}
+  slowFallMultiplier: 25
 --- !u!114 &876402976663485067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14969,6 +14970,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 876402977763883352}
   rot: {x: 0, y: 0, z: 0}
+  resistance: 0
+  windResistanceAngle: 0
+  windResistanceDivider: 1
   canTurnUp: 1
   wingsObj: {fileID: 5092760780805168639}
   streamOn: 4
