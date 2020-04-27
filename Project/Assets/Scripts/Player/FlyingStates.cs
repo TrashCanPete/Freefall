@@ -11,6 +11,16 @@ public class FlyingStates : MonoBehaviour
     public Vector3 rot;
 
 
+    [SerializeField]
+    private float resistance;
+
+    [SerializeField]
+    private float windResistanceAngle;
+
+    [SerializeField]
+    private float windResistanceDivider;
+
+
     public bool canTurnUp;
 
     public GameObject wingsObj;
@@ -190,6 +200,7 @@ public class FlyingStates : MonoBehaviour
     [SerializeField]
     private Text maxSpeedUI;
 
+
     //Start
     private void Start()
     {
@@ -221,7 +232,8 @@ public class FlyingStates : MonoBehaviour
             wingsValue = Mathf.Clamp(wingsValue, 0, 1);
             wingsValue -= (WingsFadeValueBy + wingsOutMultiplyer) * Time.deltaTime;
         }
-
+        WindResistance();
+        windResistanceAngle = -rot.x;
     }
 
     //Start of Method
@@ -302,14 +314,24 @@ public class FlyingStates : MonoBehaviour
         }
     }
 
+    private void WindResistance()
+    {
+        resistance = windResistanceAngle / windResistanceDivider;
+    }
+
+
     private IEnumerator RisingAngle()
     {
         yield return new WaitForSeconds(2);
+        baseVelocity += (-transform.forward * resistance) * Time.deltaTime;
 
-        currentTargetSpeed = risingMaxVelocity;
-        currentTargetForce = risingForce;
-        risingCounterRate += risingCounterStep;
 
+        //currentTargetSpeed = risingMaxVelocity;
+        //currentTargetForce = risingForce;
+        //risingCounterRate += risingCounterStep;
+
+
+        /*
         if (risingCounterRate >= maxRisingCounter)
         {
             Debug.Log("Max Climb");
@@ -334,6 +356,7 @@ public class FlyingStates : MonoBehaviour
                 }
             }
         }
+        */
 
     }
     //Rising-----------------------------------
