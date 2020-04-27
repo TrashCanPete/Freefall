@@ -7,6 +7,11 @@ public class AnimationScript : MonoBehaviour
     public Animator anim;
     public AnimationScript animationScript;
     private InputManager inputManager;
+
+    public bool rollLeft;
+    public bool rollRight;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +30,23 @@ public class AnimationScript : MonoBehaviour
         //Calling blend tree function
         Move(x, y);
 
+        if (rollRight == true)
+        {
+            anim.SetBool("Rolling_Right", true);
+        }
+        else if (rollRight == false)
+        {
+            anim.SetBool("Rolling_Right", false);
+        }
+
+        if(rollLeft == true)
+        {
+            anim.SetBool("Rolling_Left", true);
+        }
+        else if(rollLeft == false)
+        {
+            anim.SetBool("Rolling_Left", false);
+        }
         
         if (Input.GetButtonDown("Shift"))
         {
@@ -37,27 +59,6 @@ public class AnimationScript : MonoBehaviour
             anim.SetBool("Boosting", false);
         }
 
-        if (Input.GetButtonDown("Roll_Right"))
-        {
-
-            anim.SetBool("Rolling_Right", true);
-        }
-
-        else if (Input.GetButtonUp("Roll_Right"))
-        {
-            anim.SetBool("Rolling_Right", false);
-        }
-
-        if (Input.GetButtonDown("Roll_Left"))
-        {
-
-            anim.SetBool("Rolling_Left", true);
-        }
-
-        else if (Input.GetButtonUp("Roll_Left"))
-        {
-            anim.SetBool("Rolling_Left", false);
-        }
 
 
     }

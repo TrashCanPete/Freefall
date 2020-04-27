@@ -53,6 +53,9 @@ public class GliderController : MonoBehaviour
     private Vector3 updraftDirection;
     public Vector3 currentSpeed;
 
+    [SerializeField]
+    private float slowFallMultiplier;
+
     //Start
     private void Start()
     {
@@ -169,6 +172,11 @@ public class GliderController : MonoBehaviour
                 flyingStates.addedVelocity += (updraftDirection);
             }
         }
+
+        flyingStates.rb.velocity += -Vector3.up * slowFallMultiplier;
+
+
+
     }
 
     private void OnTriggerStay(Collider other)

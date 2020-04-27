@@ -11,6 +11,30 @@ public class InputManager : MonoBehaviour
     public AudioManager audioManager;
     public ParticleSystem boostPop;
 
+    [SerializeField]
+    private bool isRollingRight;
+    [SerializeField]
+    private bool canRollRight;
+
+    [SerializeField]
+    private float canRollRightCounter;
+    [SerializeField]
+    private float canRollRightTarget;
+    [SerializeField]
+    private float canRollRightStep;
+
+    [SerializeField]
+    private bool isRollingLeft;
+    [SerializeField]
+    private bool canRollLeft;
+
+    [SerializeField]
+    private float canRollLeftCounter;
+    [SerializeField]
+    private float canRollLeftTarget;
+    [SerializeField]
+    private float canRollLeftStep;
+
     public float minBoost;
     public float maxBoost;
     public float boostVariable;
@@ -30,7 +54,8 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        canRollLeft = true;
+        canRollRight = true;
         animationScript = GetComponent<AnimationScript>();
         rotationController = GetComponent<RotationController>();
         flyingStates = GetComponent<FlyingStates>();
@@ -43,6 +68,8 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         boostVariable = boostUpdater;
+        LeftRollCounter();
+        RightRollCounter();
     }
     public void InputData()
     {
@@ -95,6 +122,60 @@ public class InputManager : MonoBehaviour
 
         }
 
+        if (Input.GetButton("Roll_Right"))
+        {
+            if(canRollRight == true)
+            {
+                canRollRight = false;
+                animationScript.rollRight = true;
+                flyingStates.addedVelocity += transform.right * 150;
+            }
 
+        }
+        else if (Input.GetButtonUp("Roll_Right"))
+        {
+            animationScript.rollRight = false;
+        }
+
+        if (Input.GetButton("Roll_Left"))
+        {
+            if(canRollLeft == true)
+            {
+                canRollLeft = false;
+                animationScript.rollLeft = true;
+                flyingStates.addedVelocity += -transform.right * 150;
+            }
+
+        }
+        else if (Input.GetButtonUp("Roll_Left"))
+        {
+            animationScript.rollLeft = false;
+        }
+    }
+
+    void RightRollCounter()
+    { 
+        
+      if (canRollRight == false)
+        {
+            canRollRightCounter += canRollRightStep;
+            if(canRollRightCounter >= canRollRightTarget)
+            {
+                canRollRight = true;
+                canRollRightCounter = 0;
+            }
+        }
+    }
+    void LeftRollCounter()
+    {
+        if(canRollLeft == false)
+        {
+            canRollLeftCounter += canRollLeftStep;
+            if(canRollLeftCounter >= canRollLeftTarget)
+            {
+                canRollLeft = true;
+                canRollLeftCounter = 0;
+            }
+        }
     }
 }

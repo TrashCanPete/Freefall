@@ -11,6 +11,14 @@ public class FlyingStates : MonoBehaviour
     public Vector3 rot;
 
 
+    [SerializeField]
+    private float resistance;
+
+    [SerializeField]
+    private float windResistanceAngle;
+
+    public float windResistanceDivider;
+
     public bool canTurnUp;
 
     public GameObject wingsObj;
@@ -190,6 +198,7 @@ public class FlyingStates : MonoBehaviour
     [SerializeField]
     private Text maxSpeedUI;
 
+
     //Start
     private void Start()
     {
@@ -221,7 +230,9 @@ public class FlyingStates : MonoBehaviour
             wingsValue = Mathf.Clamp(wingsValue, 0, 1);
             wingsValue -= (WingsFadeValueBy + wingsOutMultiplyer) * Time.deltaTime;
         }
-
+        WindResistanceVariable();
+        WindResistance();
+        windResistanceAngle = -rot.x;
     }
 
     //Start of Method
@@ -230,6 +241,8 @@ public class FlyingStates : MonoBehaviour
         //Standard------------------------
         if (yAngle <= diveThreshold && yAngle >= riseThreshold)
         {
+            StopCoroutine("MaxWindResistance");
+            StopCoroutine("RisingAngle");
 
             StartCoroutine("ResetSpeedDelay");
 
@@ -292,13 +305,25 @@ public class FlyingStates : MonoBehaviour
         //Rising-----------------------------------
         else if (yAngle <= riseThreshold)
         {
+            //StopCoroutine("MaxWindResistance");
             isRising = true;
             if (isRising)
             {
                 StartCoroutine("RisingAngle");
             }
+        }
+    }
 
+    private void WindResistanceVariable()
+    {
+        resistance = windResistanceAngle / windResistanceDivider;
+    }
 
+    private void WindResistance()
+    {
+        if (isRising)
+        {
+            baseVelocity += (-transform.forward * resistance) * Time.deltaTime;
         }
     }
 
@@ -306,36 +331,24 @@ public class FlyingStates : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        currentTargetSpeed = risingMaxVelocity;
-        currentTargetForce = risingForce;
-        risingCounterRate += risingCounterStep;
-
-        if (risingCounterRate >= maxRisingCounter)
+        if (yAngle <= -70)
         {
-            Debug.Log("Max Climb");
-            currentTargetSpeed = maxRisingVelocity;
-            currentTargetForce = maxRisingForce;
-
-            risingTwistRate += risingTwistStep;
-            if (risingTwistRate >= maxRisingTwistCounter)
+            if (isBoosting == true)
             {
-                if (isBoosting == true)
-                {
-                    Debug.Log("Let it Rise");
-                }
-                else if (isBoosting == false)
-                {
-                    drop += dropChange;
-                    drop = Mathf.Clamp(drop, minDrop, maxDrop);
-                    if (drop >= 2)
-                    {
-                        canTurnUp = false;
-                    }
-                }
+                windResistanceDivider = 4;
             }
+            else
+            {
+                windResistanceDivider = 1;
+            }
+        }
+        else
+        {
+            windResistanceDivider = 2;
         }
 
     }
+
     //Rising-----------------------------------
 
 

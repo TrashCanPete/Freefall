@@ -11,13 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main_GameScene.unity
     guid: 1df87bcb8f8b49142a3ed1ddb256435c
-  - enabled: 0
-    path: Assets/Scenes/Finn Test Scene.unity
-    guid: 31ec4871f696961439e96580eba044ad
-  - enabled: 0
-    path: Assets/Scenes/Wingsuit Prototype.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/Peter's Test Scene.unity
-    guid: ce75692d5bdf782428283f34da10ca71
   m_configObjects: {}
